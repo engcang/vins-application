@@ -9,7 +9,7 @@
 ### 2. [Parameters](#2-parameters-1)
 ### 3. Prerequisites
 #### ● [OpenCV with CUDA](#-opencv-with-cuda-1)
-#### ● [USB performance](#-usb-performance-1)
+#### ● [USB performance](#-usb-performance-1) : Have to improve performance of sensors with USB
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-1) : Synchronization, time offset, extrinsic parameter
 #### ● [Installation](#-installation-1)
 ### 4. [Comparison & Application](#4-comparison--application-1)
@@ -24,7 +24,9 @@
 # 2. Parameters
 + Camera frame rate
 + Max tracking Feature number
-
++ time offset
++ GPU acceleration
++ Thread numbers
 <br>
 
 # 3. Prerequisites
@@ -33,6 +35,8 @@
 + Build OpenCV with CUDA 
 ~~~shell
 $ sudo apt-get purge libopencv* python-opencv
+$ sudo apt-get update
+$ sudo apt-get install -y build-essential pkg-config
 $ sudo apt-get install -y \
     cmake \
     libavcodec-dev \
@@ -56,9 +60,12 @@ $ sudo apt-get install -y \
     libgl1 \
     libglvnd-dev \
     pkg-config
-$ cd <opencv_source_directory>/build
+$ mkdir <opencv_source_directory> && cd <opencv_source_directory>
+$ wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.1.zip # check version
+$ unzip opencv.zip
+$ cd <opencv_source_directory>/opencv && mkdir build && cd build
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
-      -D CMAKE_INSTALL_PREFIX=/usr/local \
+      -D CMAKE_INSTALL_PREFIX=/usr/local \ # set Path you want
       -D WITH_CUDA=ON \
       -D CUDA_ARCH_BIN=7.2 \ # check your BIN version : http://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
       -D CUDA_ARCH_PTX="" \
@@ -73,6 +80,9 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D CUDA_NVCC_FLAGS="--expt-relaxed-constexpr" \
       -D WITH_TBB=ON \
       ../
+$ time make -j8 # 8 : numbers of core
+$ sudo make install
+$ sudo rm -r <opencv_source_directory> #optional
 ~~~
 <br>
 
