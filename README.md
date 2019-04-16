@@ -8,7 +8,7 @@
 ### 1. [Algorithm & Gpu, Cpu version](#1-algorithm--gpu-cpu-version-1)
 ### 2. [Parameters](#2-parameters-1)
 ### 3. Prerequisites
-#### ● [ceres solver and eigen](#-ceres-solver-and-eigen) : Mandatory for VINS
+#### ● [ceres solver and eigen](#-ceres-solver-and-eigen--mandatory-for-vins-1) : Mandatory for VINS
 #### ● [OpenCV with CUDA](#-opencv-with-cuda--necessary-for-gpu-version-1) : Necessary for GPU version
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb-1) : Have to improve performance of sensors with USB
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter) : Synchronization, time offset, extrinsic parameter
