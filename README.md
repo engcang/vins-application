@@ -11,7 +11,7 @@ zed-m : calibration from co. pt,my : links,
 ### 3. Prerequisites
 #### ● [OpenCV with CUDA](#-opencv-with-cuda-1)
 #### ● [USB performance](#-usb-performance-1)
-#### ● [Calibration](#-calibration--kalibr---synchronization-time-offset-1) : [Kalibr](https://github.com/ethz-asl/kalibr) -> synchronization, time offset
+#### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-1)
 #### ● [Installation](#-installation-1)
 ### 4. [Comparison & Application](#4-comparison--application-1)
 
@@ -23,6 +23,10 @@ Hz, feature numbers
 # 3. Prerequisites
 ### ● OpenCV with CUDA
 ### ● USB performance
+Link : [here](https://github.com/KumarRobotics/flea3#optimizing-usb-performance-under-linux)
+For Xavier : [here](https://devtalk.nvidia.com/default/topic/1049581/jetson-agx-xavier/change-usbcore-usbfs_memory_mb/)
+  + sudo ./flash.sh -k kernel -C "usbcore.usbfs_memory_mb=1000" -k kernel-dtb jetson-xavier mmcblk0p1
 ### ● Calibration : Kalibr -> synchronization, time offset
+[Kalibr](https://github.com/ethz-asl/kalibr) -> synchronization, time offset
 ### ● Installation
 # 4. Comparison & Application
