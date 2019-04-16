@@ -36,7 +36,7 @@
 ##### from src/VINS/config/<config_file_name>.yaml
 + Max tracking Feature number **max_cnt**
     + 100~150, same witih camera frame rates
-+ time offset **estimated_td : 1**, **td : value from kalibr**
++ time offset **estimated_td : 1**, **td : value from [kalibr](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter)**
 + GPU acceleration **use_gpu : 1**, **use_gpu_acc_flow : 1** (for GPU version)
 + Thread numbers **multiple_thread : number of your trheads**
 <br>
