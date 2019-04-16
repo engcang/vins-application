@@ -101,6 +101,17 @@ $ sudo rm -r <opencv_source_directory> #optional
 <br>
 
 ### ● Installation
++ git clone and build from source
+~~~shell
+$ cd ~/catkin_ws/src
+$ git clone https://github.com/HKUST-Aerial-Robotics/VINS-Fusion #CPU
+or 
+$ git clone https://github.com/pjrambo/VINS-Fusion-gpu #GPU
+$ cd .. && catkin build camera models # camera models first
+$ catkin build
+~~~
+
+<br>
 + For GPU version, if OpenCV with CUDA was built manually, build cv_bridge manually also
 ~~~shell
 $ cd ~/catkin_ws/src && git clone https://github.com/ros-perception/vision_opencv
