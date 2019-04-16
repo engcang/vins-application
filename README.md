@@ -26,11 +26,17 @@
 <br>
 
 # 2. Parameters
-+ Camera frame rate
-+ Max tracking Feature number
-+ time offset
-+ GPU acceleration
-+ Thread numbers
++ Camera frame rate 
+    + lower - low time delay, poor performance
+    + higher - high time delay, better performance
+    + has to be set on camera launch file : 10~30hz
+***
+##### from src/VINS/config/<config_file_name>.yaml
++ Max tracking Feature number **max_cnt**
+    + 100~150, same witih camera frame rates
++ time offset **estimated_td : 1**, **td : value from kalibr **
++ GPU acceleration **use_gpu : 1**, **use_gpu_acc_flow : 1** (for GPU version)
++ Thread numbers **multiple_thread : number of your trheads**
 <br>
 
 # 3. Prerequisites
@@ -58,6 +64,7 @@ $ make install
 
 ### ● OpenCV with CUDA : Necessary for GPU version
 + Install CUDA : [here](https://askubuntu.com/questions/799184/how-can-i-install-cuda-on-ubuntu-16-04)
+
 + Build OpenCV with CUDA - references : [link 1](https://webnautes.tistory.com/1030), [link 2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh)
 ~~~shell
 $ sudo apt-get purge libopencv* python-opencv
@@ -113,7 +120,8 @@ $ sudo rm -r <opencv_source_directory> #optional
 <br>
 
 ### ● USB performance : Have to improve performance of sensors with USB
-  + Link : [here](https://github.com/KumarRobotics/flea3#optimizing-usb-performance-under-linux)
+  + Link : [here](https://github.com/KumarRobotics/flea3#optimizing-usb-performance-under-linux) for x86_64 desktops
+  + TX1/TX2 : [here](https://www.matrix-vision.com/manuals/mvBlueFOX3/mvBC_page_quickstart.html#mvBC_subsubsection_quickstart_linux_requirements_optimising_usb)
   + For Xavier : [here](https://devtalk.nvidia.com/default/topic/1049581/jetson-agx-xavier/change-usbcore-usbfs_memory_mb/)
   ~~~shell
   $ sudo ./flash.sh -k kernel -C "usbcore.usbfs_memory_mb=1000" -k kernel-dtb jetson-xavier mmcblk0p1
