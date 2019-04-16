@@ -88,7 +88,7 @@ $ sudo rm -r <opencv_source_directory> #optional
 ~~~
 <br>
 
-### ● USB performance
+### ● USB performance : Have to improve performance of sensors with USB
   + Link : [here](https://github.com/KumarRobotics/flea3#optimizing-usb-performance-under-linux)
   + For Xavier : [here](https://devtalk.nvidia.com/default/topic/1049581/jetson-agx-xavier/change-usbcore-usbfs_memory_mb/)
   ~~~shell
