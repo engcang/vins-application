@@ -1,0 +1,46 @@
+%YAML:1.0
+---
+model_type: PINHOLE
+camera_name: camera
+image_width: 672
+image_height: 376
+distortion_parameters: #by Kalibr #VGA:672*376, max 100fps, using 30fps
+   k1: 0.00814777836
+   k2: -0.0037053350
+   p1: 0
+   p2: 0
+projection_parameters:
+   fx: 350.67106
+   fy: 350.24751
+   cx: 329.27396
+   cy: 193.25709
+#distortion_parameters: #By zed comp. #VGA:672*376, max 100fps, using 30fps
+#   k1: -0.173744
+#   k2: 0.0274442
+#   p1: 0
+#   p2: 0
+#projection_parameters:
+#   fx: 349.337
+#   fy: 349.337
+#   cx: 344.413
+#   cy: 194.435
+#distortion_parameters: #HD720:1280x720, max 60fps
+#   k1: -0.173744
+#   k2: 0.0274442
+#   p1: 0
+#   p2: 0
+#projection_parameters:
+#   fx: 698.675
+#   fy: 698.675
+#   cx: 658.827
+#   cy: 374.869
+#distortion_parameters: #HD1080:1920x1080, max30 fps
+#   k1: -0.173744
+#   k2: 0.0274442
+#   p1: 0
+#   p2: 0
+#projection_parameters:
+#   fx: 1397.35
+#   fy: 1397.35
+#   cx: 1000.65
+#   cy: 572.738

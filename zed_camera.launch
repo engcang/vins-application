@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<!--
+Copyright (c) 2018, STEREOLABS.
+
+All rights reserved.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<launch>
+    <arg name="camera_model"          default="1" /> <!-- 0=ZED, 1=ZEDM-->
+    <arg name="svo_file"              default="" /><!-- <arg name="svo_file" default="path/to/svo/file.svo"> -->
+    <arg name="zed_id"                default="0" />
+    <!-- If a ZED SN is given, zed_id is ignored and the wrapper will specifically look for the ZED with the corresponding serial number -->
+    <arg name="serial_number"         default="0" />     
+    <arg name="verbose"               default="true" />
+
+    <arg name="resolution"            default="3" /> <!--0=RESOLUTION_HD2K, 1=RESOLUTION_HD1080, 2=RESOLUTION_HD720, 3=RESOLUTION_VGA -->
+    <arg name="frame_rate"            default="30" />
+    <!-- RESOLUTION_HD2K   -> 2208*1242, available framerates: 15 fps.
+         RESOLUTION_HD1080 -> 1920*1080, available framerates: 15, 30 fps.
+         RESOLUTION_HD720  -> 1280*720,  available framerates: 15, 30, 60 fps.
+         RESOLUTION_VGA    -> 672*376,   available framerates: 15, 30, 60, 100 fps. -->
+
+    <!-- GPU ID-->
+    <arg name="gpu_id"                default="-1" />
+
+    <!-- Definition coordinate frames -->
+    <arg name="publish_tf"                    default="true" />
+    <arg name="publish_map_tf"                default="true" />
+    <arg name="pose_frame"                    default="map" />
+    <arg name="odometry_frame"                default="odom" />
+    <arg name="base_frame"                    default="zed_camera_center" />
+    <arg name="left_camera_frame"             default="zed_left_camera_frame" />
+    <arg name="left_camera_optical_frame"     default="zed_left_camera_optical_frame" />
+    <arg name="right_camera_frame"            default="zed_right_camera_frame" />
+    <arg name="right_camera_optical_frame"    default="zed_right_camera_optical_frame" />
+    <arg name="imu_frame"                     default="imu_link" /> <!-- only used with ZED M -->
+
+    <arg name="two_d_mode"                    default="false" /> <!-- if true the Z value will be fixed to "fixed_z_value", roll and pitch to zero -->
+    <arg name="fixed_z_value"                 default="0.0" />
+
+    <arg name="initial_pose"                  default="[0.0,0.0,0.0, 0.0,0.0,0.0]" /> <!-- X, Y, Z, (meter) R, P, Y, (radians)-->
+
+    <!-- Publish urdf zed -->
+    <arg name="publish_urdf"                  default="true" />
+
+    <arg name="camera_flip"                   default="false" />
+    <arg name="rgb_topic"                     default="rgb/image_rect_color" />
+    <arg name="rgb_info_topic"                default="rgb/camera_info" />
+    <arg name="depth_topic"                   default="depth/depth_registered" />
+    <arg name="depth_cam_info_topic"          default="depth/camera_info" />
+
+    <node name="zed_wrapper_node" pkg="zed_wrapper" type="zed_wrapper_node" output="screen" required="true"><!-- launch-prefix="valgrind" -->
+
+        <param name="camera_model"          value="$(arg camera_model)" />
+
+        <!-- publish pose frame -->
+        <param name="publish_tf"            value="$(arg publish_tf)" />
+        <param name="publish_map_tf"        value="$(arg publish_map_tf)" />
+
+        <!-- flip camera -->
+        <param name="camera_flip"           value="$(arg camera_flip)" />
+
+        <!-- Configuration frame camera -->    
+        <param name="pose_frame"                    value="$(arg pose_frame)" />
+        <param name="odometry_frame"                value="$(arg odometry_frame)" />
+        <param name="base_frame"                    value="$(arg base_frame)" />
+        <param name="left_camera_frame"             value="$(arg left_camera_frame)" />
+        <param name="left_camera_optical_frame"     value="$(arg left_camera_optical_frame)" />
+        <param name="right_camera_frame"            value="$(arg right_camera_frame)" />
+        <param name="right_camera_optical_frame"    value="$(arg right_camera_optical_frame)" />
+        <param name="imu_frame"                     value="$(arg imu_frame)" />
+    
+        <!-- SVO file path -->
+        <param name="svo_filepath"          value="$(arg svo_file)" />
+
+        <!-- ZED parameters -->
+        <param name="zed_id"                value="$(arg zed_id)" />
+        <param name="serial_number"         value="$(arg serial_number)" />
+
+        <param name="resolution"            value="$(arg resolution)" />
+        <param name="verbose"               value="$(arg verbose)" />
+        <param name="mat_resize_factor"     value="1.0" />
+        <param name="quality"               value="1" />
+        <param name="sensing_mode"          value="0" />
+        <param name="frame_rate"            value="$(arg frame_rate)" />
+        <param name="odometry_db"           value="" />
+        <param name="openni_depth_mode"     value="0" />
+        <param name="gpu_id"                value="$(arg gpu_id)" />
+        <param name="confidence"            value="100" />
+        <param name="max_depth"             value="10.0" />
+        <param name="gain"                  value="100" />
+        <param name="exposure"              value="100" />
+        <param name="auto_exposure"         value="true" />
+        <param name="depth_stabilization"   value="1" />
+        <param name="pose_smoothing"        value="false" />
+        <param name="spatial_memory"        value="false" />
+        <param name="floor_alignment"       value="false" />
+        <param name="two_d_mode"            value="$(arg two_d_mode)" />
+        <param name="fixed_z_value"         value="$(arg fixed_z_value)" />
+
+        <rosparam param="initial_tracking_pose" subst_value="True">$(arg initial_pose)</rosparam>
+
+        <!-- ROS topic names -->
+        <param name="rgb_topic"                 value="$(arg rgb_topic)" />
+        <param name="rgb_raw_topic"             value="rgb/image_raw_color" />
+        <param name="rgb_cam_info_topic"        value="$(arg rgb_info_topic)" />
+        <param name="rgb_cam_info_raw_topic"    value="rgb/camera_info_raw" />
+
+        <param name="left_topic"                value="left/image_rect_color" />
+        <param name="left_raw_topic"            value="left/image_raw_color" />
+        <param name="left_cam_info_topic"       value="left/camera_info" />
+        <param name="left_cam_info_raw_topic"   value="left/camera_info_raw" />
+
+        <param name="right_topic"               value="right/image_rect_color" />
+        <param name="right_raw_topic"           value="right/image_raw_color" />
+        <param name="right_cam_info_topic"      value="right/camera_info" />
+        <param name="right_cam_info_raw_topic"  value="right/camera_info_raw" />
+
+        <param name="depth_topic"               value="$(arg depth_topic)" />
+        <param name="depth_cam_info_topic"      value="$(arg depth_cam_info_topic)" />
+
+        <param name="point_cloud_topic"         value="point_cloud/cloud_registered" />        
+
+        <param name="disparity_topic"           value="disparity/disparity_image" />
+        <param name="confidence_img_topic"      value="confidence/confidence_image" />
+        <param name="confidence_map_topic"      value="confidence/confidence_map" />
+
+        <param name="pose_topic"                value="pose" />
+        <param name="odometry_topic"            value="odom" />
+
+        <param name="init_odom_with_first_valid_pose"        value="true" />
+
+        <param name="imu_topic"                 value="imu/data" /> <!-- only used with ZED M -->
+        <param name="imu_topic_raw"             value="imu/data_raw" /> <!-- only used with ZED M -->
+
+        <param name="imu_timestamp_sync"        value="false" /> <!-- only used with ZED M -->
+        <param name="imu_pub_rate"              value="800.0" /> <!-- only used with ZED M -->
+
+        <param name="path_pub_rate"             value="2" />
+        <param name="path_max_count"            value="-1" /> <!-- use "-1" for no limits -->
+
+        <param name="publish_pose_covariance"   value="false" />
+
+    </node>
+
+    <!-- ROS URDF description of the ZED -->
+    <group if="$(arg publish_urdf)">
+        <param if="$(arg camera_model)" name="zed_description" textfile="$(find zed_wrapper)/urdf/zedm.urdf" />
+        <param unless="$(arg camera_model)" name="zed_description" textfile="$(find zed_wrapper)/urdf/zed.urdf" />
+        <node name="zed_state_publisher" pkg="robot_state_publisher" type="state_publisher">
+            <remap from="robot_description" to="zed_description" />
+        </node>
+    </group>
+        
+</launch>
