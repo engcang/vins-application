@@ -9,9 +9,9 @@
 ### 2. [Parameters](#2-parameters-1)
 ### 3. Prerequisites
 #### ● [ceres solver and eigen](#-ceres-solver-and-eigen) : Mandatory for VINS
-#### ● [OpenCV with CUDA](#-opencv-with-cuda-1) : Necessary for GPU version
-#### ● [USB performance](#-usb-performance-1) : Have to improve performance of sensors with USB
-#### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-1) : Synchronization, time offset, extrinsic parameter
+#### ● [OpenCV with CUDA](#-opencv-with-cuda--necessary-for-gpu-version-1) : Necessary for GPU version
+#### ● [USB performance](#-usb-performance) : Have to improve performance of sensors with USB
+#### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter) : Synchronization, time offset, extrinsic parameter
 #### ● [Installation](#-installation-1)
 ### 4. [Comparison & Application](#4-comparison--application-1)
 
@@ -112,6 +112,7 @@ $ git clone https://github.com/pjrambo/VINS-Fusion-gpu #GPU
 $ cd .. && catkin build camera models # camera models first
 $ catkin build
 ~~~
+Before build VINS-Fusion, process below could be required.
 <br>
 
 + For GPU version, if OpenCV with CUDA was built manually, build cv_bridge manually also
