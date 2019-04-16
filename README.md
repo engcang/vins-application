@@ -8,7 +8,8 @@
 ### 1. [Algorithm & Gpu, Cpu version](#1-algorithm--gpu-cpu-version-1)
 ### 2. [Parameters](#2-parameters-1)
 ### 3. Prerequisites
-#### ● [OpenCV with CUDA](#-opencv-with-cuda-1)
+#### ● [ceres solver and eigen]() : Mandatory for VINS
+#### ● [OpenCV with CUDA](#-opencv-with-cuda-1) : Necessary for GPU version
 #### ● [USB performance](#-usb-performance-1) : Have to improve performance of sensors with USB
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-1) : Synchronization, time offset, extrinsic parameter
 #### ● [Installation](#-installation-1)
@@ -30,7 +31,8 @@
 <br>
 
 # 3. Prerequisites
-### ● OpenCV with CUDA
+### ● ceres solver and eigen
+### ● OpenCV with CUDA : Necessary for GPU version
 + Install CUDA : [here](https://askubuntu.com/questions/799184/how-can-i-install-cuda-on-ubuntu-16-04)
 + Build OpenCV with CUDA 
 ~~~shell
