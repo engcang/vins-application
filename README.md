@@ -32,10 +32,12 @@
 <br>
 
 # 3. Prerequisites
-### ● ceres solver and eigen : Mandatory for VINS
+### ● Ceres solver and Eigen : Mandatory for VINS
++ Eigen [home](http://eigen.tuxfamily.org/index.php?title=Main_Page)
++ Ceres solver [home](http://ceres-solver.org/installation.html)
 ### ● OpenCV with CUDA : Necessary for GPU version
 + Install CUDA : [here](https://askubuntu.com/questions/799184/how-can-i-install-cuda-on-ubuntu-16-04)
-+ Build OpenCV with CUDA 
++ Build OpenCV with CUDA - references : [link 1](https://webnautes.tistory.com/1030), [link 2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh)
 ~~~shell
 $ sudo apt-get purge libopencv* python-opencv
 $ sudo apt-get update
