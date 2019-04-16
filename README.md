@@ -121,6 +121,7 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake) #under catkin_python_setup()
 $ cd .. && catkin build cv_bridge
 ~~~
 <br>
+
 + For GPU version, Edit CMakeLists.txt for loop_fusion and vins_estimator
 ~~~shell
 $ cd ~/catkin_ws/src/VINS-Fusion-gpu/loop_fusion && gedit CMakeLists.txt
