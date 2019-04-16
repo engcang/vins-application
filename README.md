@@ -32,6 +32,47 @@
 + Install CUDA : [here](https://askubuntu.com/questions/799184/how-can-i-install-cuda-on-ubuntu-16-04)
 + Build OpenCV with CUDA 
 ~~~shell
+$ sudo apt-get purge libopencv* python-opencv
+$ sudo apt-get install -y \
+    cmake \
+    libavcodec-dev \
+    libavformat-dev \
+    libavutil-dev \
+    libeigen3-dev \ # recommend to build from source : http://eigen.tuxfamily.org/index.php?title=Main_Page
+    libglew-dev \
+    libgtk2.0-dev \
+    libgtk-3-dev \
+    libjpeg-dev \
+    libpng-dev \
+    libpostproc-dev \
+    libswscale-dev \
+    libtbb-dev \
+    libtiff5-dev \
+    libv4l-dev \
+    libxvidcore-dev \
+    libx264-dev \
+    qt5-default \
+    zlib1g-dev \
+    libgl1 \
+    libglvnd-dev \
+    pkg-config
+$ cd <opencv_source_directory>/build
+cmake -D CMAKE_BUILD_TYPE=RELEASE \
+      -D CMAKE_INSTALL_PREFIX=/usr/local \
+      -D WITH_CUDA=ON \
+      -D CUDA_ARCH_BIN=7.2 \ # check your BIN version : http://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
+      -D CUDA_ARCH_PTX="" \
+      -D ENABLE_FAST_MATH=ON \
+      -D CUDA_FAST_MATH=ON \
+      -D WITH_CUBLAS=ON \
+      -D WITH_LIBV4L=ON \
+      -D WITH_GSTREAMER=ON \
+      -D WITH_GSTREAMER_0_10=OFF \
+      -D WITH_QT=ON \
+      -D WITH_OPENGL=ON \
+      -D CUDA_NVCC_FLAGS="--expt-relaxed-constexpr" \
+      -D WITH_TBB=ON \
+      ../
 ~~~
 <br>
 
