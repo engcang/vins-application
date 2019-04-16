@@ -23,9 +23,11 @@ Hz, feature numbers
 # 3. Prerequisites
 ### ● OpenCV with CUDA
 ### ● USB performance
-Link : [here](https://github.com/KumarRobotics/flea3#optimizing-usb-performance-under-linux)
-For Xavier : [here](https://devtalk.nvidia.com/default/topic/1049581/jetson-agx-xavier/change-usbcore-usbfs_memory_mb/)
-  + sudo ./flash.sh -k kernel -C "usbcore.usbfs_memory_mb=1000" -k kernel-dtb jetson-xavier mmcblk0p1
+  + Link : [here](https://github.com/KumarRobotics/flea3#optimizing-usb-performance-under-linux)
+  + For Xavier : [here](https://devtalk.nvidia.com/default/topic/1049581/jetson-agx-xavier/change-usbcore-usbfs_memory_mb/)
+  ~~~shell
+  $ sudo ./flash.sh -k kernel -C "usbcore.usbfs_memory_mb=1000" -k kernel-dtb jetson-xavier mmcblk0p1
+  ~~~
 ### ● Calibration : Kalibr -> synchronization, time offset
 [Kalibr](https://github.com/ethz-asl/kalibr) -> synchronization, time offset
 ### ● Installation
