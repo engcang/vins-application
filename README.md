@@ -30,5 +30,6 @@ Hz, feature numbers
   ~~~
 ### ● Calibration : Kalibr -> synchronization, time offset
 [Kalibr](https://github.com/ethz-asl/kalibr) -> synchronization, time offset
+For ZED cameras : [here](https://support.stereolabs.com/hc/en-us/articles/360012749113-How-can-I-use-Kalibr-with-the-ZED-Mini-camera-in-ROS-)
 ### ● Installation
 # 4. Comparison & Application
