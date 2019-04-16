@@ -1,7 +1,7 @@
 # VINS-application
 ## Mainly focused on Build process and explanation
 + VINS-Mono and Fusion application of different sets of cameras and imu on different board including desktop and jetson xavier
-+ Branch : zed-m, pointgrey_myahrs, intel D435i
++ Branch : [ZED-mini](https://github.com/engcang/VINS-application/tree/zed-mini), [Pointgrey_myAHRS](https://github.com/engcang/VINS-application/tree/Pointgrey_MyAHRS+), intel D435i
 + Tested on : Jetson Xavier, Jetson TX2, Intel i7-6700k, i7-8700k
 <br>
 <br>
