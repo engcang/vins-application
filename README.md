@@ -6,8 +6,8 @@ zed-m : calibration from co. pt,my : links,
 <br>
 
 # Index
-### 1. [Algorithm & Gpu, Cpu version]()
-### 2. [Parameters]()
+### 1. [Algorithm & Gpu, Cpu version](#1-algorithm--gpu-cpu-version-1)
+### 2. [Parameters](#2-parameters-1)
 ### 3. Prerequisites
 #### ● [OpenCV with CUDA]()
 #### ● [USB performance]()
