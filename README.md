@@ -9,7 +9,7 @@
 ### 1. [Algorithm & Gpu, Cpu version](#1-algorithm--gpu-cpu-version-1)
 ### 2. [Parameters](#2-parameters-1)
 ### 3. Prerequisites
-#### ● [ceres solver and eigen](#-ceres-solver-and-eigen--mandatory-for-vins-1) : Mandatory for VINS
+#### ● [Ceres solver and Eigen](#-ceres-solver-and-eigen--mandatory-for-vins-1) : Mandatory for VINS (build Eigen first)
 #### ● [OpenCV with CUDA](#-opencv-with-cuda--necessary-for-gpu-version-1) : Necessary for GPU version
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb-1) : Have to improve performance of sensors with USB
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter) : Synchronization, time offset, extrinsic parameter
@@ -34,7 +34,26 @@
 # 3. Prerequisites
 ### ● Ceres solver and Eigen : Mandatory for VINS
 + Eigen [home](http://eigen.tuxfamily.org/index.php?title=Main_Page)
+~~~shell
+$ wget -O eigen.zip http://bitbucket.org/eigen/eigen/get/3.3.7.zip #check version
+$ unzip eigen.zip
+$ mkdir eigen-build && cd eigen-build
+$ cmake ../eigen && make install
+~~~
+
 + Ceres solver [home](http://ceres-solver.org/installation.html)
+~~~shell
+$ sudo apt-get install -y cmake libgoogle-glog-dev libatlas-base-dev libsuitesparse-dev
+$ git clone https://ceres-solver.googlesource.com/ceres-solver
+$ mkdir ceres-bin
+$ mkdir solver && cd ceres-bin
+$ cmake ../ceres-solver -DEXPORT_BUILD_DIR=ON -DCMAKE_INSTALL_PREFIX="../solver"  #good for build without being root privileged and at wanted directory
+$ make -j8 # 8 : number of cores
+$ make test
+$ make install
+~~~
+<br>
+
 ### ● OpenCV with CUDA : Necessary for GPU version
 + Install CUDA : [here](https://askubuntu.com/questions/799184/how-can-i-install-cuda-on-ubuntu-16-04)
 + Build OpenCV with CUDA - references : [link 1](https://webnautes.tistory.com/1030), [link 2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh)
