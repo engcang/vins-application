@@ -1,0 +1,9 @@
+<launch>
+    <arg name="imu" default="ttyACM0"/>
+
+    <include file="$(find pointgrey_camera_driver)/launch/camera.launch"/>
+    <include file="$(find myahrs_driver)/launch/myahrs_driver.launch"/>
+    <include file="$(find vins)/launch/vins_rviz.launch"/>
+    <!-- node name="vin" pkg="vins" type="vins_node" args="$(find vins)/../config/ptgr_my/point_grey_myahrs_conf.yaml"/-->
+
+</launch>

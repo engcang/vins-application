@@ -1,0 +1,95 @@
+install cuda manually
+https://askubuntu.com/questions/799184/how-can-i-install-cuda-on-ubuntu-16-04
+
+
+have to edit the opencv's path of CMakeLists.txt of loop_fusion and vins_estimator
+sudo find -name OpenCV*
+/usr/share/OpenCV/OpenCVConfig.cmake (for xavier) 
+
+fatal error: opencv2/cudaoptflow.hpp: No such file or directory
+--> build manually cuda-opencv by jetsonhacks github
+
+https://github.com/jetsonhacks/buildOpenCVXavier
+--> $sudo apt-get purge libopencv*
+./buildOpenCV.sh -s (direcotry) -i /usr
+--> manually install cv-bridge : https://github.com/ros-perception/vision_opencv
+--> catkin build
+
+
+error
+
+--> $sudo apt-get purge libopencv* python-opencv
+--> build manually,,,, https://webnautes.tistory.com/1030
+
+
+sudo apt-get install -y \
+    cmake \
+    libavcodec-dev \
+    libavformat-dev \
+    libavutil-dev \
+    libeigen3-dev \
+    libglew-dev \
+    libgtk2.0-dev \
+    libgtk-3-dev \
+    libjpeg-dev \
+    libpng-dev \
+    libpostproc-dev \
+    libswscale-dev \
+    libtbb-dev \
+    libtiff5-dev \
+    libv4l-dev \
+    libxvidcore-dev \
+    libx264-dev \
+    qt5-default \
+    zlib1g-dev \
+    libgl1 \
+    libglvnd-dev \
+    pkg-config
+
+cmake -D CMAKE_BUILD_TYPE=RELEASE \
+      -D CMAKE_INSTALL_PREFIX=/usr/local \
+      -D WITH_CUDA=ON \
+      -D CUDA_ARCH_BIN=7.2 \
+      -D CUDA_ARCH_PTX="" \
+      -D ENABLE_FAST_MATH=ON \
+      -D CUDA_FAST_MATH=ON \
+      -D WITH_CUBLAS=ON \
+      -D WITH_LIBV4L=ON \
+      -D WITH_GSTREAMER=ON \
+      -D WITH_GSTREAMER_0_10=OFF \
+      -D WITH_QT=ON \
+      -D WITH_OPENGL=ON \
+      -D CUDA_NVCC_FLAGS="--expt-relaxed-constexpr" \
+      -D WITH_TBB=ON \
+      ../
+
+cmake -D CMAKE_BUILD_TYPE=RELEASE \
+-D CMAKE_INSTALL_PREFIX=/usr/local \
+-D WITH_CUDA=ON \
+-D WITH_TBB=OFF \
+-D WITH_IPP=OFF \
+-D WITH_1394=OFF \
+-D BUILD_WITH_DEBUG_INFO=OFF \
+-D BUILD_DOCS=OFF \
+-D INSTALL_C_EXAMPLES=ON \
+-D INSTALL_PYTHON_EXAMPLES=ON \
+-D BUILD_EXAMPLES=OFF \
+-D BUILD_TESTS=OFF \
+-D BUILD_PERF_TESTS=OFF \
+-D WITH_QT=ON \
+-D WITH_GTK=OFF \
+-D WITH_OPENGL=ON \
+-D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-3.4.1/modules \
+-D WITH_V4L=ON  \
+-D WITH_FFMPEG=ON \
+-D WITH_XINE=ON \
+-D BUILD_NEW_PYTHON_SUPPORT=ON \
+-D PYTHON2_INCLUDE_DIR=/usr/include/python2.7 \
+-D PYTHON2_NUMPY_INCLUDE_DIRS=/usr/lib/python2.7/dist-packages/numpy/core/include/ \
+-D PYTHON2_PACKAGES_PATH=/usr/lib/python2.7/dist-packages \
+-D PYTHON2_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython2.7.so \
+-D PYTHON3_INCLUDE_DIR=/usr/include/python3.5m \
+-D PYTHON3_NUMPY_INCLUDE_DIRS=/usr/lib/python3/dist-packages/numpy/core/include/  \
+-D PYTHON3_PACKAGES_PATH=/usr/lib/python3/dist-packages \
+-D PYTHON3_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.5m.so \
+../

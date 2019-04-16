@@ -1,0 +1,16 @@
+%YAML:1.0
+---
+model_type: PINHOLE
+camera_name: camera
+image_width: 1288
+image_height: 964
+distortion_parameters: #by Kalibr #mono:1288*964, max 30fps, using 30fps
+   k1: -0.10274641239957318
+   k2: 0.2103353258353151
+   p1: -0.0016423912126333651
+   p2: 0.0018398006644545681
+projection_parameters:
+   fx: 1470.0495238123717
+   fy: 1467.952524594808
+   cx: 673.5134474922614
+   cy: 483.0784345893267
