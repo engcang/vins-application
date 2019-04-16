@@ -65,7 +65,7 @@ $ wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.1.zip # check 
 $ unzip opencv.zip
 $ cd <opencv_source_directory>/opencv && mkdir build && cd build
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
-      -D CMAKE_INSTALL_PREFIX=/usr/local \ # set Path you want
+      -D CMAKE_INSTALL_PREFIX=/usr/local \ # set Path you want, default is recommended
       -D WITH_CUDA=ON \
       -D CUDA_ARCH_BIN=7.2 \ # check your BIN version : http://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
       -D CUDA_ARCH_PTX="" \
@@ -101,6 +101,25 @@ $ sudo rm -r <opencv_source_directory> #optional
 <br>
 
 ### ● Installation
++ For GPU version, if OpenCV with CUDA was built manually, build cv_bridge manually also
+~~~shell
+$ cd ~/catkin_ws/src && git clone https://github.com/ros-perception/vision_opencv
+$ gedit vision_opencv/cv_bridge/CMakeLists.txt
+~~~
+Edit OpenCV PATHS in CMakeLists
+~~~xml
+find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH
+  COMPONENTS
+    opencv_core
+    opencv_imgproc
+    opencv_imgcodecs
+  CONFIG
+)
+include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
+~~~
+~~~shell
+$ cd .. && catkin build cv_bridge
+~~~
 <br>
 
 # 4. Comparison & Application
