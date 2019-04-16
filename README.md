@@ -106,8 +106,8 @@ $ sudo rm -r <opencv_source_directory> #optional
 $ cd ~/catkin_ws/src && git clone https://github.com/ros-perception/vision_opencv
 $ gedit vision_opencv/cv_bridge/CMakeLists.txt
 ~~~
-Edit OpenCV PATHS in CMakeLists
-~~~xml
+Edit OpenCV PATHS in CMakeLists and include cmake file
+~~~txt
 find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH
   COMPONENTS
     opencv_core
@@ -115,10 +115,26 @@ find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH
     opencv_imgcodecs
   CONFIG
 )
-include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
+include(/usr/local/share/OpenCV/OpenCVConfig.cmake) #under catkin_python_setup()
 ~~~
 ~~~shell
 $ cd .. && catkin build cv_bridge
+~~~
+<br>
++ For GPU version, Edit CMakeLists.txt for loop_fusion and vins_estimator
+~~~shell
+$ cd ~/catkin_ws/src/VINS-Fusion-gpu/loop_fusion && gedit CMakeLists.txt
+or
+$ cd ~/catkin_ws/src/VINS-Fusion-gpu/vins_estimator && gedit CMakeLists.txt
+~~~
+~~~txt
+##For loop_fusion : line 19
+#find_package(OpenCV)
+include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
+
+##For vins_estimator : line 20
+#find_package(OpenCV REQUIRED)
+include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 ~~~
 <br>
 
