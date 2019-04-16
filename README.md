@@ -17,6 +17,8 @@
 <br><br><br>
 
 # 1. Algorithm & GPU, CPU version
++ [CPU version](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion)
++ [GPU version](https://github.com/pjrambo/VINS-Fusion-gpu)
 <br>
 
 # 2. Parameters
@@ -27,6 +29,10 @@
 
 # 3. Prerequisites
 ### ● OpenCV with CUDA
++ Install CUDA : [here](https://askubuntu.com/questions/799184/how-can-i-install-cuda-on-ubuntu-16-04)
++ Build OpenCV with CUDA 
+~~~shell
+~~~
 <br>
 
 ### ● USB performance
