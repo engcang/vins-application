@@ -31,7 +31,7 @@
 <br>
 
 # 3. Prerequisites
-### ● ceres solver and eigen
+### ● ceres solver and eigen : Mandatory for VINS
 ### ● OpenCV with CUDA : Necessary for GPU version
 + Install CUDA : [here](https://askubuntu.com/questions/799184/how-can-i-install-cuda-on-ubuntu-16-04)
 + Build OpenCV with CUDA 
