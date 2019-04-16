@@ -20,7 +20,7 @@
 <br><br><br>
 
 # 1. Algorithm & GPU, CPU version
-+ Mainly use Ceres-solver with Eigen, performance of VINS is strongly proportional to CPU performance and some parameters
++ Mainly use Ceres-solver with Eigen, **performance of VINS is strongly proportional to CPU performance and some parameters**
 + [CPU version](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion)
 + [GPU version](https://github.com/pjrambo/VINS-Fusion-gpu)
 <br>
@@ -29,12 +29,12 @@
 + Camera frame rate 
     + lower - low time delay, poor performance
     + higher - high time delay, better performance
-    + has to be set on camera launch file : 10~30hz
+    + has to be set from **camera launch file** : 10~30hz
 ***
 ##### from src/VINS/config/<config_file_name>.yaml
 + Max tracking Feature number **max_cnt**
     + 100~150, same witih camera frame rates
-+ time offset **estimated_td : 1**, **td : value from kalibr **
++ time offset **estimated_td : 1**, **td : value from kalibr**
 + GPU acceleration **use_gpu : 1**, **use_gpu_acc_flow : 1** (for GPU version)
 + Thread numbers **multiple_thread : number of your trheads**
 <br>
