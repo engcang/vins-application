@@ -1,6 +1,7 @@
 # VINS-application
 + VINS-Mono and Fusion application of different sets of cameras and imu on different board including desktop and jetson xavier
-+ Branch : zed-m, pointgrey_myahrs, intel d435i
++ Branch : zed-m, pointgrey_myahrs, intel D435i
++ Tested on : Jetson Xavier, Jetson TX2, Intel i7-6700k, i7-8700k
 <br>
 <br>
 
@@ -112,7 +113,8 @@ $ git clone https://github.com/pjrambo/VINS-Fusion-gpu #GPU
 $ cd .. && catkin build camera models # camera models first
 $ catkin build
 ~~~
-Before build VINS-Fusion, process below could be required.
+**Before build VINS-Fusion, process below could be required.**
+***
 <br>
 
 + For GPU version, if OpenCV with CUDA was built manually, build cv_bridge manually also
