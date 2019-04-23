@@ -48,7 +48,7 @@
 $ wget -O eigen.zip http://bitbucket.org/eigen/eigen/get/3.3.7.zip #check version
 $ unzip eigen.zip
 $ mkdir eigen-build && cd eigen-build
-$ cmake ../eigen && make install
+$ cmake ../eigen_source_folder_name && sudo make install
 ~~~
 
 + Ceres solver [home](http://ceres-solver.org/installation.html)
