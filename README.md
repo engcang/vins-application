@@ -99,10 +99,11 @@ $ mkdir <opencv_source_directory> && cd <opencv_source_directory>
 $ wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.1.zip # check version
 $ unzip opencv.zip
 $ cd <opencv_source_directory>/opencv && mkdir build && cd build
-cmake -D CMAKE_BUILD_TYPE=RELEASE \
-      -D CMAKE_INSTALL_PREFIX=/usr/local \ # set Path you want, default is recommended
+# check your BIN version : http://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
+$ cmake -D CMAKE_BUILD_TYPE=RELEASE \
+      -D CMAKE_INSTALL_PREFIX=/usr/local \
       -D WITH_CUDA=ON \
-      -D CUDA_ARCH_BIN=7.2 \ # check your BIN version : http://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
+      -D CUDA_ARCH_BIN=7.2 \
       -D CUDA_ARCH_PTX="" \
       -D ENABLE_FAST_MATH=ON \
       -D CUDA_FAST_MATH=ON \
