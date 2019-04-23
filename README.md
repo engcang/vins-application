@@ -14,7 +14,7 @@ $ source ./devel/setup.bash
 ~~~
 
 <br>
-<br>
+
 + used camera intrinsic from **/camera/infra1/rect_image_raw/camera_info**
 + set launch file ** ** as below [reference](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/issues/6)
 ~~~xml
