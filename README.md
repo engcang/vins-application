@@ -18,15 +18,6 @@ $ source ./devel/setup.bash
 + used camera intrinsic from **/camera/infra1/rect_image_raw/camera_info**
 + set launch file **rs_camera.launch** as below [reference](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/blob/master/config/realsense_d435i/rs_camera.launch)
 ~~~xml
-"unite_imu_method" = "linear_interpolation"
-"gyro_fps" = "200"
-"accel_fps" = "250"
-"enable_sync" = "true"
-"enable_imu" = "true"
-~~~
-
-full launch file
-~~~xml
 <launch>
   <arg name="serial_no"           default=""/>
   <arg name="json_file_path"      default=""/>
@@ -122,6 +113,7 @@ full launch file
       <arg name="linear_accel_cov"         value="$(arg linear_accel_cov)"/>
       <arg name="initial_reset"            value="$(arg initial_reset)"/>
       <arg name="unite_imu_method"         value="$(arg unite_imu_method)"/>
+      <arg name="hold_back_imu_for_frames" value="$(arg hold_back_imu_for_frames)"/> !-- check --
     </include>
   </group>
 </launch>
