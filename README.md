@@ -1,17 +1,12 @@
 # VINS-application
-VINS-Mono and Fusion application of different sets of cameras and imu on different board including desktop and jetson xavier
++ Build Process and explanation [here](https://github.com/engcang/VINS-application)
 
-## Index
-1. [Algorithm & Gpu, Cpu version]()
-2. [Parameters]()
-Hz, feature numbers
-3. Prerequisites
-+ [OpenCV with CUDA]()
-+ [USB performance]()
-+ [Calibration]() : [Kalibr]() -> synchronization, time offset
-+ [Installation]()
-4. [Comparison & Application]()
-
-branch : zed-m, pointgrey_myahrs, d435i
-zed-m : calibration from co.
-pt,my : links, 
+## Requirements
++ (necessary for ROS) Intel Realsense SDK [SDK](https://github.com/IntelRealSense/librealsense), For Xavier [here](https://github.com/jetsonhacks/buildLibrealsense2Xavier) -> SDK version is **v2.17.1** and need **JetPack 4.1 for L4T 31.1**
++ Intel Realsense2 ROS [here](https://github.com/intel-ros/realsense) -> ROS Wrapper 2.0 version is **v2.1.3** [down link](https://github.com/intel-ros/realsense/archive/2.1.3.zip)
++ myAHRS+ imu sensor [homepage](http://withrobot.com/en/), [github for ROS](https://github.com/robotpilot/myahrs_driver)
+~~~shell
+# for permission of imu sensor
+$ sudo chmod a+rw /dev/ttyACM0
+$ sudo usermod -a -G dialout $USER
+~~~
