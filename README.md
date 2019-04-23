@@ -72,6 +72,7 @@ $ nvcc --version
 ~~~
 
 + Build OpenCV with CUDA - references : [link 1](https://webnautes.tistory.com/1030), [link 2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh)
+    + for Xavier do as below or sh file from jetsonhacks [here](https://github.com/jetsonhacks/buildOpenCVXavier)
 ~~~shell
 $ sudo apt-get purge libopencv* python-opencv
 $ sudo apt-get update
@@ -124,6 +125,8 @@ $ time make -j8 # 8 : numbers of core
 $ sudo make install
 $ sudo rm -r <opencv_source_directory> #optional
 ~~~
++ when #error Please include the appropriate gl headers before including cuda_gl_interop.h
+    + reference [1](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh#L101) [2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/patches/OpenGLHeader.patch) [3](https://devtalk.nvidia.com/default/topic/1007290/jetson-tx2/building-opencv-with-opengl-support-/post/5141945/#5141945)
 <br>
 
 ### ● USB performance : Have to improve performance of sensors with USB
