@@ -66,6 +66,10 @@ $ make install
 
 ### ● OpenCV with CUDA : Necessary for GPU version
 + Install CUDA : [here](https://askubuntu.com/questions/799184/how-can-i-install-cuda-on-ubuntu-16-04)
+~~~shell
+# check installed cuda version
+$ nvcc --version
+~~~
 
 + Build OpenCV with CUDA - references : [link 1](https://webnautes.tistory.com/1030), [link 2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh)
 ~~~shell
