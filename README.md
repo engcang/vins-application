@@ -100,6 +100,7 @@ $ sudo apt-get install -y \
     libgl1 \
     libglvnd-dev \
     pkg-config
+$ sudo apt-get install python2.7-dev python3-dev python-numpy python3-numpy
 $ mkdir <opencv_source_directory> && cd <opencv_source_directory>
 $ wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.1.zip # check version
 $ unzip opencv.zip
