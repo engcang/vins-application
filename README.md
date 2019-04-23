@@ -113,7 +113,7 @@ $ source ./devel/setup.bash
       <arg name="linear_accel_cov"         value="$(arg linear_accel_cov)"/>
       <arg name="initial_reset"            value="$(arg initial_reset)"/>
       <arg name="unite_imu_method"         value="$(arg unite_imu_method)"/>
-      <arg name="hold_back_imu_for_frames" value="$(arg hold_back_imu_for_frames)"/> !-- check --
+      <arg name="hold_back_imu_for_frames" value="$(arg hold_back_imu_for_frames)"/> <!-- check -->
     </include>
   </group>
 </launch>
