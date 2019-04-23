@@ -4,6 +4,7 @@
 ## Requirements
 + (necessary for ROS) Intel Realsense [SDK](https://github.com/IntelRealSense/librealsense)
   + For Xavier [here](https://github.com/jetsonhacks/buildLibrealsense2Xavier) -> SDK version is **v2.17.1** and need **JetPack 4.1 for L4T 31.1** or have to be flashed again
+  + video link[1](https://youtu.be/Pp18JL6H2zc) or jetsonhacks [article](https://www.jetsonhacks.com/2019/01/21/intel-realsense-d435i-on-nvidia-jetson-agx-xavier/)
 + Intel Realsense2 ROS [here](https://github.com/intel-ros/realsense)
   + For Xavier : -> ROS Wrapper 2.0 version should be **v2.1.3** [down link](https://github.com/intel-ros/realsense/archive/2.1.3.zip)
 ~~~shell
