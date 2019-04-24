@@ -202,4 +202,5 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 + Loop Fusion vs vins node on flightgoggles : [youtube](https://youtu.be/cvhI_1XQQt4)
 + Real World VINS-Mono with pointgrey cam, myAHRS+ imu on Jetson Xavier : [youtube](https://youtu.be/4qJYoND9OYk)
 + Real World VINS(GPU+version) with pointgrey, myAHRS at Intel i7-8700k, TITAN RTX : [youtube](https://youtu.be/UEZMZMFFhYs)
++ Real World VINS(GPU+version, Stereo) with Intel D435i, on Xavier, max CPU clocked : [youtube](https://youtu.be/b3l1TeNKyeU)
 <br>
