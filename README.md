@@ -142,6 +142,12 @@ $ sudo rm -r <opencv_source_directory> #optional
 ### ● Calibration : Kalibr -> synchronization, time offset, extrinsic parameter
 + [Kalibr](https://github.com/ethz-asl/kalibr) -> synchronization, time offset <br>
 + For ZED cameras : [here](https://support.stereolabs.com/hc/en-us/articles/360012749113-How-can-I-use-Kalibr-with-the-ZED-Mini-camera-in-ROS-)
++ **ImportError: No module named Image** [reference](https://github.com/ethz-asl/kalibr/issues/67)
+~~~shell
+$ gedit kalibr/aslam_offline_calibration/kalibr/python/kalibr_camera_calibration/MulticamGraph.py
+#import Image
+from PIL import Image
+~~~
 
 <br>
 
