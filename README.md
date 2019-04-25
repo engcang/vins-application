@@ -2,16 +2,20 @@
 + Build Process and explanation [here](https://github.com/engcang/VINS-application)
 
 ## Requirements
+### ● For Jetpack 4.2, Ubuntu 18.04 both for Xavier, TX2 : try [this script](https://github.com/engcang/VINS-application/blob/Intel-D435i/jetpack4.2-d435i_tx2_xavier.sh)
+  #### ● Edited the scripts file from jetsonhacks github : [here](https://github.com/jetsonhacks/buildLibrealsense2Xavier)
+<br>
+
 + (necessary for ROS) Intel Realsense [SDK](https://github.com/IntelRealSense/librealsense)
   + For Xavier [here](https://github.com/jetsonhacks/buildLibrealsense2Xavier) -> SDK version is **v2.17.1** and need **JetPack 4.1 for L4T 31.1** or have to be flashed again...
     + video [link](https://youtu.be/Pp18JL6H2zc) or jetsonhacks [article](https://www.jetsonhacks.com/2019/01/21/intel-realsense-d435i-on-nvidia-jetson-agx-xavier/)
-  + For TX2 [here](https://github.com/jetsonhacks/buildLibrealsense2TX) -> SDK version is **v2.13.0** and need **JetPack3.2.1 for L4T 28.2 / L4T 28.2.1 ** or have to be flashed again...
+  + For TX2 [here](https://github.com/jetsonhacks/buildLibrealsense2TX) -> SDK version is **v2.13.0** and need  **JetPack3.2.1 for L4T 28.2 / L4T 28.2.1** or have to be flashed again...
     + video [link](https://youtu.be/mvDCOc-aoMU) or jetsonhacks [article](https://www.jetsonhacks.com/2018/07/10/librealsense-update-nvidia-jetson-tx-dev-kits/)
 + Intel Realsense2 ROS [here](https://github.com/intel-ros/realsense)
-  + For Xavier : -> ROS Wrapper 2.0 version should be **v2.1.3** [down link](https://github.com/intel-ros/realsense/archive/2.1.3.zip)
+  + For Xavier : -> ROS Wrapper 2.0 version should be **v2.1.3** for SDK v2.17.1 [down link](https://github.com/intel-ros/realsense/archive/2.1.3.zip)
 ~~~shell
-$ cd ~/catkin_ws/src && wget https://github.com/intel-ros/realsense/archive/2.1.3.zip
-$ unzip realsense-2.1.3.zip
+$ cd ~/catkin_ws/src && wget https://github.com/intel-ros/realsense/archive/<$version>.zip
+$ unzip realsense-<$version>.zip
 $ cd ..
 $ catkin build realsense2_camera -DCATKIN_ENABLE_TESTING=False -DCMAKE_BUILD_TYPE=Release -j8
 $ source ./devel/setup.bash
