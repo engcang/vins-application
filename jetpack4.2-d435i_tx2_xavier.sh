@@ -40,6 +40,11 @@ yes "" | sudo make olddefconfig
 cd /usr/src/kernel/kernel-4.9
 sudo patch -p1 < ~/buildLibrealsense2Xavier/patches/realsense-camera-formats_ubuntu-bionic-Xavier-4.9.108.patch
 sudo patch -p1 < ~/buildLibrealsense2Xavier/patches/realsense-metadata-ubuntu-bionic-Xavier-4.9.108.patch ##error, ignored
+## patch should be done manually, from line 220~ from uvcvideo.h file
+## gedit /usr/src/kernel/kernel-4.9/drivers/media/usb/uvc/uvcvideo.h
+## #define UVC_MAX_STATUS_SIZE	32
+## #define UVC_QUIRK_APPEND_UVC_HEADER	0x00001000
+## #define UVC_QUIRK_DISABLE_AUTOSUSPEND	0x00001200
 sudo patch -p1 < ~/buildLibrealsense2Xavier/patches/realsense-hid-ubuntu-bionic-Xavier-4.9.108.patch
 
 sudo patch -p1 < ~/librealsense/scripts/realsense-powerlinefrequency-control-fix.patch
