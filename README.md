@@ -5,7 +5,9 @@
 ### ● For Jetpack 4.2, Ubuntu 18.04 both for Xavier, TX2 : try [this script](https://github.com/engcang/VINS-application/blob/Intel-D435i/jetpack4.2-d435i_tx2_xavier.sh)
   + Edited the scripts file from jetsonhacks github : [here](https://github.com/jetsonhacks/buildLibrealsense2Xavier)
 <br>
-****
+
+***
+
 ### ● Or use stable versions below
 + (necessary for ROS) Intel Realsense [SDK](https://github.com/IntelRealSense/librealsense)
   + For Xavier [here](https://github.com/jetsonhacks/buildLibrealsense2Xavier) -> SDK version is **v2.17.1** and need **JetPack 4.1 for L4T 31.1** or have to be flashed again...
