@@ -62,7 +62,7 @@ sudo make modules_install
 
 ##################
 
-cd /usr/src/kernel/kernel-4.9
+cd ~/buildLibrealsense2Xavier
 mkdir -p ~/buildLibrealsense2Xavier/image
 sudo cp /usr/src/kernel/kernel-4.9/arch/arm64/boot/Image ./image/Image
 
