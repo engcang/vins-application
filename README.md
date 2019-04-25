@@ -4,7 +4,12 @@
 <br>
 
 ## Requirements
-### ● For Jetpack 4.2, Ubuntu 18.04 both for Xavier, TX2 : try [this script](https://github.com/engcang/VINS-application/blob/Intel-D435i/jetpack4.2-d435i_tx2_xavier.sh), copy and paste command lines while reading the comments, do not directly execute it
+### ● For Jetpack 4.2, Ubuntu 18.04 both for Xavier, TX2 : try [this script](https://github.com/engcang/VINS-application/blob/Intel-D435i/jetpack4.2-d435i_tx2_xavier.sh)
+  + copy and paste command lines while reading the comments, do not directly execute it
+  + and flash kernel from host pc to jetson board under recovery mode
+  ~~~shell
+  $ sudo ./flash.sh -k kernel jetson-<tx2 or xavier> mmcblk0p1
+  ~~~
   + Edited the scripts file from jetsonhacks github : [here](https://github.com/jetsonhacks/buildLibrealsense2Xavier)
 
 ***
