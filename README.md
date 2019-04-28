@@ -4,17 +4,24 @@
 <br>
 
 ## Requirements
-### ● For Jetpack 4.2, Ubuntu 18.04 both for Xavier, TX2 : try [this script](https://github.com/engcang/VINS-application/blob/Intel-D435i/jetpack4.2-d435i_tx2_xavier.sh)
-  + copy and paste command lines while reading the comments, do not directly execute it
-  + and flash kernel from host pc to jetson board under recovery mode
++ ~~For Jetpack 4.2, Ubuntu 18.04 both for Xavier, TX2 : try [this script](https://github.com/engcang/VINS-application/blob/Intel-D435i/jetpack4.2-d435i_tx2_xavier.sh)~~
+  + ~~copy and paste command lines while reading the comments, do not directly execute it~~
+  + ~~and flash kernel from host pc to jetson board under recovery mode~~
   ~~~shell
   $ sudo ./flash.sh -k kernel jetson-<tx2 or xavier> mmcblk0p1
   ~~~
-  + Edited the scripts file from jetsonhacks github : [here](https://github.com/jetsonhacks/buildLibrealsense2Xavier)
+  + ~~Edited the scripts file from jetsonhacks github : [here](https://github.com/jetsonhacks/buildLibrealsense2Xavier)~~
 
-***
+### ● Disable **Emitter""
+  <p align="left">
+  <img src="https://github.com/engcang/image-files/blob/master/vins/1.png" width="500" hspace="50"/>
+  </p>
+  <p align="left">
+  <img src="https://github.com/engcang/image-files/blob/master/vins/2.png" width="500" hspace="50"/>
+  </p>
+### ● IMU Calibration [here](https://www.intel.com/content/dam/support/us/en/documents/emerging-technologies/intel-realsense-technology/RealSense_Depth_D435i_IMU_Calib.pdf)
 
-### ● Or use stable versions below
+### ● Stable versions below
 + (necessary for ROS) Intel Realsense [SDK](https://github.com/IntelRealSense/librealsense)
   + For Xavier [here](https://github.com/jetsonhacks/buildLibrealsense2Xavier) -> SDK version is **v2.17.1** and need **JetPack 4.1 for L4T 31.1** or have to be flashed again...
     + video [link](https://youtu.be/Pp18JL6H2zc) or jetsonhacks [article](https://www.jetsonhacks.com/2019/01/21/intel-realsense-d435i-on-nvidia-jetson-agx-xavier/)
