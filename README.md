@@ -53,3 +53,4 @@ $ source ./devel/setup.bash
 
 ### ● After that,
 + used Kalibr and launch file as in this repository.
++ a lot referred [here](https://github.com/intel-ros/realsense/issues/563) for imu models, configuration, emitter disabling, and VIO result
