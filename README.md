@@ -12,13 +12,15 @@
   ~~~
   + ~~Edited the scripts file from jetsonhacks github : [here](https://github.com/jetsonhacks/buildLibrealsense2Xavier)~~
 
-### ● Disable **Emitter""
-  <p align="left">
-  <img src="https://github.com/engcang/image-files/blob/master/vins/1.png" width="500" hspace="50"/>
+### ● Disable **Emitter**
+  <p align="center">
+  <img src="https://github.com/engcang/image-files/blob/master/vins/1.png" width="600" hspace="50"/>
   </p>
-  <p align="left">
-  <img src="https://github.com/engcang/image-files/blob/master/vins/2.png" width="500" hspace="50"/>
+  
+  <p align="center">
+  <img src="https://github.com/engcang/image-files/blob/master/vins/2.png" width="600" hspace="50"/>
   </p>
+  
 ### ● IMU Calibration [here](https://www.intel.com/content/dam/support/us/en/documents/emerging-technologies/intel-realsense-technology/RealSense_Depth_D435i_IMU_Calib.pdf)
 
 ### ● Stable versions below
