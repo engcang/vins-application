@@ -52,5 +52,5 @@ $ source ./devel/setup.bash
 + worked quite well
 
 ### ● After that,
-+ used Kalibr and launch file as in this repository.
++ used [Kalibr](https://github.com/ethz-asl/kalibr) and launch file as in this [repository](https://github.com/engcang/vins-application#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter).
 + a lot referred [here](https://github.com/intel-ros/realsense/issues/563) for imu models, configuration, emitter disabling, and VIO result
