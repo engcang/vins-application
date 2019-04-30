@@ -2,7 +2,7 @@
 + Build Process and explanation [here](https://github.com/engcang/VINS-application)
 
 ## Requirements
-+ (necessary for ROS) PointGrey [SDK](https://www.ptgrey.com/support/downloads)
++ (necessary for ROS) PointGrey [SDK](https://www.flir.com/support/?query=sdk&filteredTypes=SiteProductDownloadData)
 + PointGrey ROS [Driver](https://github.com/ros-drivers/pointgrey_camera_driver)
 + myAHRS+ imu sensor [homepage](http://withrobot.com/en/), [github for ROS](https://github.com/robotpilot/myahrs_driver)
 ~~~shell
