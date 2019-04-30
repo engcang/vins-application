@@ -1,11 +1,11 @@
 %YAML:1.0
 ---
 model_type: PINHOLE
-camera_name: camera
+camera_name: infra2
 image_width: 640
 image_height: 480
 distortion_parameters:
-   k1: 0.010363596547356    
+   k1: 0.010363596547356
    k2: -0.00081886859870
    p1: 0.002382702542342
    p2: 0.002604547414788

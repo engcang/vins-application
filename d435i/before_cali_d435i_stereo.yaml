@@ -69,8 +69,8 @@ gyr_w: 0.0001       # gyroscope bias random work noise standard deviation.     #
 g_norm: 9.805         # gravity magnitude
 
 #unsynchronization parameters
-estimate_td: 1                      # online estimate time offset between camera and imu
-td: 0.0                             # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock)
+estimate_td: 0                      # online estimate time offset between camera and imu
+td: 0.0 # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock)
 
 #loop closure parameters
 load_previous_pose_graph: 0        # load and reuse previous pose graph; load from 'pose_graph_save_path'
