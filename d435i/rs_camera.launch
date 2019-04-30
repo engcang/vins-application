@@ -1,6 +1,6 @@
 <launch>
   <arg name="serial_no"           default=""/>
-  <arg name="json_file_path"      default="/home/nvidia/VINS-application/d435i/emitter_disabled_60fps.json"/>
+  <arg name="json_file_path"      default="$(find realsense2_camera)/launch/emitter_disabled_60fps.json"/>
   <arg name="camera"              default="camera"/>
   <arg name="tf_prefix"           default="$(arg camera)"/>
 

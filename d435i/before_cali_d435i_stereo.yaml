@@ -10,8 +10,8 @@ image0_topic: "/camera/infra1/image_rect_raw"
 image1_topic: "/camera/infra2/image_rect_raw"
 output_path: "/home/mason/output/"
 
-cam0_calib: "left.yaml"
-cam1_calib: "right.yaml"
+cam0_calib: "before_cali_left.yaml"
+cam1_calib: "before_cali_right.yaml"
 image_width: 640
 image_height: 480
    
@@ -45,8 +45,8 @@ body_T_cam1: !!opencv-matrix
 #Multiple thread support
 multiple_thread: 6
 #Gpu accleration support
-use_gpu: 1
-use_gpu_acc_flow: 1
+use_gpu: 0
+use_gpu_acc_flow: 0
 
 #feature traker paprameters
 max_cnt: 120            # max feature number in feature tracking
