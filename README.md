@@ -5,6 +5,7 @@
     + Including **config.yaml** files and **Calibration data**
     + git clone -b <branch_name> --single-branch https://github.com/engcang/VINS-application
 + Tested on : Jetson Xavier, Jetson TX2, Intel i7-6700k, i7-8700k
+### Result clips : [here](#4-comparison--application-1)
 <br>
 <br>
 
@@ -205,7 +206,7 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 <br>
 
 # 4. Comparison & Application
-+ /tf vs VINS-Mono on flightgoggles : [youtube](https://youtu.be/U4TJ7ZyfWD8)
++ /tf vs VINS-Mono on flightgoggles : [youtube](https://youtu.be/U4TJ7ZyfWD8), with CPU [youtube](https://www.youtube.com/watch?v=1QUypn7GbXc)
 + Loop Fusion vs vins node on flightgoggles : [youtube](https://youtu.be/cvhI_1XQQt4)
 + Real World VINS-Mono with pointgrey cam, myAHRS+ imu on Jetson Xavier : [youtube](https://youtu.be/4qJYoND9OYk)
 + Real World VINS(GPU+version) with pointgrey, myAHRS at Intel i7-8700k, TITAN RTX : [youtube](https://youtu.be/UEZMZMFFhYs)
