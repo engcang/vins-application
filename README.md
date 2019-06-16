@@ -213,4 +213,5 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 + Real World VINS(GPU+version, Stereo) with Intel D435i, on Xavier, max CPU clocked : [youtube](https://youtu.be/b3l1TeNKyeU) and [youtube2](https://youtu.be/7yMDqiO2A2Q) : screen
 
 + VINS mono VS ROVIO [youtube](https://youtu.be/n0N2qDcNcBQ)
++ VINS-Mono vs ROVIO vs ORB-SLAM2 [youtube](https://youtu.be/SypqOc25EVc)
 <br>
