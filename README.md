@@ -67,7 +67,7 @@ $ make install
 <br>
 
 ### ● OpenCV with CUDA : Necessary for GPU version
-+ Install CUDA : [here for all version](https://askubuntu.com/questions/1028830/how-do-i-install-cuda-on-ubuntu-18-04) [here for 16.04](https://askubuntu.com/questions/799184/how-can-i-install-cuda-on-ubuntu-16-04)
++ Install CUDA : [here for all version](https://askubuntu.com/questions/1028830/how-do-i-install-cuda-on-ubuntu-18-04) / [here for 16.04](https://askubuntu.com/questions/799184/how-can-i-install-cuda-on-ubuntu-16-04)
 ~~~shell
 # check installed cuda version
 $ nvcc --version
@@ -84,7 +84,7 @@ $ sudo apt-get install -y \
     libavcodec-dev \
     libavformat-dev \
     libavutil-dev \
-    libeigen3-dev \ # recommend to build from source : http://eigen.tuxfamily.org/index.php?title=Main_Page
+#    libeigen3-dev \ # recommend to build from source : http://eigen.tuxfamily.org/index.php?title=Main_Page
     libglew-dev \
     libgtk2.0-dev \
     libgtk-3-dev \
@@ -108,7 +108,10 @@ $ wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.1.zip # check 
 $ unzip opencv.zip
 $ cd <opencv_source_directory>/opencv && mkdir build && cd build
 # check your BIN version : http://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
+# 7.2 for Xavier, 5.2 for GTX TITAN X
 $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
+      -D CMAKE_C_COMPILER=gcc-6 \
+      -D CMAKE_CXX_COMPILER=g++-6 \
       -D CMAKE_INSTALL_PREFIX=/usr/local \
       -D WITH_CUDA=ON \
       -D CUDA_ARCH_BIN=7.2 \
