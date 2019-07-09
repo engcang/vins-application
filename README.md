@@ -159,7 +159,9 @@ $ gedit vision_opencv/cv_bridge/CMakeLists.txt
 ~~~
 Edit OpenCV PATHS in CMakeLists and include cmake file
 ~~~txt
-find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH
+#when error, try both lines
+#find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH
+find_package(OpenCV 3 HINTS /usr/local/share/OpenCV NO_DEFAULT_PATH
   COMPONENTS
     opencv_core
     opencv_imgproc
