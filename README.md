@@ -79,29 +79,11 @@ $ nvcc --version
 $ sudo apt-get purge libopencv* python-opencv
 $ sudo apt-get update
 $ sudo apt-get install -y build-essential pkg-config
-$ sudo apt-get install -y \
-    cmake \
-    libavcodec-dev \
-    libavformat-dev \
-    libavutil-dev \
-#    libeigen3-dev \ # recommend to build from source : http://eigen.tuxfamily.org/index.php?title=Main_Page
-    libglew-dev \
-    libgtk2.0-dev \
-    libgtk-3-dev \
-    libjpeg-dev \
-    libpng-dev \
-    libpostproc-dev \
-    libswscale-dev \
-    libtbb-dev \
-    libtiff5-dev \
-    libv4l-dev \
-    libxvidcore-dev \
-    libx264-dev \
-    qt5-default \
-    zlib1g-dev \
-    libgl1 \
-    libglvnd-dev \
-    pkg-config
+$ sudo apt-get install -y cmake libavcodec-dev libavformat-dev libavutil-dev \
+    libglew-dev libgtk2.0-dev libgtk-3-dev libjpeg-dev libpng-dev libpostproc-dev \
+    libswscale-dev libtbb-dev libtiff5-dev libv4l-dev libxvidcore-dev \
+    libx264-dev qt5-default zlib1g-dev libgl1 libglvnd-dev pkg-config \
+    libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev mesa-utils #libeigen3-dev # recommend to build from source : http://eigen.tuxfamily.org/index.php?title=Main_Page
 $ sudo apt-get install python2.7-dev python3-dev python-numpy python3-numpy
 $ mkdir <opencv_source_directory> && cd <opencv_source_directory>
 $ wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.1.zip # check version
