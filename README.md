@@ -192,6 +192,13 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 ~~~
 <br>
 
+### ● Trouble shooting
++ Aborted error : 
+~~~shell
+ $ echo "export MALLOC_CHECK_=0" >> ~/.bashrc
+ $ source ~/.bashrc
+~~~
+
 # 4. Comparison & Application
 + /tf vs VINS-Mono on flightgoggles : [youtube](https://youtu.be/U4TJ7ZyfWD8), with CPU [youtube](https://www.youtube.com/watch?v=1QUypn7GbXc)
 + Loop Fusion vs vins node on flightgoggles : [youtube](https://youtu.be/cvhI_1XQQt4)
