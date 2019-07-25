@@ -18,7 +18,7 @@
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb-1) : Have to improve performance of sensors with USB
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter) : Synchronization, time offset, extrinsic parameter
 #### ● [Installation](#-installation-1)
-#### ● [Trouble shooting](#-trouble-shooting)
+#### ● [Trouble shooting](#-trouble-shooting-1)
 ### 4. [Comparison & Application](#4-comparison--application-1)
 
 <br><br><br>
@@ -114,8 +114,8 @@ $ time make -j8 # 8 : numbers of core
 $ sudo make install
 $ sudo rm -r <opencv_source_directory> #optional
 ~~~
-#### ● when **#error Please include the appropriate gl headers before including cuda_gl_interop.h**
-+ reference [1](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh#L101), [2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/patches/OpenGLHeader.patch), [3](https://devtalk.nvidia.com/default/topic/1007290/jetson-tx2/building-opencv-with-opengl-support-/post/5141945/#5141945)
+#### ● when build **error** : 
++ Please include the appropriate gl headers before including cuda_gl_interop.h => reference [1](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh#L101), [2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/patches/OpenGLHeader.patch), [3](https://devtalk.nvidia.com/default/topic/1007290/jetson-tx2/building-opencv-with-opengl-support-/post/5141945/#5141945)
 <br>
 
 ### ● USB performance : Have to improve performance of sensors with USB
@@ -194,7 +194,7 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 <br>
 
 ### ● Trouble shooting
-+ Aborted error : 
++ Aborted error when running **vins_node** : 
 ~~~shell
  $ echo "export MALLOC_CHECK_=0" >> ~/.bashrc
  $ source ~/.bashrc
