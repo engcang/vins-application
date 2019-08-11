@@ -116,6 +116,10 @@ $ sudo rm -r <opencv_source_directory> #optional
 ~~~
 #### ● when build **error** : 
 + Please include the appropriate gl headers before including cuda_gl_interop.h => reference [1](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh#L101), [2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/patches/OpenGLHeader.patch), [3](https://devtalk.nvidia.com/default/topic/1007290/jetson-tx2/building-opencv-with-opengl-support-/post/5141945/#5141945)
++ modules/cudacodec/src/precomp.hpp:60:37: fatal error: dynlink_nvcuvid.h: No such file or directory
+compilation terminated. --> **for CUDA version 10**
+    + => reference [here](https://devtalk.nvidia.com/default/topic/1044773/cuda-setup-and-installation/error-in-installing-opencv-3-4-0-on-cuda-10/)
+    + cmake ... -D BUILD_opencv_cudacodec=OFF ...
 <br>
 
 ### ● USB performance : Have to improve performance of sensors with USB
