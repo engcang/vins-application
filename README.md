@@ -4,6 +4,7 @@
 + with CPU [clip3](https://youtu.be/1QUypn7GbXc)
 + ROVIO vs VINS-Mono [clip4](https://youtu.be/n0N2qDcNcBQ)
 + VINS-Mono vs ROVIO vs ORB-SLAM2 [clip5](https://youtu.be/SypqOc25EVc)
++ VINS-Fusion(stereo) vs S-MSCKF [clip6](https://youtu.be/s_Ol-k8rhwY)
 
 ## Requirements
 + FlightGoggles [Simulator](http://flightgoggles.mit.edu)
