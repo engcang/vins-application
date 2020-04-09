@@ -214,4 +214,5 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 
 + VINS mono VS ROVIO [youtube](https://youtu.be/n0N2qDcNcBQ)
 + VINS-Mono vs ROVIO vs ORB-SLAM2 [youtube](https://youtu.be/XMyiNlIbDXU)
++ VINS-Fusion (Stereo) vs S-MSCKF [youtube](https://youtu.be/s_Ol-k8rhwY)
 <br>
