@@ -162,6 +162,8 @@ $ catkin build
 + For GPU version, if OpenCV with CUDA was built manually, build cv_bridge manually also
 ~~~shell
 $ cd ~/catkin_ws/src && git clone https://github.com/ros-perception/vision_opencv
+# since ROS Noetic is added, we have to checkout to melodic tree
+$ cd vision_opencv && git checkout origin/melodic
 $ gedit vision_opencv/cv_bridge/CMakeLists.txt
 ~~~
 Edit OpenCV PATHS in CMakeLists and include cmake file
