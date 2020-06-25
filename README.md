@@ -69,10 +69,38 @@ $ make install
 <br>
 
 ### ● OpenCV with CUDA : Necessary for GPU version
-+ Install CUDA : [here for all version](https://askubuntu.com/questions/1028830/how-do-i-install-cuda-on-ubuntu-18-04) / [here for 16.04](https://askubuntu.com/questions/799184/how-can-i-install-cuda-on-ubuntu-16-04)
++ Install **CUDA** and **Graphic Driver** : 
+  + for upper than **18.04**,
+~~~shell
+    $ sudo apt install gcc make
+    $ sudo gedit /etc/modprobe.d/blacklist.conf
+    # add "blacklist nouveau" at the last line
+    
+    # create new files
+    $ sudo gedit /etc/modprobe.d/blacklist-nouveau.conf 
+    # type below two sentences
+    blacklist nouveau
+    options nouveau modeset=0
+    $ sudo cp /etc/modprobe.d/blacklist-nouveau.conf /etc/modprobe.d/blacklist-nvidia-nouveau.conf
+    
+    $ sudo update-initramfs -u
+    $ sudo reboot
+    
+    # go to terminal session using CTRL+ALT+F3
+    sudo sh cuda_<version>_linux.run
+    # Come back to GUI session using CTRL+ALT+F1
+    $ sudo apt-get install nvidia-cuda-toolkit
+~~~
+  + check CUDA version using **nvcc --version**
 ~~~shell
 # check installed cuda version
 $ nvcc --version
+# if nvcc --version does not print out CUDA,
+$ gedit ~/.profile
+# type below and save
+export PATH=<CUDA_PATH>/bin:$PATH #ex: /usr/local/cuda-10.1
+export LD_LIBRARY_PATH=<CUDA_PATH>/lib64:$LD_LIBRARY_PATH #ex : /usr/local/cuda-10.1
+$ source ~/.profile
 ~~~
 
 + Build OpenCV with CUDA - references : [link 1](https://webnautes.tistory.com/1030), [link 2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh)
