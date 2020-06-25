@@ -80,7 +80,7 @@ $ nvcc --version
     + If want to use **C API (e.g. Darknet YOLO)** consider : 
         + **Recommend version is 3.4.0** because darknet has to use C API with OpenCV [refer](https://github.com/pjreddie/darknet/issues/551)
         + or **Patch as [here](https://github.com/opencv/opencv/issues/10963)** to use other version 
-            + should **comment** the /usr/local/include/opencv2/highgui/highgui_c.h line 119 [as here](https://stackoverflow.com/questions/48611228/yolo-compilation-with-opencv-1-fails) after install
+            + should **comment** the /usr/local/include/opencv2/highgui/highgui_c.h line 139 [as here](https://stackoverflow.com/questions/48611228/yolo-compilation-with-opencv-1-fails) after install
 ~~~shell
 $ sudo apt-get purge libopencv* python-opencv
 $ sudo apt-get update
