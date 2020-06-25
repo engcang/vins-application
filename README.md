@@ -73,23 +73,18 @@ $ make install
   + for upper than **18.04**,
 ~~~shell
     $ sudo apt install gcc make
-    $ sudo gedit /etc/modprobe.d/blacklist.conf
-    # add "blacklist nouveau" at the last line
-    
-    # create new files
-    $ sudo gedit /etc/modprobe.d/blacklist-nouveau.conf 
-    # type below two sentences
-    blacklist nouveau
-    options nouveau modeset=0
-    $ sudo cp /etc/modprobe.d/blacklist-nouveau.conf /etc/modprobe.d/blacklist-nvidia-nouveau.conf
-    
-    $ sudo update-initramfs -u
+    $ sudo ubuntu-drivers devices
+    $ sudo ubuntu-drivers autoinstall
     $ sudo reboot
     
-    # go to terminal session using CTRL+ALT+F3
-    sudo sh cuda_<version>_linux.run
-    # Come back to GUI session using CTRL+ALT+F1
-    $ sudo apt-get install nvidia-cuda-toolkit
+    # get cuda install script at https://developer.nvidia.com/cuda-downloads
+    $ sudo sh cuda_<version>_linux.run
+    $ sudo reboot
+    
+    $ gedit ~/.bashrc
+    # type
+    export PATH=<CUDA_PATH>/bin:$PATH #ex: /usr/local/cuda-10.1
+    export LD_LIBRARY_PATH=<CUDA_PATH>/lib64:$LD_LIBRARY_PATH #ex : /usr/local/cuda-10.1
 ~~~
   + check CUDA version using **nvcc --version**
 ~~~shell
