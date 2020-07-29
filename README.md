@@ -18,6 +18,7 @@
 #### ● [OpenCV with CUDA](#-opencv-with-cuda--necessary-for-gpu-version-1) : Necessary for GPU version
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb-1) : Have to improve performance of sensors with USB
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter) : Synchronization, time offset, extrinsic parameter
+#### ● [IMU-Camera rotational extrinsic](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter) : Rotational extrinsic between IMU and Cam
 #### ● [Installation](#-installation-1)
 #### ● [Trouble shooting](#-trouble-shooting-1)
 ### 4. [Comparison & Application](#4-comparison--application-1)
@@ -169,6 +170,13 @@ $ gedit kalibr/aslam_offline_calibration/kalibr/python/kalibr_camera_calibration
 #import Image
 from PIL import Image
 ~~~
+
+<br>
+
+### ● IMU-Camera rotational extrinsic example
++ Between ROS standard body(IMU) and camera
++ Between ROS standard body(IMU) and down-pitched (look downward) camera
+
 
 <br>
 
