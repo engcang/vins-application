@@ -175,7 +175,13 @@ from PIL import Image
 
 ### ● IMU-Camera rotational extrinsic example
 + Between ROS standard body(IMU) and camera
+  <p align="center">
+  <img src="https://github.com/engcang/vins-application/blob/master/extrinsic.png" width="600"/>
+  </p>
 + Between ROS standard body(IMU) and down-pitched (look downward) camera
+  <p align="center">
+  <img src="https://github.com/engcang/vins-application/blob/master/pitching.png" width="600"/>
+  </p>
 
 
 <br>
