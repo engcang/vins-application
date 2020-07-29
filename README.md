@@ -178,7 +178,7 @@ from PIL import Image
   <p align="center">
   <img src="https://github.com/engcang/vins-application/blob/master/extrinsic.png" width="600"/>
   </p>
-+ Between ROS standard body(IMU) and down-pitched (look downward) camera
++ **Left view :** Between ROS standard body(IMU) and down-pitched (look downward) camera
   <p align="center">
   <img src="https://github.com/engcang/vins-application/blob/master/pitching.png" width="600"/>
   </p>
