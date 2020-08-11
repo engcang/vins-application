@@ -3,21 +3,32 @@
 + Installation of Intel Realsense D435i for Jetson TX2 and Xavier
 <br>
 
-## Requirements
-+ ~~For Jetpack 4.2, Ubuntu 18.04 both for Xavier, TX2 : try [this script](https://github.com/engcang/VINS-application/blob/Intel-D435i/jetpack4.2-d435i_tx2_xavier.sh)~~
-  + ~~Edited the scripts file from jetsonhacks github : [here](https://github.com/jetsonhacks/buildLibrealsense2Xavier)~~
-  + ~~copy and paste command lines while reading the comments, do not directly execute it~~
-  + ~~and flash kernel from host pc to jetson board under recovery mode~~
-  ~~~shell
-  $ sudo ./flash.sh -k kernel jetson-<tx2 or xavier> mmcblk0p1
+## Requirements - [SDK](https://github.com/IntelRealSense/librealsense)
+### ● Necessary for ROS too.
++ For Xavier [here](https://github.com/jetsonhacks/buildLibrealsense2Xavier) -> SDK version is **v2.17.1** and need **JetPack 4.1 for L4T 31.1** or have to be flashed again...
+  + video [link](https://youtu.be/Pp18JL6H2zc) or jetsonhacks [article](https://www.jetsonhacks.com/2019/01/21/intel-realsense-d435i-on-nvidia-jetson-agx-xavier/)
++ For TX2 [here](https://github.com/jetsonhacks/buildLibrealsense2TX) -> SDK version is **v2.13.0** and need  **JetPack3.2.1 for L4T 28.2 / L4T 28.2.1** or have to be flashed again...
+  + video [link](https://youtu.be/mvDCOc-aoMU) or jetsonhacks [article](https://www.jetsonhacks.com/2018/07/10/librealsense-update-nvidia-jetson-tx-dev-kits/)
++ For Xavier NX, refer [here](https://github.com/zinuok/Xavier_NX) and [here](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md)
++ For Xavier NX and x86_64 desktop/laptop, refer [here](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md)
+~~~shell
+  $ sudo apt-get install git libssl-dev libusb-1.0-0-dev pkg-config libgtk-3-dev
+  $ sudo apt-get install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev
+  $ git clone https://github.com/IntelRealSense/librealsense.git
+  $ cd librealsense && mkdir build && cd build
+  $ cmake .. -DCMAKE_BUILD_TYPE=Release
+  $ sudo make uninstall && make clean
+  $ time make -j8 && sudo make install
+~~~
+  + Trouble shooting : 'Failed to set power state error' or 'UDEV-Rules are missing'
+  ~~~
+    $ sudo cp [librealsense path]/config/99-realsense-libusb.rules /etc/udev/rules.d/99-realsense-libusb.rules && sudo udevadm control --reload-rules && udevadm trigger
+    $ reboot
   ~~~
 
-### ● Stable versions below
-+ (necessary for ROS) Intel Realsense [SDK](https://github.com/IntelRealSense/librealsense)
-  + For Xavier [here](https://github.com/jetsonhacks/buildLibrealsense2Xavier) -> SDK version is **v2.17.1** and need **JetPack 4.1 for L4T 31.1** or have to be flashed again...
-    + video [link](https://youtu.be/Pp18JL6H2zc) or jetsonhacks [article](https://www.jetsonhacks.com/2019/01/21/intel-realsense-d435i-on-nvidia-jetson-agx-xavier/)
-  + For TX2 [here](https://github.com/jetsonhacks/buildLibrealsense2TX) -> SDK version is **v2.13.0** and need  **JetPack3.2.1 for L4T 28.2 / L4T 28.2.1** or have to be flashed again...
-    + video [link](https://youtu.be/mvDCOc-aoMU) or jetsonhacks [article](https://www.jetsonhacks.com/2018/07/10/librealsense-update-nvidia-jetson-tx-dev-kits/)
+<br>
+
+### ROS package
 + Intel Realsense2 ROS [here](https://github.com/intel-ros/realsense)
   + For Xavier : -> ROS Wrapper 2.0 version should be **v2.1.3** for SDK v2.17.1 [down link](https://github.com/intel-ros/realsense/archive/2.1.3.zip)
 ~~~shell
