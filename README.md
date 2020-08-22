@@ -51,8 +51,17 @@
 ~~~shell
 $ wget -O eigen.zip http://bitbucket.org/eigen/eigen/get/3.3.7.zip #check version
 $ unzip eigen.zip
-$ mkdir eigen-build && cd eigen-build
-$ cmake ../eigen_source_folder_name && sudo make install
+$ cd eigen
+& mkdir build && cd build
+$ cmake .. && sudo make install
+~~~
++ Eigen [3.3.90 version](https://eigen.tuxfamily.org/dox-devel/group__TutorialSlicingIndexing.html) or later for using ***slicing and Indexing***
+~~~shell
+$ git clone https://gitlab.com/libeigen/eigen.git
+$ cd eigen && git checkout 8ba1b0f41a7950dc3e1d4ed75859e36c73311235
+# 3.3.90 version development branch
+$ mkdir build && cd build
+$ cmake .. && sudo make install
 ~~~
 
 + Ceres solver [home](http://ceres-solver.org/installation.html)
