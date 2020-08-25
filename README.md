@@ -47,7 +47,7 @@
 
 # 3. Prerequisites
 ### ● Ceres solver and Eigen : Mandatory for VINS
-+ Eigen latest Stable version below [new home]() [old home](http://eigen.tuxfamily.org/index.php?title=Main_Page)
++ Eigen latest Stable version below [new home](https://gitlab.com/libeigen/eigen) or [old home](http://eigen.tuxfamily.org/index.php?title=Main_Page)
 ~~~shell
 $ wget -O eigen.zip https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.zip #check version
 $ unzip eigen.zip
@@ -55,7 +55,7 @@ $ cd eigen-3.3.7
 & mkdir build && cd build
 $ cmake .. && sudo make install
 ~~~
-+ Eigen [3.3.90 version](https://eigen.tuxfamily.org/dox-devel/group__TutorialSlicingIndexing.html) or later for using ***slicing and Indexing***
++ Eigen [3.3.90 version](https://eigen.tuxfamily.org/dox-devel/group__TutorialSlicingIndexing.html) or later for using ***slicing and Indexing*** as [here](https://eigen.tuxfamily.org/dox-devel/group__TutorialSlicingIndexing.html)
 ~~~shell
 $ git clone https://gitlab.com/libeigen/eigen.git
 $ cd eigen 
