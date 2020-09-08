@@ -201,7 +201,7 @@ $ cd ~/catkin_ws/src
 $ git clone https://github.com/HKUST-Aerial-Robotics/VINS-Fusion #CPU
 or 
 $ git clone https://github.com/pjrambo/VINS-Fusion-gpu #GPU
-$ cd .. && catkin build camera models # camera models first
+$ cd .. && catkin build camera_models # camera models first
 $ catkin build
 ~~~
 **Before build VINS-Fusion, process below could be required.**
