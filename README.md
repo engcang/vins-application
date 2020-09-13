@@ -37,13 +37,12 @@
     + lower - low time delay, poor performance
     + higher - high time delay, better performance
     + has to be set from **camera launch file** : 10~30hz
-***
 ##### from src/VINS/config/<config_file_name>.yaml
 + Max tracking Feature number **max_cnt**
     + 100~150, same correlation as camera frame rates
 + time offset **estimated_td : 1**, **td : value from [kalibr](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter)**
 + GPU acceleration **use_gpu : 1**, **use_gpu_acc_flow : 1** (for GPU version)
-+ Thread numbers **multiple_thread : number of your trheads**
++ Thread numbers **multiple_thread : enabling multi-threads**
 <br>
 
 # 3. Prerequisites
@@ -162,7 +161,7 @@ compilation terminated. --> **for CUDA version 10**
 <br>
 
 ### ● CV_Bridge and image_proc with built OpenCV : Necessary for whom built OpenCV manually from above
-##### CV_bridge
+#### CV_bridge
 + For GPU version, if OpenCV with CUDA was built manually, build cv_bridge manually also
 ~~~shell
 $ cd ~/catkin_ws/src && git clone https://github.com/ros-perception/vision_opencv
@@ -187,6 +186,7 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake) #under catkin_python_setup()
 $ cd .. && catkin build cv_bridge
 ~~~
 <br>
+
 ##### image_proc
 ~~~shell
 
