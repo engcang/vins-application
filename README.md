@@ -189,7 +189,23 @@ $ cd .. && catkin build cv_bridge
 
 ##### image_proc
 ~~~shell
-
+$ cd ~/catkin_ws/src && git clone https://github.com/ros-perception/image_pipeline
+~~~
++ Edit OpenCV PATHS in CMakeLists in
+1. image_pipeline/depth_image_proc/CMakeLists.txt
+  + find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH)
+2. image_pipeline/image_proc/CMakeLists.txt
+  + find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH)
+3. image_pipeline/image_publisher/CMakeLists.txt
+  + find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH COMPONENTS core)
+4. image_pipeline/image_rotate/CMakeLists.txt
+  + find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH COMPONENTS core imgproc)
+5. image_pipeline/image_view/CMakeLists.txt
+  + find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH)
+6. image_pipeline/stereo_image_proc/CMakeLists.txt
+  + find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH)
+~~~shell
+$ cd ~/catkin_ws && catkin build
 ~~~
 <br><br>
 
