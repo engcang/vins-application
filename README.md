@@ -16,6 +16,7 @@
 ### 3. Prerequisites
 #### ● [Ceres solver and Eigen](#-ceres-solver-and-eigen--mandatory-for-vins) : Mandatory for VINS (build Eigen first)
 #### ● [OpenCV with CUDA](#-opencv-with-cuda--necessary-for-gpu-version-1) : Necessary for GPU version
+#### ● [CV_Bridge and image_proc with Built OpenCV](#-opencv-with-cuda--necessary-for-gpu-version-1) : Necessary for GPU version
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb-1) : Have to improve performance of sensors with USB
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter) : Synchronization, time offset, extrinsic parameter
 #### ● [IMU-Camera rotational extrinsic](#-imu-camera-rotational-extrinsic-example) : Rotational extrinsic between IMU and Cam
@@ -75,7 +76,7 @@ $ make -j8 # 8 : number of cores
 $ make test
 $ make install
 ~~~
-<br>
+<br><br>
 
 ### ● OpenCV with CUDA : Necessary for GPU version
 + Install **CUDA** and **Graphic Driver** : 
@@ -160,6 +161,38 @@ compilation terminated. --> **for CUDA version 10**
     + cmake ... -D BUILD_opencv_cudacodec=OFF ...
 <br>
 
+### ● CV_Bridge and image_proc with built OpenCV : Necessary for whom built OpenCV manually from above
+##### CV_bridge
++ For GPU version, if OpenCV with CUDA was built manually, build cv_bridge manually also
+~~~shell
+$ cd ~/catkin_ws/src && git clone https://github.com/ros-perception/vision_opencv
+# since ROS Noetic is added, we have to checkout to melodic tree
+$ cd vision_opencv && git checkout origin/melodic
+$ gedit vision_opencv/cv_bridge/CMakeLists.txt
+~~~
++ Edit OpenCV PATHS in CMakeLists and include cmake file
+~~~txt
+#when error, try both lines
+find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH
+#find_package(OpenCV 3 HINTS /usr/local/share/OpenCV NO_DEFAULT_PATH
+  COMPONENTS
+    opencv_core
+    opencv_imgproc
+    opencv_imgcodecs
+  CONFIG
+)
+include(/usr/local/share/OpenCV/OpenCVConfig.cmake) #under catkin_python_setup()
+~~~
+~~~shell
+$ cd .. && catkin build cv_bridge
+~~~
+<br>
+##### image_proc
+~~~shell
+
+~~~
+<br><br>
+
 ### ● USB performance : Have to improve performance of sensors with USB
   + Link : [here](https://github.com/KumarRobotics/flea3#optimizing-usb-performance-under-linux) for x86_64 desktops
   + TX1/TX2 : [here](https://www.matrix-vision.com/manuals/mvBlueFOX3/mvBC_page_quickstart.html#mvBC_subsubsection_quickstart_linux_requirements_optimising_usb)
@@ -205,33 +238,6 @@ $ cd .. && catkin build camera_models # camera models first
 $ catkin build
 ~~~
 **Before build VINS-Fusion, process below could be required.**
-***
-<br>
-
-+ For GPU version, if OpenCV with CUDA was built manually, build cv_bridge manually also
-~~~shell
-$ cd ~/catkin_ws/src && git clone https://github.com/ros-perception/vision_opencv
-# since ROS Noetic is added, we have to checkout to melodic tree
-$ cd vision_opencv && git checkout origin/melodic
-$ gedit vision_opencv/cv_bridge/CMakeLists.txt
-~~~
-Edit OpenCV PATHS in CMakeLists and include cmake file
-~~~txt
-#when error, try both lines
-#find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH
-find_package(OpenCV 3 HINTS /usr/local/share/OpenCV NO_DEFAULT_PATH
-  COMPONENTS
-    opencv_core
-    opencv_imgproc
-    opencv_imgcodecs
-  CONFIG
-)
-include(/usr/local/share/OpenCV/OpenCVConfig.cmake) #under catkin_python_setup()
-~~~
-~~~shell
-$ cd .. && catkin build cv_bridge
-~~~
-<br>
 
 + For GPU version, Edit CMakeLists.txt for loop_fusion and vins_estimator
 ~~~shell
