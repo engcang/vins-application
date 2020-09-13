@@ -161,7 +161,7 @@ compilation terminated. --> **for CUDA version 10**
 <br>
 
 ### ● CV_Bridge and image_proc with built OpenCV : Necessary for whom built OpenCV manually from above
-#### CV_bridge
+#### ● CV_bridge
 + For GPU version, if OpenCV with CUDA was built manually, build cv_bridge manually also
 ~~~shell
 $ cd ~/catkin_ws/src && git clone https://github.com/ros-perception/vision_opencv
@@ -185,25 +185,21 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake) #under catkin_python_setup()
 ~~~shell
 $ cd .. && catkin build cv_bridge
 ~~~
-<br>
 
-##### image_proc
+#### ● image_proc
 ~~~shell
 $ cd ~/catkin_ws/src && git clone https://github.com/ros-perception/image_pipeline
 ~~~
 + Edit OpenCV PATHS in CMakeLists in
-1. image_pipeline/depth_image_proc/CMakeLists.txt
-  + find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH)
-2. image_pipeline/image_proc/CMakeLists.txt
-  + find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH)
-3. image_pipeline/image_publisher/CMakeLists.txt
-  + find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH COMPONENTS core)
-4. image_pipeline/image_rotate/CMakeLists.txt
-  + find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH COMPONENTS core imgproc)
-5. image_pipeline/image_view/CMakeLists.txt
-  + find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH)
-6. image_pipeline/stereo_image_proc/CMakeLists.txt
-  + find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH)
+~~~txt
+1. depth_image_proc/CMakeLists.txt, 2. image_proc/CMakeLists.txt, 
+3. image_view/CMakeLists.txt, 4. stereo_image_proc/CMakeLists.txt
+find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH)
+5. image_publisher/CMakeLists.txt
+find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH COMPONENTS core)
+6. image_rotate/CMakeLists.txt
+find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH COMPONENTS core imgproc)
+~~~
 ~~~shell
 $ cd ~/catkin_ws && catkin build
 ~~~
