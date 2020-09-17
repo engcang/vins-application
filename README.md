@@ -223,6 +223,18 @@ $ gedit kalibr/aslam_offline_calibration/kalibr/python/kalibr_camera_calibration
 #import Image
 from PIL import Image
 ~~~
++ **focal length initialization error**
+~~~shell
+ $ gedit kalibr/aslam_cv/aslam_cameras/include/aslam/cameras/implementation/PinholeProjection.hpp
+ # edit if sentence in line 781
+ # comment from line 782 to 795
+ f_guesses.push_back(2000.0) #initial guess of focal length!!!!
+~~~
++ **cameras are not connected**
+~~~shell
+ $ gedit kalibr/aslam_offline_calibration/kalibr/python/kalibr_calibrate_cameras
+ # comment from line 201 to 205
+~~~
 
 <br>
 
