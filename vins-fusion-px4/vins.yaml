@@ -10,8 +10,8 @@ imu_topic: "/mavros/imu/data_raw"
 image0_topic: "/d435i/stereo_ir/left/image_raw"
 image1_topic: "/d435i/stereo_ir/right/image_raw"
 
-cam0_calib: "hanjeon_cam.yaml"
-cam1_calib: "hanjeon_cam.yaml"
+cam0_calib: "left_cam.yaml"
+cam1_calib: "right_cam.yaml"
 image_width: 640
 image_height: 480
 
