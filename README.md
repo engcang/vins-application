@@ -7,6 +7,7 @@
     + git clone -b <branch_name> --single-branch https://github.com/engcang/VINS-application
 + Tested on : Jetson Xavier, Jetson TX2, Intel i7-6700k, i7-8700k
 ### Result clips : [here](#4-comparison--application-1)
+### VINS-Fusion for PX4 with Masking: [here](https://github.com/engcang/vins-application/tree/master/vins-fusion-px4)
 <br>
 <br>
 
