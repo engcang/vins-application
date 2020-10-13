@@ -187,7 +187,7 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake) #under catkin_python_setup()
 $ cd .. && catkin build cv_bridge
 ~~~
 
-#### ~~● image_proc
+#### ● image_proc (Not recommended)
 ~~~shell
 $ cd ~/catkin_ws/src && git clone https://github.com/ros-perception/image_pipeline
 ~~~
@@ -206,7 +206,6 @@ $ cd ~/catkin_ws && catkin build
 ~~~
 
 <br><br>
-~~
 
 ### ● USB performance : Have to improve performance of sensors with USB
   + Link : [here](https://github.com/KumarRobotics/flea3#optimizing-usb-performance-under-linux) for x86_64 desktops
