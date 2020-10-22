@@ -159,6 +159,10 @@ $ sudo rm -r <opencv_source_directory> #optional
 compilation terminated. --> **for CUDA version 10**
     + => reference [here](https://devtalk.nvidia.com/default/topic/1044773/cuda-setup-and-installation/error-in-installing-opencv-3-4-0-on-cuda-10/)
     + cmake ... -D BUILD_opencv_cudacodec=OFF ...
++ CUDA_nppicom_LIBRARY not found => reference [here](https://stackoverflow.com/questions/46584000/cmake-error-variables-are-set-to-notfound)
+    + $ sudo apt-get install nvidia-cuda-toolkit
+    + or Edit *FindCUDA.cmake* and *OpenCVDetectCUDA.cmake*
+    
 <br>
 
 ### ● CV_Bridge and image_proc with built OpenCV : Necessary for whom built OpenCV manually from above
