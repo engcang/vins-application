@@ -5,7 +5,7 @@
 + **Branch** : [ZED-mini](https://github.com/engcang/VINS-application/tree/zed-mini), [Pointgrey_myAHRS](https://github.com/engcang/VINS-application/tree/Pointgrey_MyAHRS+), [intel D435i](https://github.com/engcang/VINS-application/tree/Intel-D435i), [FlightGoggles](https://github.com/engcang/vins-application/tree/flightgoggles)
     + Including **config.yaml** files and **Calibration data**
     + git clone -b <branch_name> --single-branch https://github.com/engcang/VINS-application
-+ Tested on : Jetson Xavier, Jetson TX2, Intel i7-6700k, i7-8700k
++ Tested on : Jetson Xavier NX, Jetson Xavier AGX, Jetson TX2, Intel i7-6700k, i7-8700k, i9-10900k, i5-9600k
 ### Result clips : [here](#4-comparison--application-1)
 ### VINS-Fusion for PX4 with Masking: [here](https://github.com/engcang/vins-application/tree/master/vins-fusion-px4)
 <br>
