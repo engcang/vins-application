@@ -45,6 +45,7 @@ $ source ./devel/setup.bash
   <img src="https://github.com/engcang/image-files/blob/master/vins/1.png" width="600" hspace="50"/>
   </p>
 
++ Check ***"controls-laserstate=off"*** in the .json file
 + import the **json** file at the **rs_camera.launch** file as figure.
   <p align="center">
   <img src="https://github.com/engcang/image-files/blob/master/vins/2.png" width="500" hspace="30"/>
