@@ -304,4 +304,5 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 + VINS-Mono vs ROVIO vs ORB-SLAM2 : [youtube](https://youtu.be/XMyiNlIbDXU)
 + VINS-Fusion (Stereo) vs S-MSCKF on FlightGoggles : [youtube](https://youtu.be/s_Ol-k8rhwY)
 + VINS-Fusion (Stereo) based autonomous flight and 3D mapping using RGB-D camera : [youtube](https://youtu.be/5t-6g7UWA7o)
++ VINS-Fusion (Stereo) with Intel D435i and Pixhawk4 mini fused with T265 camera : [here](https://engcang.github.io/mavros_vision_pose/)
 <br>
