@@ -88,7 +88,9 @@ $ make install
     $ sudo reboot
     
     # get cuda install script at https://developer.nvidia.com/cuda-downloads
-    $ sudo sh cuda_<version>_linux.run
+    $ sudo sh cuda_<version>_linux.run --dkms
+        # --dkms option is recommended when you also install NVIDIA driver, to register it along with kernel
+        # otherwise, NVIDIA graphic driver will be gone after kernel upgrade via $ sudo apt upgrade
     $ sudo reboot
     
     $ gedit ~/.bashrc
