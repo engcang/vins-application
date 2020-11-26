@@ -299,7 +299,9 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
  $ echo "export MALLOC_CHECK_=0" >> ~/.bashrc
  $ source ~/.bashrc
 ~~~
-+ If want to try to deal with NaNs, refer [here](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/pull/110)
++ **If want to try to deal with NaNs**, refer [here](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/pull/110)
+
+<br>
 
 # 4. Comparison & Application
 + /tf vs VINS-Mono on FlightGoggles : [youtube](https://youtu.be/U4TJ7ZyfWD8), with CPU [youtube](https://www.youtube.com/watch?v=1QUypn7GbXc)
