@@ -131,7 +131,8 @@ $ wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.1.zip # check 
 $ unzip opencv.zip
 $ cd <opencv_source_directory>/opencv && mkdir build && cd build
 # check your BIN version : http://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
-# 7.2 for Xavier, 5.2 for GTX TITAN X
+# 8.6 for RTX3080 7.2 for Xavier, 5.2 for GTX TITAN X
+# -D BUILD_opencv_cudacodec=OFF #for cuda10-opencv3.4
 $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D CMAKE_C_COMPILER=gcc-6 \
       -D CMAKE_CXX_COMPILER=g++-6 \
@@ -147,7 +148,7 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D WITH_GSTREAMER_0_10=OFF \
       -D WITH_QT=ON \
       -D WITH_OPENGL=ON \
-      -D BUILD_opencv_cudacodec=OFF \ #for cuda10-opencv3.4
+      -D BUILD_opencv_cudacodec=OFF \
       -D CUDA_NVCC_FLAGS="--expt-relaxed-constexpr" \
       -D WITH_TBB=ON \
       ../
