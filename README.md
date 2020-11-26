@@ -226,6 +226,9 @@ $ cd ~/catkin_ws && catkin build
 ### ● Calibration : Kalibr -> synchronization, time offset, extrinsic parameter
 + [Kalibr](https://github.com/ethz-asl/kalibr) -> synchronization, time offset <br>
 + For ZED cameras : [here](https://support.stereolabs.com/hc/en-us/articles/360012749113-How-can-I-use-Kalibr-with-the-ZED-Mini-camera-in-ROS-)
++ **When Calibrating Fisheye camera like T265**
+    + Try with ***MEI*** camera model, as [here](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/issues/57), which is *omni-radtan* in Kalibr
+    + and try this **Pull** to deal with NaNs [here](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/pull/110)
 + **ImportError: No module named Image** [reference](https://github.com/ethz-asl/kalibr/issues/67)
 ~~~shell
 $ gedit kalibr/aslam_offline_calibration/kalibr/python/kalibr_camera_calibration/MulticamGraph.py
@@ -287,6 +290,7 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 #find_package(OpenCV REQUIRED)
 include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 ~~~
+
 <br>
 
 ### ● Trouble shooting
@@ -295,6 +299,7 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
  $ echo "export MALLOC_CHECK_=0" >> ~/.bashrc
  $ source ~/.bashrc
 ~~~
++ If want to try to deal with NaNs, refer [here](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/pull/110)
 
 # 4. Comparison & Application
 + /tf vs VINS-Mono on FlightGoggles : [youtube](https://youtu.be/U4TJ7ZyfWD8), with CPU [youtube](https://www.youtube.com/watch?v=1QUypn7GbXc)
