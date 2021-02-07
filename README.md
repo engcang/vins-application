@@ -306,15 +306,16 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 <br>
 
 # 4. Comparison & Application
-+ /tf vs VINS-Mono on FlightGoggles : [youtube](https://youtu.be/U4TJ7ZyfWD8), with CPU [youtube](https://www.youtube.com/watch?v=1QUypn7GbXc)
-+ Loop Fusion vs vins node on FlightGoggles : [youtube](https://youtu.be/cvhI_1XQQt4)
-+ Real World VINS-Mono with pointgrey cam, myAHRS+ imu on Jetson Xavier : [youtube](https://youtu.be/4qJYoND9OYk), moved faster : [youtube](https://youtu.be/DN-Jao5aKRw)
-+ Real World VINS(GPU+version) with pointgrey, myAHRS at Intel i7-8700k, TITAN RTX : [youtube](https://youtu.be/UEZMZMFFhYs) 
-+ Real World VINS(GPU+version, Stereo) with Intel D435i, on Xavier, max CPU clocked : [youtube](https://youtu.be/b3l1TeNKyeU) and [youtube2](https://youtu.be/7yMDqiO2A2Q) : screen
++ /tf vs VINS-Mono on FlightGoggles: [youtube](https://youtu.be/U4TJ7ZyfWD8), with CPU [youtube](https://www.youtube.com/watch?v=1QUypn7GbXc)
++ Loop Fusion vs vins node on FlightGoggles: [youtube](https://youtu.be/cvhI_1XQQt4)
++ Real World VINS-Mono with pointgrey cam, myAHRS+ imu on Jetson Xavier: [youtube](https://youtu.be/4qJYoND9OYk), moved faster : [youtube](https://youtu.be/DN-Jao5aKRw)
++ Real World VINS(GPU+version) with pointgrey, myAHRS at Intel i7-8700k, TITAN RTX: [youtube](https://youtu.be/UEZMZMFFhYs) 
++ Real World VINS(GPU+version, Stereo) with Intel D435i, on Xavier, max CPU clocked: [youtube](https://youtu.be/b3l1TeNKyeU) and [youtube2](https://youtu.be/7yMDqiO2A2Q) : screen
 
-+ VINS mono VS ROVIO : [youtube](https://youtu.be/n0N2qDcNcBQ)
-+ VINS-Mono vs ROVIO vs ORB-SLAM2 : [youtube](https://youtu.be/XMyiNlIbDXU)
-+ VINS-Fusion (Stereo) vs S-MSCKF on FlightGoggles : [youtube](https://youtu.be/s_Ol-k8rhwY)
-+ VINS-Fusion (Stereo) based autonomous flight and 3D mapping using RGB-D camera : [youtube](https://youtu.be/5t-6g7UWA7o)
-+ VINS-Fusion (Stereo) with Intel D435i and Pixhawk4 mini fused with T265 camera : [here](https://engcang.github.io/mavros_vision_pose/)
++ VINS mono VS ROVIO: [youtube](https://youtu.be/n0N2qDcNcBQ)
++ VINS-Mono vs ROVIO vs ORB-SLAM2: [youtube](https://youtu.be/XMyiNlIbDXU)
++ VINS-Fusion (Stereo) vs S-MSCKF on FlightGoggles: [youtube](https://youtu.be/s_Ol-k8rhwY)
++ VINS-Fusion (Stereo) based autonomous flight and 3D mapping using RGB-D camera: [youtube](https://youtu.be/5t-6g7UWA7o)
++ VINS-Fusion (Stereo) with Intel D435i and Pixhawk4 mini fused with T265 camera: [here](https://engcang.github.io/mavros_vision_pose/)
++ VINS-Fusion (stereo) with Intel D435i and Pixhawk4 mini on 1km long underground tunnel: [here](https://youtu.be/Gx0PSMCeR1g)
 <br>
