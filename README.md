@@ -5,9 +5,10 @@
 
 ## Requirements - [SDK](https://github.com/IntelRealSense/librealsense)
 ### ● Necessary for ROS too.
-+ For Xavier [here](https://github.com/jetsonhacks/buildLibrealsense2Xavier) -> SDK version is **v2.17.1** and need **JetPack 4.1 for L4T 31.1** or have to be flashed again...
+#### ● For Xavier
++ **Old version**: [here](https://github.com/jetsonhacks/buildLibrealsense2Xavier) -> SDK version is **v2.17.1** and need **JetPack 4.1 for L4T 31.1** or have to be flashed again...
   + video [link](https://youtu.be/Pp18JL6H2zc) or jetsonhacks [article](https://www.jetsonhacks.com/2019/01/21/intel-realsense-d435i-on-nvidia-jetson-agx-xavier/)
-#### For TX2
+#### ● For TX2
 + **More recent version**: [here](https://github.com/jetsonhacks/installRealSenseSDK)
   + **Kernel build is not needed anymore!!!**
 + **Old version**: [here](https://github.com/jetsonhacks/buildLibrealsense2TX) -> SDK version is **v2.13.0** and need  **JetPack3.2.1 for L4T 28.2 / L4T 28.2.1** or have to be flashed again...
