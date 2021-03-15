@@ -171,6 +171,7 @@ compilation terminated. --> **for CUDA version 10**
 <br>
 
 + (Optional) if also **contrib** for OpenCV should be built,
+    + add **-D OPENCV_EXTRA_MODULES_PATH** option as below:
 ~~~shell
 $ cd <opencv_source_directory>
 $ wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/3.4.1.zip #check version
@@ -196,7 +197,7 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D WITH_TBB=ON \
       -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib-3.4.1/modules \
       ../
-$ time make -j8 # 8 : numbers of core
+$ time make -j1 # important, use only one core to prevent compile error
 $ sudo make install
 ~~~
 
