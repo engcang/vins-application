@@ -45,6 +45,10 @@ $ cd ..
 $ catkin build realsense2_camera -DCATKIN_ENABLE_TESTING=False -DCMAKE_BUILD_TYPE=Release -j8
 $ source ./devel/setup.bash
 ~~~
++ Trouble shooting **"Could not find a package configuration file provided by "ddynamic_reconfigure"**
+  + `$ sudo apt install ros-<distro>-ddynamic-reconfigure`
+
+<br>
 
 ### ● Disable **Emitter**
 + Disable **Emitter** using **/usr/local/bin/realsense-viewer**, save the **json** file and
