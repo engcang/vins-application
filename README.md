@@ -6,7 +6,7 @@
     + Including **config.yaml** files and **Calibration data**
     + git clone -b <branch_name> --single-branch https://github.com/engcang/VINS-application
 + Tested on: Jetson Xavier NX, Jetson Xavier AGX, Jetson TX2, Intel i7-6700k, i7-8700k, i9-10900k, i5-9600k
-### Result clips: [here](#4-comparison--application-1)
+### Result clips: [here](#5-comparison--application)
 ### VINS-Fusion for PX4 with Masking: [here](https://github.com/engcang/vins-application/tree/master/vins-fusion-px4)
 + frame changed from `world` to `map`
 
