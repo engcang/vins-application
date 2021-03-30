@@ -1,12 +1,12 @@
 # VINS-application
 ## Mainly focused on Build process and explanation
 + VINS-Mono and Fusion application of different sets of cameras and imu on different board including desktop and jetson xavier
-## This repository contains many branches! as following : 
-+ **Branch** : [ZED-mini](https://github.com/engcang/VINS-application/tree/zed-mini), [Pointgrey_myAHRS](https://github.com/engcang/VINS-application/tree/Pointgrey_MyAHRS+), [intel D435i](https://github.com/engcang/VINS-application/tree/Intel-D435i), [FlightGoggles](https://github.com/engcang/vins-application/tree/flightgoggles)
+## This repository contains many branches! as following: 
++ **Branch**: [ZED-mini](https://github.com/engcang/VINS-application/tree/zed-mini), [Pointgrey_myAHRS](https://github.com/engcang/VINS-application/tree/Pointgrey_MyAHRS+), [intel D435i](https://github.com/engcang/VINS-application/tree/Intel-D435i), [FlightGoggles](https://github.com/engcang/vins-application/tree/flightgoggles)
     + Including **config.yaml** files and **Calibration data**
     + git clone -b <branch_name> --single-branch https://github.com/engcang/VINS-application
-+ Tested on : Jetson Xavier NX, Jetson Xavier AGX, Jetson TX2, Intel i7-6700k, i7-8700k, i9-10900k, i5-9600k
-### Result clips : [here](#4-comparison--application-1)
++ Tested on: Jetson Xavier NX, Jetson Xavier AGX, Jetson TX2, Intel i7-6700k, i7-8700k, i9-10900k, i5-9600k
+### Result clips: [here](#4-comparison--application-1)
 ### VINS-Fusion for PX4 with Masking: [here](https://github.com/engcang/vins-application/tree/master/vins-fusion-px4)
 <br>
 <br>
@@ -16,8 +16,8 @@
 ### 2. [Parameters](#2-parameters-1)
 ### 3. Prerequisites
 #### ● [Ceres solver and Eigen](#-ceres-solver-and-eigen--mandatory-for-vins) : Mandatory for VINS (build Eigen first)
-#### ● [CUDA](#-opencv-with-cuda--necessary-for-gpu-version-1) : Necessary for GPU version
-#### ● [OpenCV with CUDA](#-opencv-with-cuda--necessary-for-gpu-version-1) : Necessary for GPU version
+#### ● [CUDA](#-cuda-necessary-for-gpu-version) : Necessary for GPU version
+#### ● [OpenCV with CUDA](#-opencv-with-cuda-necessary-for-gpu-version) : Necessary for GPU version
 #### ● [CV_Bridge and image_proc with Built OpenCV](#-cv_bridge-and-image_proc-with-built-opencv--necessary-for-whom-built-opencv-manually-from-above) : Necessary for GPU version
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb-1) : Have to improve performance of sensors with USB
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter) : Synchronization, time offset, extrinsic parameter
