@@ -15,13 +15,13 @@
 ### 1. [Algorithm & Gpu, Cpu version](#1-algorithm--gpu-cpu-version-1)
 ### 2. [Parameters](#2-parameters-1)
 ### 3. Prerequisites
-#### ● [Ceres solver and Eigen](#-ceres-solver-and-eigen--mandatory-for-vins) : Mandatory for VINS (build Eigen first)
-#### ● [CUDA](#-cuda-necessary-for-gpu-version) : Necessary for GPU version
-#### ● [OpenCV with CUDA](#-opencv-with-cuda-necessary-for-gpu-version) : Necessary for GPU version
-#### ● [CV_Bridge and image_proc with Built OpenCV](#-cv_bridge-and-image_proc-with-built-opencv--necessary-for-whom-built-opencv-manually-from-above) : Necessary for GPU version
-#### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb-1) : Have to improve performance of sensors with USB
-#### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter) : Synchronization, time offset, extrinsic parameter
-#### ● [IMU-Camera rotational extrinsic](#-imu-camera-rotational-extrinsic-example) : Rotational extrinsic between IMU and Cam
+#### ● [Ceres solver and Eigen](#-ceres-solver-and-eigen--mandatory-for-vins): Mandatory for VINS (build Eigen first)
+#### ● [CUDA](#-cuda-necessary-for-gpu-version): Necessary for GPU version
+#### ● [OpenCV with CUDA](#-opencv-with-cuda-necessary-for-gpu-version): Necessary for GPU version
+#### ● [CV_Bridge and image_proc with Built OpenCV](#-cv_bridge-and-image_proc-with-built-opencv--necessary-for-whom-built-opencv-manually-from-above): Necessary for GPU version
+#### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb-1): Have to improve performance of sensors with USB
+#### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter): Synchronization, time offset, extrinsic parameter
+#### ● [IMU-Camera rotational extrinsic](#-imu-camera-rotational-extrinsic-example): Rotational extrinsic between IMU and Cam
 #### ● [Installation](#-installation-1)
 #### ● [Trouble shooting](#-trouble-shooting-1)
 ### 4. [Comparison & Application](#4-comparison--application-1)
