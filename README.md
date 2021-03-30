@@ -16,6 +16,7 @@
 ### 2. [Parameters](#2-parameters-1)
 ### 3. Prerequisites
 #### ● [Ceres solver and Eigen](#-ceres-solver-and-eigen--mandatory-for-vins) : Mandatory for VINS (build Eigen first)
+#### ● [CUDA](#-opencv-with-cuda--necessary-for-gpu-version-1) : Necessary for GPU version
 #### ● [OpenCV with CUDA](#-opencv-with-cuda--necessary-for-gpu-version-1) : Necessary for GPU version
 #### ● [CV_Bridge and image_proc with Built OpenCV](#-cv_bridge-and-image_proc-with-built-opencv--necessary-for-whom-built-opencv-manually-from-above) : Necessary for GPU version
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb-1) : Have to improve performance of sensors with USB
@@ -78,16 +79,16 @@ $ make install
 ~~~
 <br><br>
 
-### ● OpenCV with CUDA : Necessary for GPU version
+### ● CUDA: Necessary for GPU version
 + Install **CUDA** and **Graphic Driver** : 
   + for upper than **18.04**,
 ~~~shell
     $ sudo apt install gcc make
     $ sudo ubuntu-drivers devices
-    $ sudo ubuntu-drivers autoinstall
-    $ sudo reboot
+    (not recommended, use CUDA install script below) $ sudo ubuntu-drivers autoinstall
+    (not recommended, use CUDA install script below) $ sudo reboot
     
-    # get cuda install script at https://developer.nvidia.com/cuda-downloads
+    # get the latest CUDA(with graphic driver) install script at https://developer.nvidia.com/cuda-downloads
     $ sudo sh cuda_<version>_linux.run
         # if want to install only graphic driver, get graphic driver install script at https://www.nvidia.com/Download/index.aspx?lang=en-us
         # sudo ./NVIDIA_<graphic_driver_installer>.run --dkms
@@ -112,8 +113,7 @@ export LD_LIBRARY_PATH=<CUDA_PATH>/lib64:$LD_LIBRARY_PATH #ex : /usr/local/cuda-
 $ source ~/.profile
 ~~~
 
-#### ● + Trouble shooting for NVIDIA driver or CUDA
-##### please see /var/log/cuda-installer.log or /var/log/nvidia-install.log
+### ● Trouble shooting for NVIDIA driver or CUDA: please see /var/log/cuda-installer.log or /var/log/nvidia-install.log
 + Installation failed. See log at /var/log/cuda-installer.log for details => mostly because of `X server` is being used.
     + turn off `X server` and install.
 ~~~shell
@@ -130,8 +130,10 @@ $ sudo sh cuda_<version>_linux.run
     + turn off `Secure Boot` as below [reference](https://wiki.ubuntu.com/UEFI/SecureBoot/DKMS)
     + If you got this case, you should turn off `Secure Boot` and then turn off `X server` (as above) both.
 
-<br>
 
+<br> <br>
+
+### ● OpenCV with CUDA: Necessary for GPU version
 + Build OpenCV with CUDA - references : [link 1](https://webnautes.tistory.com/1030), [link 2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh)
     + for Xavier do as below or sh file from jetsonhacks [here](https://github.com/jetsonhacks/buildOpenCVXavier)
     + If want to use **C API (e.g. Darknet YOLO)** consider : 
@@ -178,7 +180,7 @@ $ time make -j8 # 8 : numbers of core
 $ sudo make install
 $ sudo rm -r <opencv_source_directory> #optional
 ~~~
-#### ● when build **error** : 
+### ● Trouble shooting for OpenCV build error:
 + Please include the appropriate gl headers before including cuda_gl_interop.h => reference [1](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh#L101), [2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/patches/OpenGLHeader.patch), [3](https://devtalk.nvidia.com/default/topic/1007290/jetson-tx2/building-opencv-with-opengl-support-/post/5141945/#5141945)
 + modules/cudacodec/src/precomp.hpp:60:37: fatal error: dynlink_nvcuvid.h: No such file or directory
 compilation terminated. --> **for CUDA version 10**
@@ -285,6 +287,10 @@ $ cd ~/catkin_ws && catkin build
 + **When Calibrating Fisheye camera like T265**
     + Try with ***MEI*** camera model, as [here](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/issues/57), which is *omni-radtan* in Kalibr
     + and try this **Pull** to deal with NaNs [here](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/pull/110)
+
+<br>
+
+### ● Trouble shooting for Kalibr errors
 + **ImportError: No module named Image** [reference](https://github.com/ethz-asl/kalibr/issues/67)
 ~~~shell
 $ gedit kalibr/aslam_offline_calibration/kalibr/python/kalibr_camera_calibration/MulticamGraph.py
@@ -349,7 +355,7 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 
 <br>
 
-### ● Trouble shooting
+### ● Trouble shooting for VINS-Fusion
 + Aborted error when running **vins_node** : 
 ~~~shell
  $ echo "export MALLOC_CHECK_=0" >> ~/.bashrc
