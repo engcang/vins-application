@@ -24,7 +24,7 @@
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb-1): Have to improve performance of sensors with USB
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter): Synchronization, time offset, extrinsic parameter
 #### ● [IMU-Camera rotational extrinsic](#-imu-camera-rotational-extrinsic-example): Rotational extrinsic between IMU and Cam
-### 4. ● [Installation and Execution](#-installation-1)
+### 4. [Installation and Execution](#-installation-and-execution)
 ### 5. [Comparison & Application results](#4-comparison--application-1)
 
 <br><br><br>
@@ -334,7 +334,7 @@ from PIL import Image
 
 <br><br><br>
 
-### ● Installation
+### ● Installation and Execution
 + git clone and build from source
 ~~~shell
 $ cd ~/catkin_ws/src
