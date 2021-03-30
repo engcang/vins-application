@@ -17,15 +17,15 @@
 ### 1. [Algorithm & Gpu, Cpu version](#1-algorithm--gpu-cpu-version-1)
 ### 2. [Parameters](#2-parameters-1)
 ### 3. Prerequisites
-#### ● [Ceres solver and Eigen](#-ceres-solver-and-eigen--mandatory-for-vins): Mandatory for VINS (build Eigen first)
-#### ● [CUDA](#-cuda-necessary-for-gpu-version): Necessary for GPU version
-#### ● [OpenCV with CUDA](#-opencv-with-cuda-necessary-for-gpu-version): Necessary for GPU version
+#### ● [Ceres solver and Eigen](#-ceres-solver-and-eigen-mandatory-for-vins): Mandatory for VINS (build Eigen first)
+#### ● [CUDA](#-cuda-necessary-for-gpu-version-1): Necessary for GPU version
+#### ● [OpenCV with CUDA](#-opencv-with-cuda-necessary-for-gpu-version-1): Necessary for GPU version
 #### ● [CV_Bridge and image_proc with Built OpenCV](#-cv_bridge-and-image_proc-with-built-opencv--necessary-for-whom-built-opencv-manually-from-above): Necessary for GPU version
-#### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb-1): Have to improve performance of sensors with USB
+#### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb): Have to improve performance of sensors with USB
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter): Synchronization, time offset, extrinsic parameter
 #### ● [IMU-Camera rotational extrinsic](#-imu-camera-rotational-extrinsic-example): Rotational extrinsic between IMU and Cam
-### 4. [Installation and Execution](#-installation-and-execution)
-### 5. [Comparison & Application results](#4-comparison--application-1)
+### 4. [Installation and Execution](#4-installation-and-execution)
+### 5. [Comparison & Application results](#5-comparison--application)
 
 <br><br><br>
 
@@ -334,7 +334,7 @@ from PIL import Image
 
 <br><br><br>
 
-### ● Installation and Execution
+# 4. Installation and Execution
 + git clone and build from source
 ~~~shell
 $ cd ~/catkin_ws/src
@@ -374,7 +374,7 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 
 <br>
 
-# 4. Comparison & Application
+# 5. Comparison & Application
 + /tf vs VINS-Mono on FlightGoggles: [youtube](https://youtu.be/U4TJ7ZyfWD8), with CPU [youtube](https://www.youtube.com/watch?v=1QUypn7GbXc)
 + Loop Fusion vs vins node on FlightGoggles: [youtube](https://youtu.be/cvhI_1XQQt4)
 + Real World VINS-Mono with pointgrey cam, myAHRS+ imu on Jetson Xavier: [youtube](https://youtu.be/4qJYoND9OYk), moved faster : [youtube](https://youtu.be/DN-Jao5aKRw)
