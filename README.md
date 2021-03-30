@@ -1,6 +1,6 @@
 # VINS-application
 ## Mainly focused on Build process and explanation
-+ VINS-Mono and Fusion application of different sets of cameras and imu on different board including desktop and jetson xavier
++ VINS-Fusion and VINS-Fisheye application of different sets of cameras and imu on different board including desktop and jetson xavier
 ## This repository contains many branches! as following: 
 + **Branch**: [ZED-mini](https://github.com/engcang/VINS-application/tree/zed-mini), [Pointgrey_myAHRS](https://github.com/engcang/VINS-application/tree/Pointgrey_MyAHRS+), [intel D435i](https://github.com/engcang/VINS-application/tree/Intel-D435i), [FlightGoggles](https://github.com/engcang/vins-application/tree/flightgoggles)
     + Including **config.yaml** files and **Calibration data**
@@ -8,6 +8,8 @@
 + Tested on: Jetson Xavier NX, Jetson Xavier AGX, Jetson TX2, Intel i7-6700k, i7-8700k, i9-10900k, i5-9600k
 ### Result clips: [here](#4-comparison--application-1)
 ### VINS-Fusion for PX4 with Masking: [here](https://github.com/engcang/vins-application/tree/master/vins-fusion-px4)
++ frame changed from `world` to `map`
+
 <br>
 <br>
 
@@ -22,33 +24,33 @@
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb-1): Have to improve performance of sensors with USB
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter): Synchronization, time offset, extrinsic parameter
 #### ● [IMU-Camera rotational extrinsic](#-imu-camera-rotational-extrinsic-example): Rotational extrinsic between IMU and Cam
-#### ● [Installation](#-installation-1)
-#### ● [Trouble shooting](#-trouble-shooting-1)
-### 4. [Comparison & Application](#4-comparison--application-1)
+### 4. ● [Installation and Execution](#-installation-1)
+### 5. [Comparison & Application results](#4-comparison--application-1)
 
 <br><br><br>
 
 # 1. Algorithm & GPU, CPU version
-+ Mainly use Ceres-solver with Eigen, **performance of VINS is strongly proportional to CPU performance and some parameters**
++ Mainly uses `Ceres-solver`, `OpenCV` and `Eigen` and **performance of VINS is strongly proportional to CPU performance and some parameters**
 + [CPU version](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion)
 + [GPU version](https://github.com/pjrambo/VINS-Fusion-gpu)
++ [VINS-Fisheye](https://github.com/xuhao1/VINS-Fisheye)
 <br>
 
 # 2. Parameters
 + Camera frame rate 
     + lower - low time delay, poor performance
     + higher - high time delay, better performance
-    + has to be set from **camera launch file** : 10~30hz
+    + has to be set from **camera launch file**: 10~30hz
 ##### from src/VINS/config/<config_file_name>.yaml
 + Max tracking Feature number **max_cnt**
     + 100~150, same correlation as camera frame rates
-+ time offset **estimated_td : 1**, **td : value from [kalibr](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter)**
-+ GPU acceleration **use_gpu : 1**, **use_gpu_acc_flow : 1** (for GPU version)
-+ Thread numbers **multiple_thread : enabling multi-threads**
++ time offset **estimated_td: 1**, **td : value from [kalibr](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter)**
++ GPU acceleration **use_gpu: 1**, **use_gpu_acc_flow: 1** (for GPU version)
++ Thread numbers **multiple_thread: enabling multi-threads**
 <br>
 
 # 3. Prerequisites
-### ● Ceres solver and Eigen : Mandatory for VINS
+### ● Ceres solver and Eigen: Mandatory for VINS
 + Eigen latest Stable version below [new home](https://gitlab.com/libeigen/eigen) or [old home](http://eigen.tuxfamily.org/index.php?title=Main_Page)
 ~~~shell
 $ wget -O eigen.zip https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.zip #check version
@@ -77,10 +79,10 @@ $ make -j8 # 8 : number of cores
 $ make test
 $ make install
 ~~~
-<br><br>
+<br><br><br>
 
 ### ● CUDA: Necessary for GPU version
-+ Install **CUDA** and **Graphic Driver** : 
++ Install **CUDA** and **Graphic Driver**: 
   + for upper than **18.04**,
 ~~~shell
     $ sudo apt install gcc make
@@ -113,6 +115,8 @@ export LD_LIBRARY_PATH=<CUDA_PATH>/lib64:$LD_LIBRARY_PATH #ex : /usr/local/cuda-
 $ source ~/.profile
 ~~~
 
+<br>
+
 ### ● Trouble shooting for NVIDIA driver or CUDA: please see /var/log/cuda-installer.log or /var/log/nvidia-install.log
 + Installation failed. See log at /var/log/cuda-installer.log for details => mostly because of `X server` is being used.
     + turn off `X server` and install.
@@ -131,12 +135,12 @@ $ sudo sh cuda_<version>_linux.run
     + If you got this case, you should turn off `Secure Boot` and then turn off `X server` (as above) both.
 
 
-<br> <br>
+<br> <br> <br>
 
 ### ● OpenCV with CUDA: Necessary for GPU version
-+ Build OpenCV with CUDA - references : [link 1](https://webnautes.tistory.com/1030), [link 2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh)
++ Build OpenCV with CUDA - references: [link 1](https://webnautes.tistory.com/1030), [link 2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh)
     + for Xavier do as below or sh file from jetsonhacks [here](https://github.com/jetsonhacks/buildOpenCVXavier)
-    + If want to use **C API (e.g. Darknet YOLO)** consider : 
+    + If want to use **C API (e.g. Darknet YOLO)** consider: 
         + Use OpenCV version **3.4.0** because darknet has to use C API with OpenCV [refer](https://github.com/pjreddie/darknet/issues/551)
         + **(Recommended)** or **Patch as [here](https://github.com/opencv/opencv/issues/10963)** to use other version **(3.4.1 is the best)**
             + should **comment** the /usr/local/include/opencv2/highgui/highgui_c.h line 139 [as here](https://stackoverflow.com/questions/48611228/yolo-compilation-with-opencv-1-fails) after install
@@ -180,6 +184,9 @@ $ time make -j8 # 8 : numbers of core
 $ sudo make install
 $ sudo rm -r <opencv_source_directory> #optional
 ~~~
+
+<br>
+
 ### ● Trouble shooting for OpenCV build error:
 + Please include the appropriate gl headers before including cuda_gl_interop.h => reference [1](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh#L101), [2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/patches/OpenGLHeader.patch), [3](https://devtalk.nvidia.com/default/topic/1007290/jetson-tx2/building-opencv-with-opengl-support-/post/5141945/#5141945)
 + modules/cudacodec/src/precomp.hpp:60:37: fatal error: dynlink_nvcuvid.h: No such file or directory
@@ -190,9 +197,9 @@ compilation terminated. --> **for CUDA version 10**
     + $ sudo apt-get install nvidia-cuda-toolkit
     + or Edit *FindCUDA.cmake* and *OpenCVDetectCUDA.cmake*
     
-<br>
+<br><br>
 
-+ (Optional) if also **contrib** for OpenCV should be built,
+### ● (Optional) if also **contrib** for OpenCV should be built,
     + add **-D OPENCV_EXTRA_MODULES_PATH** option as below:
 ~~~shell
 $ cd <opencv_source_directory>
@@ -223,8 +230,7 @@ $ time make -j1 # important, use only one core to prevent compile error
 $ sudo make install
 ~~~
 
-<br>
-<br>
+<br><br><br>
 
 ### ● CV_Bridge and image_proc with built OpenCV : Necessary for whom built OpenCV manually from above
 #### ● CV_bridge
@@ -252,6 +258,8 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake) #under catkin_python_setup()
 $ cd .. && catkin build cv_bridge
 ~~~
 
+<br>
+
 #### ● image_proc (Not recommended)
 ~~~shell
 $ cd ~/catkin_ws/src && git clone https://github.com/ros-perception/image_pipeline
@@ -270,7 +278,7 @@ find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH COM
 $ cd ~/catkin_ws && catkin build
 ~~~
 
-<br><br>
+<br><br><br>
 
 ### ● USB performance : Have to improve performance of sensors with USB
   + Link : [here](https://github.com/KumarRobotics/flea3#optimizing-usb-performance-under-linux) for x86_64 desktops
@@ -279,7 +287,8 @@ $ cd ~/catkin_ws && catkin build
   ~~~shell
   $ sudo ./flash.sh -k kernel -C "usbcore.usbfs_memory_mb=1000" -k kernel-dtb jetson-xavier mmcblk0p1
   ~~~
-<br>
+
+<br><br><br>
 
 ### ● Calibration : Kalibr -> synchronization, time offset, extrinsic parameter
 + [Kalibr](https://github.com/ethz-asl/kalibr) -> synchronization, time offset <br>
@@ -310,7 +319,7 @@ from PIL import Image
  # comment from line 201 to 205
 ~~~
 
-<br>
+<br><br><br>
 
 ### ● IMU-Camera rotational extrinsic example
 + Between ROS standard body(IMU) and camera
@@ -323,7 +332,7 @@ from PIL import Image
   </p>
 
 
-<br>
+<br><br><br>
 
 ### ● Installation
 + git clone and build from source
