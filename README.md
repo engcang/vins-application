@@ -89,7 +89,7 @@ $ make install
     
     # get cuda install script at https://developer.nvidia.com/cuda-downloads
     $ sudo sh cuda_<version>_linux.run
-        # if want to install only graphic driver, get graphic driver install script at 
+        # if want to install only graphic driver, get graphic driver install script at https://www.nvidia.com/Download/index.aspx?lang=en-us
         # sudo ./NVIDIA_<graphic_driver_installer>.run --dkms
         # --dkms option is recommended when you also install NVIDIA driver, to register it along with kernel
         # otherwise, NVIDIA graphic driver will be gone after kernel upgrade via $ sudo apt upgrade
@@ -112,6 +112,26 @@ export LD_LIBRARY_PATH=<CUDA_PATH>/lib64:$LD_LIBRARY_PATH #ex : /usr/local/cuda-
 $ source ~/.profile
 ~~~
 
+#### ● + Trouble shooting for NVIDIA driver or CUDA
+##### please see /var/log/cuda-installer.log or /var/log/nvidia-install.log
++ Installation failed. See log at /var/log/cuda-installer.log for details => mostly because of `X server` is being used.
+    + turn off `X server` and install.
+~~~shell
+# if you are using lightdm
+$ sudo service lightdm stop
+
+# or if you are using gdm3
+$ sudo service gdm3
+
+# then press Ctrl+Alt+F3 -> login with your ID/password
+$ sudo sh cuda_<version>_linux.run
+~~~
++ The kernel module failed to load. Secure boot is enabled on this system, so this is likely because it was not signed by a key that is trusted by the kernel.... 
+    + turn off `Secure Boot` as below [reference](https://wiki.ubuntu.com/UEFI/SecureBoot/DKMS)
+    + If you got this case, you should turn off `Secure Boot` and then turn off `X server` (as above) both.
+
+<br>
+
 + Build OpenCV with CUDA - references : [link 1](https://webnautes.tistory.com/1030), [link 2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh)
     + for Xavier do as below or sh file from jetsonhacks [here](https://github.com/jetsonhacks/buildOpenCVXavier)
     + If want to use **C API (e.g. Darknet YOLO)** consider : 
@@ -133,7 +153,7 @@ $ wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.1.zip # check 
 $ unzip opencv.zip
 $ cd <opencv_source_directory>/opencv && mkdir build && cd build
 # check your BIN version : http://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
-# 8.6 for RTX3080 7.2 for Xavier, 5.2 for GTX TITAN X
+# 8.6 for RTX3080 7.2 for Xavier, 5.2 for GTX TITAN X, 6.1 for GTX TITAN X(pascal)
 # -D BUILD_opencv_cudacodec=OFF #for cuda10-opencv3.4
 $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D CMAKE_C_COMPILER=gcc-6 \
