@@ -140,7 +140,7 @@ $ sudo sh cuda_<version>_linux.run
 
 ### ● (optional) cuDNN: strong library for Neural Network used with CUDA
 + Download [here](https://developer.nvidia.com/cudnn)
-+ install as [here](https://cafepurple.tistory.com/39)
++ install as below: [reference in Korean](https://cafepurple.tistory.com/39)
 ~~~shell
 $ sudo tar zxf cudnn.tgz
 $ sudo cp extracted_cuda/include/* <CUDA_PATH>/include/   #ex /usr/local/cuda-11.2/include/
