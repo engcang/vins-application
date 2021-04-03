@@ -213,12 +213,13 @@ compilation terminated. --> **for CUDA version 10**
 <br><br>
 
 ### ● (Optional) if also **contrib** for OpenCV should be built,
-    + add **-D OPENCV_EXTRA_MODULES_PATH** option as below:
++ add **-D OPENCV_EXTRA_MODULES_PATH** option as below:
+
 ~~~shell
 $ cd <opencv_source_directory>
 $ wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/3.4.1.zip #check version
 $ unzip opencv_contrib.zip
-$ cd build
+$ cd <opencv_source_directory>/build
 $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D CMAKE_C_COMPILER=gcc-6 \
       -D CMAKE_CXX_COMPILER=g++-6 \
@@ -240,6 +241,38 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib-3.4.1/modules \
       ../
 $ time make -j1 # important, use only one core to prevent compile error
+$ sudo make install
+~~~
+
+<br>
+
+### ● (Optional) if also **cuDNN** for OpenCV with CUDA should be built,
++ add **-D OPENCV_DNN_CUDA=ON** and **-D WITH_CUDNN=ON** options as below:
+~~~shell
+$ cd <opencv_source_directory>/build
+$ cmake -D CMAKE_BUILD_TYPE=RELEASE \
+      -D CMAKE_C_COMPILER=gcc-6 \
+      -D CMAKE_CXX_COMPILER=g++-6 \
+      -D CMAKE_INSTALL_PREFIX=/usr/local \
+      -D WITH_CUDA=ON \
+      -D OPENCV_DNN_CUDA=ON \
+      -D WITH_CUDNN=ON \
+      -D CUDA_ARCH_BIN=6.1 \
+      -D CUDA_ARCH_PTX="" \
+      -D ENABLE_FAST_MATH=ON \
+      -D CUDA_FAST_MATH=ON \
+      -D WITH_CUBLAS=ON \
+      -D WITH_LIBV4L=ON \
+      -D WITH_GSTREAMER=ON \
+      -D WITH_GSTREAMER_0_10=OFF \
+      -D WITH_QT=ON \
+      -D WITH_OPENGL=ON \
+      -D BUILD_opencv_cudacodec=OFF \
+      -D CUDA_NVCC_FLAGS="--expt-relaxed-constexpr" \
+      -D WITH_TBB=ON \
+      -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib-4.5.1/modules \
+      ../
+$ time make -j6 #use less cores to prevent compile error
 $ sudo make install
 ~~~
 
