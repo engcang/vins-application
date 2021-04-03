@@ -19,6 +19,7 @@
 ### 3. Prerequisites
 #### ● [Ceres solver and Eigen](#-ceres-solver-and-eigen-mandatory-for-vins): Mandatory for VINS (build Eigen first)
 #### ● [CUDA](#-cuda-necessary-for-gpu-version-1): Necessary for GPU version
+##### ● [optional, but recommended with CUDA: cuDNN](#-): Optional but strong when used with CUDA
 #### ● [OpenCV with CUDA](#-opencv-with-cuda-necessary-for-gpu-version-1): Necessary for GPU version
 #### ● [CV_Bridge and image_proc with Built OpenCV](#-cv_bridge-and-image_proc-with-built-opencv--necessary-for-whom-built-opencv-manually-from-above): Necessary for GPU version
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb): Have to improve performance of sensors with USB
@@ -134,6 +135,18 @@ $ sudo sh cuda_<version>_linux.run
     + turn off `Secure Boot` as below [reference](https://wiki.ubuntu.com/UEFI/SecureBoot/DKMS)
     + If you got this case, you should turn off `Secure Boot` and then turn off `X server` (as above) both.
 
+<br>
+
+
+### ● (optional) cuDNN: strong library for Neural Network used with CUDA
++ Download [here](https://developer.nvidia.com/cudnn)
++ install as [here](https://cafepurple.tistory.com/39)
+~~~shell
+$ sudo tar zxf cudnn.tgz
+$ sudo cp extracted_cuda/include/* <CUDA_PATH>/include/   #ex /usr/local/cuda-11.2/include/
+$ sudo cp -P extracted_cuda/lib64/* <CUDA_PATH>/lib64/   #ex /usr/local/cuda-11.2/lib64/
+$ sudo chmod a+r <CUDA_PATH>/lib64/libcudnn*   #ex /usr/local/cuda-11.2/lib64/libcudnn*
+~~~
 
 <br> <br> <br>
 
