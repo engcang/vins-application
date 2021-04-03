@@ -25,7 +25,7 @@
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb): Have to improve performance of sensors with USB
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter): Synchronization, time offset, extrinsic parameter
 #### ● [IMU-Camera rotational extrinsic](#-imu-camera-rotational-extrinsic-example): Rotational extrinsic between IMU and Cam
-### 4. [Installation and Execution](#4-installation-and-execution)
+### 4. [Installation and Execution](#4-installation-and-execution-1)
 ### 5. [Comparison & Application results](#5-comparison--application)
 
 <br><br><br>
