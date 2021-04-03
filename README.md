@@ -21,6 +21,8 @@
 #### ● [CUDA](#-cuda-necessary-for-gpu-version-1): Necessary for GPU version
 + [optional, but recommended with CUDA: cuDNN](#-optional-cudnn-strong-library-for-neural-network-used-with-cuda) Optional but strong when used with CUDA
 #### ● [OpenCV with CUDA](#-opencv-with-cuda-necessary-for-gpu-version-1): Necessary for GPU version
++ [optional, but necessary for recent versions: with OpenCV Contrib](#-optional-if-also-contrib-for-opencv-should-be-built)
++ [optional, but recommended with CUDA: with cuDNN](#-optional-if-also-cudnn-for-opencv-with-cuda-should-be-built)
 #### ● [CV_Bridge and image_proc with Built OpenCV](#-cv_bridge-and-image_proc-with-built-opencv--necessary-for-whom-built-opencv-manually-from-above): Necessary for GPU version
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb): Have to improve performance of sensors with USB
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter): Synchronization, time offset, extrinsic parameter
@@ -272,7 +274,7 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D WITH_TBB=ON \
       -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib-4.5.1/modules \
       ../
-$ time make -j6 #use less cores to prevent compile error
+$ time make -j1 #use less cores to prevent compile error
 $ sudo make install
 ~~~
 
