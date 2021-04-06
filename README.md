@@ -82,6 +82,9 @@ $ make -j8 # 8 : number of cores
 $ make test
 $ make install
 ~~~
+
+---
+
 <br><br><br>
 
 ### ● CUDA: Necessary for GPU version
@@ -149,6 +152,8 @@ $ sudo cp extracted_cuda/include/* <CUDA_PATH>/include/   #ex /usr/local/cuda-11
 $ sudo cp -P extracted_cuda/lib64/* <CUDA_PATH>/lib64/   #ex /usr/local/cuda-11.2/lib64/
 $ sudo chmod a+r <CUDA_PATH>/lib64/libcudnn*   #ex /usr/local/cuda-11.2/lib64/libcudnn*
 ~~~
+
+---
 
 <br> <br> <br>
 
@@ -278,6 +283,8 @@ $ time make -j1 #use less cores to prevent compile error
 $ sudo make install
 ~~~
 
+---
+
 <br><br><br>
 
 ### ● CV_Bridge and image_proc with built OpenCV : Necessary for whom built OpenCV manually from above
@@ -326,6 +333,8 @@ find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH COM
 $ cd ~/catkin_ws && catkin build
 ~~~
 
+---
+
 <br><br><br>
 
 ### ● USB performance : Have to improve performance of sensors with USB
@@ -335,6 +344,8 @@ $ cd ~/catkin_ws && catkin build
   ~~~shell
   $ sudo ./flash.sh -k kernel -C "usbcore.usbfs_memory_mb=1000" -k kernel-dtb jetson-xavier mmcblk0p1
   ~~~
+
+---
 
 <br><br><br>
 
@@ -367,6 +378,8 @@ from PIL import Image
  # comment from line 201 to 205
 ~~~
 
+---
+
 <br><br><br>
 
 ### ● IMU-Camera rotational extrinsic example
@@ -379,6 +392,7 @@ from PIL import Image
   <img src="https://github.com/engcang/vins-application/blob/master/pitching.png" width="600"/>
   </p>
 
+---
 
 <br><br><br>
 
