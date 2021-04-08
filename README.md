@@ -1,6 +1,6 @@
 # VINS-application
 ## Mainly focused on Build process and explanation
-### ● `VINS-Fusion`, `VINS-Fisheye`, `OpenVINS`
+### ● `VINS-Fusion`, `VINS-Fisheye`(pending), `OpenVINS`(pending)
 ## This repository contains many branches! as following: 
 + **Branch**: [ZED-mini](https://github.com/engcang/VINS-application/tree/zed-mini), [Pointgrey_myAHRS](https://github.com/engcang/VINS-application/tree/Pointgrey_MyAHRS+), [intel D435i](https://github.com/engcang/VINS-application/tree/Intel-D435i), [FlightGoggles](https://github.com/engcang/vins-application/tree/flightgoggles)
     + Including **config.yaml** files and **Calibration data**
