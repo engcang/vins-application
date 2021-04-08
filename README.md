@@ -1,6 +1,6 @@
 # VINS-application
 ## Mainly focused on Build process and explanation
-+ VINS-Fusion and VINS-Fisheye application of different sets of cameras and imu on different board including desktop and jetson xavier
+### ● `VINS-Fusion`, `VINS-Fisheye`, `OpenVINS`
 ## This repository contains many branches! as following: 
 + **Branch**: [ZED-mini](https://github.com/engcang/VINS-application/tree/zed-mini), [Pointgrey_myAHRS](https://github.com/engcang/VINS-application/tree/Pointgrey_MyAHRS+), [intel D435i](https://github.com/engcang/VINS-application/tree/Intel-D435i), [FlightGoggles](https://github.com/engcang/vins-application/tree/flightgoggles)
     + Including **config.yaml** files and **Calibration data**
@@ -34,9 +34,10 @@
 
 # 1. Algorithm & GPU, CPU version
 + Mainly uses `Ceres-solver`, `OpenCV` and `Eigen` and **performance of VINS is strongly proportional to CPU performance and some parameters**
-+ [CPU version](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion)
-+ [GPU version](https://github.com/pjrambo/VINS-Fusion-gpu)
++ VINS-Fusion [CPU version](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion)
++ VINS-Fusion [GPU version](https://github.com/pjrambo/VINS-Fusion-gpu)
 + [VINS-Fisheye](https://github.com/xuhao1/VINS-Fisheye)
++ [OpenVINS](https://github.com/rpng/open_vins)
 <br>
 
 # 2. Parameters
