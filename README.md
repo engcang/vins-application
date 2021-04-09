@@ -23,7 +23,9 @@
 #### ● [OpenCV with CUDA](#-opencv-with-cuda-necessary-for-gpu-version-1): Necessary for GPU version
 + [optional, but necessary for recent versions: with OpenCV Contrib](#-optional-if-also-contrib-for-opencv-should-be-built)
 + [optional, but recommended with CUDA: with cuDNN](#-optional-if-also-cudnn-for-opencv-with-cuda-should-be-built) also with Contrib
-#### ● [CV_Bridge and image_proc with Built OpenCV](#-cv_bridge-and-image_proc-with-built-opencv--necessary-for-whom-built-opencv-manually-from-above): Necessary for GPU version
+#### ● CV_Bridge with Built OpenCV(#-cv_bridge-and-image_proc-with-built-opencv--necessary-for-whom-built-opencv-manually-from-above): Necessary for GPU version, and general ROS usage
++ for [OpenCV 3.x ver](#-cv_bridge-with-opencv-3x-version)
++ for [OpenCV 4.x ver](#-cv_bridge-with-opencv-4x-version)
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb): Have to improve performance of sensors with USB
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter): Synchronization, time offset, extrinsic parameter
 #### ● [IMU-Camera rotational extrinsic](#-imu-camera-rotational-extrinsic-example): Rotational extrinsic between IMU and Cam
@@ -320,6 +322,46 @@ $ cd .. && catkin build cv_bridge
 ~~~
 
 #### ● CV_bridge with OpenCV 4.X version
++ Referred [here](https://github.com/ros-perception/vision_opencv/issues/272#issuecomment-471311300)
+~~~shell
+$ cd ~/catkin_ws/src && git clone https://github.com/ros-perception/vision_opencv
+# since ROS Noetic is added, we have to checkout to melodic tree
+$ cd vision_opencv && git checkout origin/melodic
+$ gedit vision_opencv/cv_bridge/CMakeLists.txt
+~~~
++ Add options and edit OpenCV PATHS in CMakeLists
+~~~txt
+# add right after project()
+set(CMAKE_CXX_STANDARD 11) 
+
+# edit find_package(OpenCV)
+find_package(OpenCV 4 REQUIRED PATHS /usr/local/share/opencv4 NO_DEFAULT_PATH
+  COMPONENTS
+    opencv_core
+    opencv_imgproc
+    opencv_imgcodecs
+  CONFIG
+)
+include(/usr/local/lib/cmake/opencv4/OpenCVConfig.cmake)
+~~~
++ Edit `cv_bridge/src/CMakeLists.txt`
+~~~txt
+# line number 35, Edit 3 -> 4
+if (OpenCV_VERSION_MAJOR VERSION_EQUAL 4)
+~~~
++ Edit `cv_bridge/src/module_opencv3.cpp`
+~~~cpp
+// line number 110
+//    UMatData* allocate(int dims0, const int* sizes, int type, void* data, size_t* step, int flags, UMatUsageFlags usageFlags) const
+    UMatData* allocate(int dims0, const int* sizes, int type, void* data, size_t* step, AccessFlag flags, UMatUsageFlags usageFlags) const
+
+// line number 140
+//    bool allocate(UMatData* u, int accessFlags, UMatUsageFlags usageFlags) const
+    bool allocate(UMatData* u, AccessFlag accessFlags, UMatUsageFlags usageFlags) const
+~~~
+~~~shell
+$ cd .. && catkin build cv_bridge
+~~~
 
 <br>
 
