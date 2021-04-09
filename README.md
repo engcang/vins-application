@@ -23,7 +23,7 @@
 #### ● [OpenCV with CUDA](#-opencv-with-cuda-necessary-for-gpu-version-1): Necessary for GPU version
 + [optional, but necessary for recent versions: with OpenCV Contrib](#-optional-if-also-contrib-for-opencv-should-be-built)
 + [optional, but recommended with CUDA: with cuDNN](#-optional-if-also-cudnn-for-opencv-with-cuda-should-be-built) also with Contrib
-#### ● CV_Bridge with Built OpenCV(#-cv_bridge-and-image_proc-with-built-opencv--necessary-for-whom-built-opencv-manually-from-above): Necessary for GPU version, and general ROS usage
+#### ● CV_Bridge with Built OpenCV: Necessary for GPU version, and general ROS usage
 + for [OpenCV 3.x ver](#-cv_bridge-with-opencv-3x-version)
 + for [OpenCV 4.x ver](#-cv_bridge-with-opencv-4x-version)
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb): Have to improve performance of sensors with USB
@@ -321,6 +321,8 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake) #under catkin_python_setup()
 $ cd .. && catkin build cv_bridge
 ~~~
 
+<br>
+
 #### ● CV_bridge with OpenCV 4.X version
 + Referred [here](https://github.com/ros-perception/vision_opencv/issues/272#issuecomment-471311300)
 ~~~shell
@@ -362,9 +364,6 @@ if (OpenCV_VERSION_MAJOR VERSION_EQUAL 4)
 ~~~shell
 $ cd .. && catkin build cv_bridge
 ~~~
-
-<br>
-
 
 ---
 
