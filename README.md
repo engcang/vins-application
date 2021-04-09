@@ -165,6 +165,8 @@ $ sudo chmod a+r <CUDA_PATH>/lib64/libcudnn*   #ex /usr/local/cuda-11.2/lib64/li
         + Use OpenCV version **3.4.0** because darknet has to use C API with OpenCV [refer](https://github.com/pjreddie/darknet/issues/551)
         + **(Recommended)** or **Patch as [here](https://github.com/opencv/opencv/issues/10963)** to use other version **(3.4.1 is the best)**
             + should **comment** the /usr/local/include/opencv2/highgui/highgui_c.h line 139 [as here](https://stackoverflow.com/questions/48611228/yolo-compilation-with-opencv-1-fails) after install
++ **-D OPENCV_GENERATE_PKGCONFIG=YES** option is also needed for OpenCV 4.X
+  + and copy the generated `opencv4.pc` file to `/usr/local/lib/pkgconfig` or `/usr/lib/aarch64-linux-gnu/pkgconfig` for jetson boards
 ~~~shell
 $ sudo apt-get purge libopencv* python-opencv
 $ sudo apt-get update
@@ -180,14 +182,15 @@ $ wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.1.zip # check 
 $ unzip opencv.zip
 $ cd <opencv_source_directory>/opencv && mkdir build && cd build
 # check your BIN version : http://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
-# 8.6 for RTX3080 7.2 for Xavier, 5.2 for GTX TITAN X, 6.1 for GTX TITAN X(pascal)
+# 8.6 for RTX3080 7.2 for Xavier, 5.2 for GTX TITAN X, 6.1 for GTX TITAN X(pascal), 6.2 for TX2
 # -D BUILD_opencv_cudacodec=OFF #for cuda10-opencv3.4
 $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D CMAKE_C_COMPILER=gcc-6 \
       -D CMAKE_CXX_COMPILER=g++-6 \
       -D CMAKE_INSTALL_PREFIX=/usr/local \
+      -D OPENCV_GENERATE_PKGCONFIG=YES \
       -D WITH_CUDA=ON \
-      -D CUDA_ARCH_BIN=7.2 \
+      -D CUDA_ARCH_BIN=8.6 \
       -D CUDA_ARCH_PTX="" \
       -D ENABLE_FAST_MATH=ON \
       -D CUDA_FAST_MATH=ON \
@@ -232,8 +235,9 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D CMAKE_C_COMPILER=gcc-6 \
       -D CMAKE_CXX_COMPILER=g++-6 \
       -D CMAKE_INSTALL_PREFIX=/usr/local \
+      -D OPENCV_GENERATE_PKGCONFIG=YES \
       -D WITH_CUDA=ON \
-      -D CUDA_ARCH_BIN=7.2 \
+      -D CUDA_ARCH_BIN=6.2 \
       -D CUDA_ARCH_PTX="" \
       -D ENABLE_FAST_MATH=ON \
       -D CUDA_FAST_MATH=ON \
@@ -262,10 +266,11 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D CMAKE_C_COMPILER=gcc-6 \
       -D CMAKE_CXX_COMPILER=g++-6 \
       -D CMAKE_INSTALL_PREFIX=/usr/local \
+      -D OPENCV_GENERATE_PKGCONFIG=YES \
       -D WITH_CUDA=ON \
       -D OPENCV_DNN_CUDA=ON \
       -D WITH_CUDNN=ON \
-      -D CUDA_ARCH_BIN=6.1 \
+      -D CUDA_ARCH_BIN=6.2 \
       -D CUDA_ARCH_PTX="" \
       -D ENABLE_FAST_MATH=ON \
       -D CUDA_FAST_MATH=ON \
@@ -278,7 +283,7 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D BUILD_opencv_cudacodec=OFF \
       -D CUDA_NVCC_FLAGS="--expt-relaxed-constexpr" \
       -D WITH_TBB=ON \
-      -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib-4.5.1/modules \
+      -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib-4.5.2/modules \
       ../
 $ time make -j1 #use less cores to prevent compile error
 $ sudo make install
@@ -288,8 +293,8 @@ $ sudo make install
 
 <br><br><br>
 
-### ● CV_Bridge and image_proc with built OpenCV : Necessary for whom built OpenCV manually from above
-#### ● CV_bridge
+### ● CV_Bridge with built OpenCV: Necessary for whom built OpenCV manually from above
+#### ● CV_bridge with OpenCV 3.X version
 + For GPU version, if OpenCV with CUDA was built manually, build cv_bridge manually also
 ~~~shell
 $ cd ~/catkin_ws/src && git clone https://github.com/ros-perception/vision_opencv
@@ -314,25 +319,10 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake) #under catkin_python_setup()
 $ cd .. && catkin build cv_bridge
 ~~~
 
+#### ● CV_bridge with OpenCV 4.X version
+
 <br>
 
-#### ● image_proc (Not recommended)
-~~~shell
-$ cd ~/catkin_ws/src && git clone https://github.com/ros-perception/image_pipeline
-~~~
-+ Edit OpenCV PATHS in CMakeLists in
-~~~txt
-1. depth_image_proc/CMakeLists.txt, 2. image_proc/CMakeLists.txt, 
-3. image_view/CMakeLists.txt, 4. stereo_image_proc/CMakeLists.txt
-find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH)
-5. image_publisher/CMakeLists.txt
-find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH COMPONENTS core)
-6. image_rotate/CMakeLists.txt
-find_package(OpenCV 3 REQUIRED PATHS /usr/local/share/OpenCV NO_DEFAULT_PATH COMPONENTS core imgproc)
-~~~
-~~~shell
-$ cd ~/catkin_ws && catkin build
-~~~
 
 ---
 
