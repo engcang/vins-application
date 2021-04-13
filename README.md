@@ -111,6 +111,9 @@ $ make install
     export PATH=<CUDA_PATH>/bin:$PATH #ex: /usr/local/cuda-11.2
     export LD_LIBRARY_PATH=<CUDA_PATH>/lib64:$LD_LIBRARY_PATH #ex : /usr/local/cuda-11.2
     $ . ~/.bashrc
+
+    # check if installed well
+    $ dpkg-query -W | grep cuda
 ~~~
 + check CUDA version using **nvcc --version**
 ~~~shell
