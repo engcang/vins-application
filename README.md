@@ -340,7 +340,7 @@ $ gedit vision_opencv/cv_bridge/CMakeLists.txt
 set(CMAKE_CXX_STANDARD 11) 
 
 # edit find_package(OpenCV)
-find_package(OpenCV 4 REQUIRED
+find_package(OpenCV 4 REQUIRED PATHS /usr/local/share/opencv4 NO_DEFAULT_PATH
   COMPONENTS
     opencv_core
     opencv_imgproc
