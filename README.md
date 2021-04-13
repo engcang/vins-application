@@ -92,35 +92,35 @@ $ make install
 
 ### ● CUDA: Necessary for GPU version
 + Install **CUDA** and **Graphic Driver**: 
-  + for upper than **18.04**,
+##### ● (If you will use TensorRT) The latest TensorRT(7.2.3) supports CUDA 10.2, 11.0 update 1, 11.1 update 1, and 11.2 update 1. [doc](https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt-723/release-notes/tensorrt-7.html#rel_7-2-3)
++ Ubuntu
 ~~~shell
     $ sudo apt install gcc make
-    $ sudo ubuntu-drivers devices
-    (not recommended, use CUDA install script below) $ sudo ubuntu-drivers autoinstall
-    (not recommended, use CUDA install script below) $ sudo reboot
-    
-    # get the latest CUDA(with graphic driver) install script at https://developer.nvidia.com/cuda-downloads
-    $ sudo sh cuda_<version>_linux.run
+    get the right version of CUDA(with graphic driver) .deb file at https://developer.nvidia.com/cuda-downloads
+    follow the installation instructions there!
+        # .run file can be used as nvidia graphic driver. But, .deb file is recommended to install tensorRT further.
+
         # if want to install only graphic driver, get graphic driver install script at https://www.nvidia.com/Download/index.aspx?lang=en-us
         # sudo ./NVIDIA_<graphic_driver_installer>.run --dkms
         # --dkms option is recommended when you also install NVIDIA driver, to register it along with kernel
         # otherwise, NVIDIA graphic driver will be gone after kernel upgrade via $ sudo apt upgrade
     $ sudo reboot
-    
+
     $ gedit ~/.bashrc
-    # type
-    export PATH=<CUDA_PATH>/bin:$PATH #ex: /usr/local/cuda-10.1
-    export LD_LIBRARY_PATH=<CUDA_PATH>/lib64:$LD_LIBRARY_PATH #ex : /usr/local/cuda-10.1
+    # type and save
+    export PATH=<CUDA_PATH>/bin:$PATH #ex: /usr/local/cuda-11.2
+    export LD_LIBRARY_PATH=<CUDA_PATH>/lib64:$LD_LIBRARY_PATH #ex : /usr/local/cuda-11.2
+    $ . ~/.bashrc
 ~~~
-  + check CUDA version using **nvcc --version**
++ check CUDA version using **nvcc --version**
 ~~~shell
 # check installed cuda version
 $ nvcc --version
 # if nvcc --version does not print out CUDA,
 $ gedit ~/.profile
 # type below and save
-export PATH=<CUDA_PATH>/bin:$PATH #ex: /usr/local/cuda-10.1
-export LD_LIBRARY_PATH=<CUDA_PATH>/lib64:$LD_LIBRARY_PATH #ex : /usr/local/cuda-10.1
+export PATH=<CUDA_PATH>/bin:$PATH #ex: /usr/local/cuda-11.2
+export LD_LIBRARY_PATH=<CUDA_PATH>/lib64:$LD_LIBRARY_PATH #ex : /usr/local/cuda-11.2
 $ source ~/.profile
 ~~~
 
