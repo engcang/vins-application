@@ -92,7 +92,7 @@ $ make install
 
 ### ● CUDA: Necessary for GPU version
 + Install **CUDA** and **Graphic Driver**: 
-##### ● (If you will use TensorRT) The latest TensorRT(7.2.3) supports CUDA 10.2, 11.0 update 1, 11.1 update 1, and 11.2 update 1. [doc](https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt-723/release-notes/tensorrt-7.html#rel_7-2-3)
+##### ● (If you will use TensorRT) The latest TensorRT(7.2.3) supports CUDA 10.2, 11.0 update 1, 11.1 update 1, ~~and 11.2 update 1.~~ [doc](https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt-723/release-notes/tensorrt-7.html#rel_7-2-3)
 + Ubuntu
 ~~~shell
     $ sudo apt install gcc make
@@ -108,8 +108,8 @@ $ make install
 
     $ gedit ~/.bashrc
     # type and save
-    export PATH=<CUDA_PATH>/bin:$PATH #ex: /usr/local/cuda-11.2
-    export LD_LIBRARY_PATH=<CUDA_PATH>/lib64:$LD_LIBRARY_PATH #ex : /usr/local/cuda-11.2
+    export PATH=<CUDA_PATH>/bin:$PATH #ex: /usr/local/cuda-11.1
+    export LD_LIBRARY_PATH=<CUDA_PATH>/lib64:$LD_LIBRARY_PATH #ex : /usr/local/cuda-11.1
     $ . ~/.bashrc
 
     # check if installed well
@@ -122,8 +122,8 @@ $ nvcc --version
 # if nvcc --version does not print out CUDA,
 $ gedit ~/.profile
 # type below and save
-export PATH=<CUDA_PATH>/bin:$PATH #ex: /usr/local/cuda-11.2
-export LD_LIBRARY_PATH=<CUDA_PATH>/lib64:$LD_LIBRARY_PATH #ex : /usr/local/cuda-11.2
+export PATH=<CUDA_PATH>/bin:$PATH #ex: /usr/local/cuda-11.1
+export LD_LIBRARY_PATH=<CUDA_PATH>/lib64:$LD_LIBRARY_PATH #ex : /usr/local/cuda-11.1
 $ source ~/.profile
 ~~~
 
@@ -154,9 +154,9 @@ $ sudo sh cuda_<version>_linux.run
 + install as below: [reference in Korean](https://cafepurple.tistory.com/39)
 ~~~shell
 $ sudo tar zxf cudnn.tgz
-$ sudo cp extracted_cuda/include/* <CUDA_PATH>/include/   #ex /usr/local/cuda-11.2/include/
-$ sudo cp -P extracted_cuda/lib64/* <CUDA_PATH>/lib64/   #ex /usr/local/cuda-11.2/lib64/
-$ sudo chmod a+r <CUDA_PATH>/lib64/libcudnn*   #ex /usr/local/cuda-11.2/lib64/libcudnn*
+$ sudo cp extracted_cuda/include/* <CUDA_PATH>/include/   #ex /usr/local/cuda-11.1/include/
+$ sudo cp -P extracted_cuda/lib64/* <CUDA_PATH>/lib64/   #ex /usr/local/cuda-11.1/lib64/
+$ sudo chmod a+r <CUDA_PATH>/lib64/libcudnn*   #ex /usr/local/cuda-11.1/lib64/libcudnn*
 ~~~
 
 ---
