@@ -250,7 +250,7 @@ compilation terminated. --> **for CUDA version 10**
     + cmake ... -D BUILD_opencv_cudacodec=OFF ...
 + CUDA_nppicom_LIBRARY not found => reference [here](https://stackoverflow.com/questions/46584000/cmake-error-variables-are-set-to-notfound)
     + $ sudo apt-get install nvidia-cuda-toolkit
-    + or Edit *FindCUDA.cmake* and *OpenCVDetectCUDA.cmake*
+    + or Edit *FindCUDA.cmake* and *OpenCVDetectCUDA.cmake* as [here](https://stackoverflow.com/questions/46584000/cmake-error-variables-are-set-to-notfound)
     
 ---
 
