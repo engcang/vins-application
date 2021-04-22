@@ -62,6 +62,8 @@
 + GPU acceleration **use_gpu: 1**, **use_gpu_acc_flow: 1** (for GPU version)
 + Threads enabling - **multiple_thread: 1**
 
+---
+
 </details>
 
 <br>
@@ -164,9 +166,9 @@ $ sudo sh cuda_<version>_linux.run
     + turn off `Secure Boot` as below [reference](https://wiki.ubuntu.com/UEFI/SecureBoot/DKMS)
     + If you got this case, you should turn off `Secure Boot` and then turn off `X server` (as above) both.
 
-</details>
-
 ---
+
+</details>
 
 <br>
 
@@ -183,9 +185,9 @@ $ sudo cp -P extracted_cuda/lib64/* <CUDA_PATH>/lib64/   #ex /usr/local/cuda-11.
 $ sudo chmod a+r <CUDA_PATH>/lib64/libcudnn*   #ex /usr/local/cuda-11.1/lib64/libcudnn*
 ~~~
 
-</details>
-
 ---
+
+</details>
 
 <br> <br>
 
@@ -254,9 +256,9 @@ compilation terminated. --> **for CUDA version 10**
     + $ sudo apt-get install nvidia-cuda-toolkit
     + or Edit *FindCUDA.cmake* and *OpenCVDetectCUDA.cmake*
     
-</details>
-
 ---
+
+</details>
 
 <br><br>
 
@@ -295,6 +297,8 @@ $ time make -j1 # important, use only one core to prevent compile error
 $ sudo make install
 ~~~
 
+---
+
 </details>
 
 <br>
@@ -332,9 +336,9 @@ $ time make -j1 #use less cores to prevent compile error
 $ sudo make install
 ~~~
 
-</details>
-
 ---
+
+</details>
 
 <br><br>
 
@@ -366,9 +370,10 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake) #under catkin_python_setup()
 $ cd .. && catkin build cv_bridge
 ~~~
 
+---
+
 </details>
 
-<br>
 
 #### ● CV_bridge with OpenCV 4.X version
 <details><summary>[click to see]</summary>
@@ -415,9 +420,9 @@ if (OpenCV_VERSION_MAJOR VERSION_EQUAL 4)
 $ cd .. && catkin build cv_bridge
 ~~~
 
-</details>
-
 ---
+
+</details>
 
 <br><br>
 
@@ -468,9 +473,9 @@ from PIL import Image
  # comment from line 201 to 205
 ~~~
 
-</details>
-
 ---
+
+</details>
 
 <br><br>
 
@@ -486,9 +491,9 @@ from PIL import Image
   <img src="https://github.com/engcang/vins-application/blob/master/pitching.png" width="600"/>
   </p>
 
-</details>
-
 ---
+
+</details>
 
 <br><br>
 
@@ -524,6 +529,8 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 ~~~
 
+---
+
 </details>
 
 <br>
@@ -537,6 +544,8 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
  $ source ~/.bashrc
 ~~~
 + **If want to try to deal with NaNs**, refer [here](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/pull/110)
+
+---
 
 </details>
 
@@ -558,6 +567,8 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 + VINS-Fusion (Stereo) based autonomous flight and 3D mapping using RGB-D camera: [youtube](https://youtu.be/5t-6g7UWA7o)
 + VINS-Fusion (Stereo) with Intel D435i and Pixhawk4 mini fused with T265 camera: [here](https://engcang.github.io/mavros_vision_pose/)
 + VINS-Fusion (stereo) with Intel D435i and Pixhawk4 mini on 1km long underground tunnel: [here](https://youtu.be/Gx0PSMCeR1g)
+
+---
 
 </details>
 
