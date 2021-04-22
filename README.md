@@ -21,7 +21,7 @@
 + [OpenVINS](https://github.com/rpng/open_vins): MSCKF based VINS 
 
 ### 1. Parameters
-+ [VINS-Fusion](#-vins-fusion) / VINS-Fisheye / OpenVINS
++ [VINS-Fusion](#-vins-fusion)  /  VINS-Fisheye  /  OpenVINS
 ### 2. Prerequisites
 #### ● [Ceres solver and Eigen](#-ceres-solver-and-eigen-mandatory-for-vins): Mandatory for VINS (build Eigen first)
 #### ● [CUDA](#-cuda-necessary-for-gpu-version-1): Necessary for GPU version
@@ -30,17 +30,15 @@
 + [optional, but necessary for recent versions: with OpenCV Contrib](#-optional-if-also-contrib-for-opencv-should-be-built)
 + [optional, but recommended with CUDA: with cuDNN](#-optional-if-also-cudnn-for-opencv-with-cuda-should-be-built) also with Contrib
 #### ● CV_Bridge with Built OpenCV: Necessary for GPU version, and general ROS usage
-+ for [OpenCV 3.x ver](#-cv_bridge-with-opencv-3x-version)
-+ for [OpenCV 4.x ver](#-cv_bridge-with-opencv-4x-version)
++ for [OpenCV 3.x ver](#-cv_bridge-with-opencv-3x-version)  /  for [OpenCV 4.x ver](#-cv_bridge-with-opencv-4x-version)
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb): Have to improve performance of sensors with USB
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter): Synchronization, time offset, extrinsic parameter
 #### ● [IMU-Camera rotational extrinsic](#-imu-camera-rotational-extrinsic-example): Rotational extrinsic between IMU and Cam
 ### 3. Installation and Execution
-+ [VINS-Fusion](#-vins-fusion-1) / Trouble shooting for [VINS-Fusion](#-trouble-shooting-for-vins-fusion)
-+ VINS-Fisheye / Trouble shooting for VINS-Fisheye
-+ OpenVINS / Trouble shooting for OpenVINS
++ [VINS-Fusion](#-vins-fusion-1)  /  VINS-Fisheye  /  OpenVINS
++ Trouble shooting for [VINS-Fusion](#-trouble-shooting-for-vins-fusion)  /  Trouble shooting for VINS-Fisheye  /  Trouble shooting for OpenVINS
 ### 4. Comparison & Application results
-+ [VINS-Fusion](#-vins-fusion-2) / VINS-Fisheye / OpenVINS
++ [VINS-Fusion](#-vins-fusion-2)  /  VINS-Fisheye  /  OpenVINS
 
 <br><br><br>
 
