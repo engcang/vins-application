@@ -4,10 +4,10 @@
 
 ## Index
 1. Prerequisites
-+ [SDK](#requirements---sdk)
-+ [ROS packages](#-ros-package)
-+ [Disable IR Emittier](-disable-emitter)
-+ [IMU calibration](#-imu-calibration-recommended-here)
++ [SDK](#-requirements---sdk)
++ [ROS packages](#ros-package)
++ [Disable IR Emittier](#disable-emitter)
++ [IMU calibration](#imu-calibration-recommended-here)
 + [Kalibr (Calibration for Cam-IMU)]()
 2. [Results]()
 
@@ -48,7 +48,7 @@
 
 <br>
 
-### ● ROS package
+## ROS package
 <details><summary>click to see</summary>
   
 + Intel Realsense2 ROS [here](https://github.com/intel-ros/realsense)
@@ -67,7 +67,7 @@ $ source ./devel/setup.bash
 
 <br>
 
-### ● Disable **Emitter**
+## Disable **Emitter**
 
 <details><summary>click to see</summary>
   
