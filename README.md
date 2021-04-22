@@ -21,9 +21,7 @@
 + [OpenVINS](https://github.com/rpng/open_vins): MSCKF based VINS 
 
 ### 1. Parameters
-+ [VINS-Fusion](#-vins-fusion)
-+ VINS-Fisheye
-+ OpenVINS
++ [VINS-Fusion](#-vins-fusion) / VINS-Fisheye / OpenVINS
 ### 2. Prerequisites
 #### ● [Ceres solver and Eigen](#-ceres-solver-and-eigen-mandatory-for-vins): Mandatory for VINS (build Eigen first)
 #### ● [CUDA](#-cuda-necessary-for-gpu-version-1): Necessary for GPU version
