@@ -1,6 +1,6 @@
 # VINS-application
 ## Mainly focused on Build process and explanation
-### ● `VINS-Fusion`, `VINS-Fisheye`(pending), `OpenVINS`(pending)
+### ● `VINS-Fusion`, `VINS-Fisheye`(pending, only for OpenCV 3.4.1), `OpenVINS`(pending)
 ## This repository contains many branches! as following: 
 + **Branch**: [intel T265](https://github.com/engcang/vins-application/tree/Intel-T265), [intel D435i](https://github.com/engcang/VINS-application/tree/Intel-D435i), [ZED-mini](https://github.com/engcang/VINS-application/tree/zed-mini), [Pointgrey_myAHRS](https://github.com/engcang/VINS-application/tree/Pointgrey_MyAHRS+), [FlightGoggles](https://github.com/engcang/vins-application/tree/flightgoggles)
     + Including **config.yaml** files and **Calibration data**
@@ -18,6 +18,7 @@
 + VINS-Fusion [CPU version](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion) / [GPU version](https://github.com/pjrambo/VINS-Fusion-gpu)
     + Mainly uses `Ceres-solver`, `OpenCV` and `Eigen` and **performance of VINS is strongly proportional to CPU performance and some parameters**
 + [VINS-Fisheye](https://github.com/xuhao1/VINS-Fisheye): VINS-Fusion's extension with more `camera_models` and `CUDA` acceleration
+    + only for `OpenCV 3.4.1` and `Jetson TX2` (I guess, I failed on i9-10900k + RTX3080)
 + [OpenVINS](https://github.com/rpng/open_vins): MSCKF based VINS 
 
 ### 1. Parameters
@@ -540,6 +541,50 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 + **If want to try to deal with NaNs**, refer [here](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/pull/110)
 
 ---
+
+</details>
+
+### ● VINS-Fisheye
+#### only for `OpenCV 3.4.1` and `Jetson TX2` (I guess yet, I failed on i9-10900k + RTX3080)
+<details><summary>[click to see]</summary>
+
++ Get `libSGM` and install with `OpenCV` option as below:
+~~~shell
+$ git clone https://github.com/fixstars/libSGM
+$ cd libSGM
+$ git submodule update --init
+
+check and edit CMakeLists.txt
+$ gedit CMakeLists.txt
+Edit
+BUILD_OPENCV_WRAPPER=ON and ENABLE_TESTS=ON
+
+$ mkdir build && cd build
+$ cmake .. -DBUILD_OPENCV_WRAPPER=ON -DENABLE_TESTS=ON
+$ make -j6
+$ sudo make install
+
+do test
+$ cd libSGM/build/test && ./sgm-test
+~~~
+
++ Get `VINS-Fisheye` and install
+~~~shell
+$ cd ~/catkin_ws/src
+$ git clone https://github.com/xuhao1/VINS-Fisheye
+$ cd ..
+
+build camera_models first
+$ catkin build camera_models
+
+$ gedit src/VINS-Fisheye/vins_estimator/CMakeLists.txt
+edit as below:
+set(ENABLE_BACKWARD false)
+or
+$ sudo apt install libdw-dev
+
+$ catkin build
+~~~
 
 </details>
 
