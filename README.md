@@ -8,8 +8,8 @@
 + [ROS packages](#ros-package)
 + [Disable IR Emittier](#disable-emitter)
 + [IMU calibration](#imu-calibration-recommended-here)
-+ [Kalibr (Calibration for Cam-IMU)]()
-2. [Results]()
++ [Kalibr (Calibration for Cam-IMU)](#kalibrcalibration-for-cameras-imu)
+2. [Results](#results)
 
 <br>
 
@@ -84,7 +84,9 @@ $ source ./devel/setup.bash
 
 </details>
 
-### ● IMU Calibration recommended [here](https://www.intel.com/content/dam/support/us/en/documents/emerging-technologies/intel-realsense-technology/RealSense_Depth_D435i_IMU_Calib.pdf)
+<br>
+
+## IMU Calibration recommended [here](https://www.intel.com/content/dam/support/us/en/documents/emerging-technologies/intel-realsense-technology/RealSense_Depth_D435i_IMU_Calib.pdf)
   <p align="center">
   <img src="https://github.com/engcang/VINS-application/blob/Intel-D435i/imu_calibration.png" width="500" hspace="30"/>
   </p>
@@ -94,16 +96,36 @@ $ source ./devel/setup.bash
 ## Kalibr(calibration for cameras-IMU)
 
 <details><summary>click to see</summary>
-  
+
++ Used [Kalibr](https://github.com/ethz-asl/kalibr) as [here](https://support.stereolabs.com/hc/en-us/articles/360012749113-How-can-I-use-Kalibr-with-the-ZED-Mini-camera-in-ROS-) for ZED-mini camera
++ a lot referred [here](https://github.com/intel-ros/realsense/issues/563) for imu models, configuration, emitter disabling, and VIO result
++ First, calibrate cameras
+~~~shell
+$ kalibr_calibrate_cameras --bag Kalibr_data.bag --topics /camera/infra1/image_rect_raw /camera/infra2/image_rect_raw --models pinhole-radtan pinhole-radtan --target april_grid.yaml
+~~~
++ Then, calibrate IMU with cameras
+~~~shell
+$ kalibr_calibrate_imu_camera --bag Kalibr_data.bag --cam camchain-Kalibr_data.yaml --imu imu-params.yaml --target april_grid.yaml
+~~~
++ for `imu-params.yaml`, I used
+~~~xml
+#Accelerometers
+accelerometer_noise_density: 0.001865   #Noise density (continuous-time)
+accelerometer_random_walk:   0.0002   #Bias random walk
+
+#Gyroscopes
+gyroscope_noise_density:     0.0018685   #Noise density (continuous-time)
+gyroscope_random_walk:       0.000004   #Bias random walk
+
+rostopic:                    /camera/imu      #the IMU ROS topic
+update_rate:                 400.0     #Hz (for discretization of the values above)
+~~~
+
 </details>
 
+<br>
+
 ## Results
-
-### ● First trial
-+ used camera intrinsic from **/camera/infra1/rect_image_raw/camera_info**
-+ set launch file **rs_camera.launch** as [reference](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/blob/master/config/realsense_d435i/rs_camera.launch)
-+ worked quite well
-
-### ● After that,
-+ used [Kalibr](https://github.com/ethz-asl/kalibr) and launch file as in this [repository](https://github.com/engcang/vins-application#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter).
-+ a lot referred [here](https://github.com/intel-ros/realsense/issues/563) for imu models, configuration, emitter disabling, and VIO result
++ Real World VINS(GPU+version, Stereo) with Intel D435i, on Xavier, max CPU clocked: [youtube](https://youtu.be/b3l1TeNKyeU) and [youtube2](https://youtu.be/7yMDqiO2A2Q) : screen
++ VINS-Fusion (Stereo) with Intel D435i and Pixhawk4 mini fused with T265 camera: [here](https://engcang.github.io/mavros_vision_pose/)
++ VINS-Fusion (stereo) with Intel D435i and Pixhawk4 mini on 1km long underground tunnel: [here](https://youtu.be/Gx0PSMCeR1g)
