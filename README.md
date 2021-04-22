@@ -4,7 +4,7 @@
 
 ## Index
 1. Prerequisites
-+ [SDK](#-requirements---sdk)
++ [SDK](#requirements---sdk)
 + [ROS packages](#ros-package)
 + [Disable IR Emittier](#disable-emitter)
 + [IMU calibration](#imu-calibration-recommended-here)
@@ -81,15 +81,23 @@ $ source ./devel/setup.bash
   <p align="center">
   <img src="https://github.com/engcang/image-files/blob/master/vins/2.png" width="500" hspace="30"/>
   </p>
-  
+
+</details>
+
 ### ● IMU Calibration recommended [here](https://www.intel.com/content/dam/support/us/en/documents/emerging-technologies/intel-realsense-technology/RealSense_Depth_D435i_IMU_Calib.pdf)
   <p align="center">
   <img src="https://github.com/engcang/VINS-application/blob/Intel-D435i/imu_calibration.png" width="500" hspace="30"/>
   </p>
 
+<br>
+
+## Kalibr(calibration for cameras-IMU)
+
+<details><summary>click to see</summary>
+  
 </details>
 
-<br>
+## Results
 
 ### ● First trial
 + used camera intrinsic from **/camera/infra1/rect_image_raw/camera_info**
