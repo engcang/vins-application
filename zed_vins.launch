@@ -1,9 +1,0 @@
-<launch>
-
-    <include file="$(find zed_wrapper)/launch/zed.launch"/>
-    <include file="$(find vins)/launch/vins_rviz.launch"/>
-
-    <node name="hector" pkg="hector_trajectory_server" type="hector_trajectory_server"/>
-    <node name="VINS" pkg="vins" type="vins_node" args="$(find vins)/../config/zed/zed_imu_config.yaml" output="screen"/>
-
-</launch>
