@@ -108,7 +108,7 @@ $ kalibr_calibrate_cameras --bag Kalibr_data.bag --topics /camera/infra1/image_r
 $ kalibr_calibrate_imu_camera --bag Kalibr_data.bag --cam camchain-Kalibr_data.yaml --imu imu-params.yaml --target april_grid.yaml
 ~~~
 + for `imu-params.yaml`, I used
-~~~xml
+~~~python
 #Accelerometers
 accelerometer_noise_density: 0.001865   #Noise density (continuous-time)
 accelerometer_random_walk:   0.0002   #Bias random walk
