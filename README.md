@@ -88,3 +88,4 @@ update_rate:                 200.0      #Hz (for discretization of the values ab
 <br>
 
 ## Results
++ VINS-Fusion GPU version test with T265: [here](https://youtu.be/8w86LeB6fns)
