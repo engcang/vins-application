@@ -6,7 +6,7 @@
     + Including **config.yaml** files and **Calibration data**
     + git clone -b <branch_name> --single-branch https://github.com/engcang/vins-application
 + Tested on: Jetson Xavier NX, Jetson Xavier AGX, Jetson TX2, Intel i9-10900k, i7-6700k, i7-8700k, i5-9600k
-### Result clips: [here](#5-comparison--application)
+### Result clips: [here](#4-comparison--application)
 ### VINS-Fusion for PX4 with Masking: [here](https://github.com/engcang/vins-application/tree/master/vins-fusion-px4)
 + frame changed from `world` to `map`
 
@@ -606,6 +606,8 @@ $ catkin build
 + VINS-Fusion (Stereo) based autonomous flight and 3D mapping using RGB-D camera: [youtube](https://youtu.be/5t-6g7UWA7o)
 + VINS-Fusion (Stereo) with Intel D435i and Pixhawk4 mini fused with T265 camera: [here](https://engcang.github.io/mavros_vision_pose/)
 + VINS-Fusion (stereo) with Intel D435i and Pixhawk4 mini on 1km long underground tunnel: [here](https://youtu.be/Gx0PSMCeR1g)
+
++ VINS-Fusion GPU version test using T265: [here](https://youtu.be/8w86LeB6fns)
 
 ---
 
