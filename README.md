@@ -97,6 +97,9 @@ $ source ./devel/setup.bash
 
 <details><summary>click to see</summary>
 
+
+### Remember to use `pinhole-radtan` model in Kalibr and `pinhole` model in VINS-Fusion <br> use `linear_interpolation` for `unite_imu_method` in realsense camera `launch` file
+
 + Used [Kalibr](https://github.com/ethz-asl/kalibr) as [here](https://support.stereolabs.com/hc/en-us/articles/360012749113-How-can-I-use-Kalibr-with-the-ZED-Mini-camera-in-ROS-) for ZED-mini camera
 + a lot referred [here](https://github.com/intel-ros/realsense/issues/563) for imu models, configuration, emitter disabling, and VIO result
 + First, calibrate cameras
