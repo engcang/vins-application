@@ -64,7 +64,7 @@ $ source ./devel/setup.bash
   
 ### ● IMU Calibration recommended [here](https://www.intel.com/content/dam/support/us/en/documents/emerging-technologies/intel-realsense-technology/RealSense_Depth_D435i_IMU_Calib.pdf)
   <p align="center">
-  <img src="https://github.com/engcang/VINS-application/blob/Intel-D435i/d435i/imu_calibration.png" width="500" hspace="30"/>
+  <img src="https://github.com/engcang/VINS-application/blob/Intel-D435i/imu_calibration.png" width="500" hspace="30"/>
   </p>
 
 <br>
