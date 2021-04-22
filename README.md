@@ -44,18 +44,19 @@
 
 
 # 1. Parameters
-### ● VINS-Fusion: <details><summary>[click to see]</summary>
+### ● VINS-Fusion: 
+
+<details><summary>[click to see]</summary>
     
 + Camera frame rate 
     + lower - low time delay, poor performance
     + higher - high time delay, better performance
     + has to be set from **camera launch file**: 10~30hz
-##### from src/VINS/config/<config_file_name>.yaml
 + Max tracking Feature number **max_cnt**
     + 100~150, same correlation as camera frame rates
-+ time offset **estimated_td: 1**, **td : value from [kalibr](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter)**
++ time offset between IMU and cameras **estimated_td: 1**, **td : value from [kalibr](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter)**
 + GPU acceleration **use_gpu: 1**, **use_gpu_acc_flow: 1** (for GPU version)
-+ Thread numbers **multiple_thread: enabling multi-threads**
++ Threads enabling - **multiple_thread: 1**
 
 </details>
 
