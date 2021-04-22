@@ -106,7 +106,7 @@ $ make install
 
 </details>
 
-<br><br>
+<br>
 
 ### ● CUDA: Necessary for GPU version
 <details><summary>[click to see]</summary>
@@ -189,7 +189,7 @@ $ sudo chmod a+r <CUDA_PATH>/lib64/libcudnn*   #ex /usr/local/cuda-11.1/lib64/li
 
 </details>
 
-<br> <br>
+<br>
 
 ### ● OpenCV with CUDA: Necessary for GPU version
 <details><summary>[click to see]</summary>
@@ -260,7 +260,7 @@ compilation terminated. --> **for CUDA version 10**
 
 </details>
 
-<br><br>
+<br>
 
 ### ● (Optional) if also **contrib** for OpenCV should be built,
 <details><summary>[click to see]</summary>
@@ -340,7 +340,7 @@ $ sudo make install
 
 </details>
 
-<br><br>
+<br>
 
 ### ● CV_Bridge with built OpenCV: Necessary for whom built OpenCV manually from above
 #### ● CV_bridge with OpenCV 3.X version
@@ -424,7 +424,7 @@ $ cd .. && catkin build cv_bridge
 
 </details>
 
-<br><br>
+<br>
 
 ### ● USB performance : Have to improve performance of sensors with USB
 <details><summary>[click to see]</summary>
@@ -477,7 +477,7 @@ from PIL import Image
 
 </details>
 
-<br><br>
+<br>
 
 ### ● IMU-Camera rotational extrinsic example
 <details><summary>[click to see]</summary>
@@ -533,8 +533,6 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 
 </details>
 
-<br>
-
 ### ● Trouble shooting for VINS-Fusion
 <details><summary>[click to see]</summary>
     
@@ -571,5 +569,3 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 ---
 
 </details>
-
-<br>
