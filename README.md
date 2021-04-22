@@ -1,9 +1,21 @@
-# VINS-application
+# VINS-application: Intel-D435i
 + Build Process and explanation [here](https://github.com/engcang/VINS-application)
-+ Installation of Intel Realsense D435i for Jetson TX2 and Xavier
+<br>
+
+## Index
+1. Prerequisites
++ [SDK](#requirements---sdk)
++ [ROS packages](#-ros-package)
++ [Disable IR Emittier](-disable-emitter)
++ [IMU calibration](#-imu-calibration-recommended-here)
++ [Kalibr (Calibration for Cam-IMU)]()
+2. [Results]()
+
 <br>
 
 ## Requirements - [SDK](https://github.com/IntelRealSense/librealsense)
+<details><summary>click to see</summary>
+
 ### ● Necessary for ROS too.
 #### ● For Xavier
 + **Old version**: [here](https://github.com/jetsonhacks/buildLibrealsense2Xavier) -> SDK version is **v2.17.1** and need **JetPack 4.1 for L4T 31.1** or have to be flashed again...
@@ -13,7 +25,6 @@
   + **Kernel build is not needed anymore!!!**
 + **Old version**: [here](https://github.com/jetsonhacks/buildLibrealsense2TX) -> SDK version is **v2.13.0** and need  **JetPack3.2.1 for L4T 28.2 / L4T 28.2.1** or have to be flashed again...
   + video [link](https://youtu.be/mvDCOc-aoMU) or jetsonhacks [article](https://www.jetsonhacks.com/2018/07/10/librealsense-update-nvidia-jetson-tx-dev-kits/)
-
 
 #### ● Xavier NX, x86_64 -> do as follows:
 + For Xavier NX, refer [here](https://github.com/zinuok/Xavier_NX) and [here](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md)
@@ -33,9 +44,13 @@
     $ reboot
   ~~~
 
-<br><br>
+</details>
+
+<br>
 
 ### ● ROS package
+<details><summary>click to see</summary>
+  
 + Intel Realsense2 ROS [here](https://github.com/intel-ros/realsense)
   + For Xavier : -> ROS Wrapper 2.0 version should be **v2.1.3** for SDK v2.17.1 [down link](https://github.com/intel-ros/realsense/archive/2.1.3.zip)
 ~~~shell
@@ -48,9 +63,14 @@ $ source ./devel/setup.bash
 + Trouble shooting **"Could not find a package configuration file provided by "ddynamic_reconfigure"**
   + `$ sudo apt install ros-<distro>-ddynamic-reconfigure`
 
+</details>
+
 <br>
 
 ### ● Disable **Emitter**
+
+<details><summary>click to see</summary>
+  
 + Disable **Emitter** using **/usr/local/bin/realsense-viewer**, save the **json** file and
   <p align="center">
   <img src="https://github.com/engcang/image-files/blob/master/vins/1.png" width="600" hspace="50"/>
@@ -66,6 +86,8 @@ $ source ./devel/setup.bash
   <p align="center">
   <img src="https://github.com/engcang/VINS-application/blob/Intel-D435i/imu_calibration.png" width="500" hspace="30"/>
   </p>
+
+</details>
 
 <br>
 
