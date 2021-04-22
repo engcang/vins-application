@@ -36,7 +36,7 @@
 #### ● [IMU-Camera rotational extrinsic](#-imu-camera-rotational-extrinsic-example): Rotational extrinsic between IMU and Cam
 ### 3. Installation and Execution
 + [VINS-Fusion](#-vins-fusion-1)  /  VINS-Fisheye  /  OpenVINS
-+ Trouble shooting for [VINS-Fusion](#-trouble-shooting-for-vins-fusion)  /  Trouble shooting for VINS-Fisheye  /  Trouble shooting for OpenVINS
++ `Trouble shooting` for [VINS-Fusion](#-trouble-shooting-for-vins-fusion)  /  VINS-Fisheye  /  OpenVINS
 ### 4. Comparison & Application results
 + [VINS-Fusion](#-vins-fusion-2)  /  VINS-Fisheye  /  OpenVINS
 
