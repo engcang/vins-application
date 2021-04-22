@@ -436,9 +436,9 @@ $ cd .. && catkin build cv_bridge
   $ sudo ./flash.sh -k kernel -C "usbcore.usbfs_memory_mb=1000" -k kernel-dtb jetson-xavier mmcblk0p1
   ~~~
 
-</details>
-
 ---
+
+</details>
 
 <br><br>
 
