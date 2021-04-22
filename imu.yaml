@@ -1,0 +1,36 @@
+#Accelerometers
+accelerometer_noise_density: 1.85e-03   #Noise density (continuous-time)
+accelerometer_random_walk:   2.548e-05   #Bias random walk
+
+#Gyroscopes
+gyroscope_noise_density:     1.094e-02   #Noise density (continuous-time)
+gyroscope_random_walk:       5.897e-04   #Bias random walk
+
+rostopic:                    /camera/imu      #the IMU ROS topic
+update_rate:                 200.0      #Hz (for discretization of the values above)
+
+
+###d435i
+##Accelerometers
+#accelerometer_noise_density: 0.001865   #Noise density (continuous-time)
+#accelerometer_random_walk:   0.0002   #Bias random walk
+
+##Gyroscopes
+#gyroscope_noise_density:     0.0018685   #Noise density (continuous-time)
+#gyroscope_random_walk:       0.000004   #Bias random walk
+
+#rostopic:                    /camera/imu      #the IMU ROS topic
+#update_rate:                 400.0     #Hz (for discretization of the values above)
+
+
+###zed mini
+##Accelerometers
+#accelerometer_noise_density: 1.4e-03   #Noise density (continuous-time)
+#accelerometer_random_walk:   8.0e-05   #Bias random walk
+
+##Gyroscopes
+#gyroscope_noise_density:     8.6e-05   #Noise density (continuous-time)
+#gyroscope_random_walk:       2.2e-06   #Bias random walk
+
+#rostopic:                    /zed/zed_node/imu/data_raw      #the IMU ROS topic
+#update_rate:                 800.0     #Hz (for discretization of the values above)
