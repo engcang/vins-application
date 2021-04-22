@@ -2,10 +2,10 @@
 ## Mainly focused on Build process and explanation
 ### ● `VINS-Fusion`, `VINS-Fisheye`(pending), `OpenVINS`(pending)
 ## This repository contains many branches! as following: 
-+ **Branch**: [ZED-mini](https://github.com/engcang/VINS-application/tree/zed-mini), [Pointgrey_myAHRS](https://github.com/engcang/VINS-application/tree/Pointgrey_MyAHRS+), [intel D435i](https://github.com/engcang/VINS-application/tree/Intel-D435i), [FlightGoggles](https://github.com/engcang/vins-application/tree/flightgoggles)
++ **Branch**: [intel T265](https://github.com/engcang/vins-application/tree/Intel-T265), [intel D435i](https://github.com/engcang/VINS-application/tree/Intel-D435i), [ZED-mini](https://github.com/engcang/VINS-application/tree/zed-mini), [Pointgrey_myAHRS](https://github.com/engcang/VINS-application/tree/Pointgrey_MyAHRS+), [FlightGoggles](https://github.com/engcang/vins-application/tree/flightgoggles)
     + Including **config.yaml** files and **Calibration data**
-    + git clone -b <branch_name> --single-branch https://github.com/engcang/VINS-application
-+ Tested on: Jetson Xavier NX, Jetson Xavier AGX, Jetson TX2, Intel i7-6700k, i7-8700k, i9-10900k, i5-9600k
+    + git clone -b <branch_name> --single-branch https://github.com/engcang/vins-application
++ Tested on: Jetson Xavier NX, Jetson Xavier AGX, Jetson TX2, Intel i9-10900k, i7-6700k, i7-8700k, i5-9600k
 ### Result clips: [here](#5-comparison--application)
 ### VINS-Fusion for PX4 with Masking: [here](https://github.com/engcang/vins-application/tree/master/vins-fusion-px4)
 + frame changed from `world` to `map`
@@ -14,9 +14,17 @@
 <br>
 
 # Index
-### 1. [Algorithm & Gpu, Cpu version](#1-algorithm--gpu-cpu-version-1)
-### 2. [Parameters](#2-parameters-1)
-### 3. Prerequisites
+### 0. Algorithms:
++ VINS-Fusion [CPU version](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion) / [GPU version](https://github.com/pjrambo/VINS-Fusion-gpu)
+    + Mainly uses `Ceres-solver`, `OpenCV` and `Eigen` and **performance of VINS is strongly proportional to CPU performance and some parameters**
++ [VINS-Fisheye](https://github.com/xuhao1/VINS-Fisheye): VINS-Fusion's extension with more `camera_models` and `CUDA` acceleration
++ [OpenVINS](https://github.com/rpng/open_vins): MSCKF based VINS 
+
+### 1. Parameters
++ VINS-Fusion
++ VINS-Fisheye
++ OpenVINS
+### 2. Prerequisites
 #### ● [Ceres solver and Eigen](#-ceres-solver-and-eigen-mandatory-for-vins): Mandatory for VINS (build Eigen first)
 #### ● [CUDA](#-cuda-necessary-for-gpu-version-1): Necessary for GPU version
 + [optional, but recommended with CUDA: cuDNN](#-optional-cudnn-strong-library-for-neural-network-used-with-cuda) Optional but strong when used with CUDA
@@ -29,20 +37,15 @@
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb): Have to improve performance of sensors with USB
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter): Synchronization, time offset, extrinsic parameter
 #### ● [IMU-Camera rotational extrinsic](#-imu-camera-rotational-extrinsic-example): Rotational extrinsic between IMU and Cam
-### 4. [Installation and Execution](#4-installation-and-execution-1)
-### 5. [Comparison & Application results](#5-comparison--application)
+### 3. [Installation and Execution](#3-installation-and-execution-1)
+### 4. [Comparison & Application results](#4-comparison--application)
 
 <br><br><br>
 
-# 1. Algorithm & GPU, CPU version
-+ Mainly uses `Ceres-solver`, `OpenCV` and `Eigen` and **performance of VINS is strongly proportional to CPU performance and some parameters**
-+ VINS-Fusion [CPU version](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion)
-+ VINS-Fusion [GPU version](https://github.com/pjrambo/VINS-Fusion-gpu)
-+ [VINS-Fisheye](https://github.com/xuhao1/VINS-Fisheye)
-+ [OpenVINS](https://github.com/rpng/open_vins)
-<br>
 
-# 2. Parameters
+# 1. Parameters
+### ● VINS-Fusion: <details><summary>[click to see]</summary>
+    
 + Camera frame rate 
     + lower - low time delay, poor performance
     + higher - high time delay, better performance
@@ -53,6 +56,9 @@
 + time offset **estimated_td: 1**, **td : value from [kalibr](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter)**
 + GPU acceleration **use_gpu: 1**, **use_gpu_acc_flow: 1** (for GPU version)
 + Thread numbers **multiple_thread: enabling multi-threads**
+
+</details>
+
 <br>
 
 # 3. Prerequisites
@@ -432,7 +438,7 @@ from PIL import Image
 
 <br><br><br>
 
-# 4. Installation and Execution
+# 3. Installation and Execution
 + git clone and build from source
 ~~~shell
 $ cd ~/catkin_ws/src
@@ -472,7 +478,7 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 
 <br>
 
-# 5. Comparison & Application
+# 4. Comparison & Application
 + /tf vs VINS-Mono on FlightGoggles: [youtube](https://youtu.be/U4TJ7ZyfWD8), with CPU [youtube](https://www.youtube.com/watch?v=1QUypn7GbXc)
 + Loop Fusion vs vins node on FlightGoggles: [youtube](https://youtu.be/cvhI_1XQQt4)
 + Real World VINS-Mono with pointgrey cam, myAHRS+ imu on Jetson Xavier: [youtube](https://youtu.be/4qJYoND9OYk), moved faster : [youtube](https://youtu.be/DN-Jao5aKRw)
