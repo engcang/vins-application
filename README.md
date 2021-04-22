@@ -21,7 +21,7 @@
 + [OpenVINS](https://github.com/rpng/open_vins): MSCKF based VINS 
 
 ### 1. Parameters
-+ VINS-Fusion
++ [VINS-Fusion](#-vins-fusion)
 + VINS-Fisheye
 + OpenVINS
 ### 2. Prerequisites
@@ -37,8 +37,12 @@
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb): Have to improve performance of sensors with USB
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter): Synchronization, time offset, extrinsic parameter
 #### ● [IMU-Camera rotational extrinsic](#-imu-camera-rotational-extrinsic-example): Rotational extrinsic between IMU and Cam
-### 3. [Installation and Execution](#3-installation-and-execution-1)
-### 4. [Comparison & Application results](#4-comparison--application)
+### 3. Installation and Execution
++ VINS-Fusion / Trouble shooting for VINS-Fusion
++ VINS-Fisheye / Trouble shooting for VINS-Fisheye
++ OpenVINS / Trouble shooting for OpenVINS
+### 4. Comparison & Application results
++ VINS-Fusion / VINS-Fisheye / OpenVINS
 
 <br><br><br>
 
@@ -440,6 +444,10 @@ from PIL import Image
 <br><br><br>
 
 # 3. Installation and Execution
+### ● VINS-Fusion
+
+<details><summary>[click to see]</summary>
+    
 + git clone and build from source
 ~~~shell
 $ cd ~/catkin_ws/src
@@ -451,7 +459,7 @@ $ catkin build
 ~~~
 **Before build VINS-Fusion, process below could be required.**
 
-+ For GPU version, Edit CMakeLists.txt for loop_fusion and vins_estimator
++ For `GPU` version, Edit `CMakeLists.txt` for `loop_fusion` and `vins_estimator`
 ~~~shell
 $ cd ~/catkin_ws/src/VINS-Fusion-gpu/loop_fusion && gedit CMakeLists.txt
 or
@@ -467,6 +475,8 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 ~~~
 
+</details>
+
 <br>
 
 ### ● Trouble shooting for VINS-Fusion
@@ -480,6 +490,9 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 <br>
 
 # 4. Comparison & Application
+### ● VINS-Fusion
+<details><summary>[click to see]</summary>
+    
 + /tf vs VINS-Mono on FlightGoggles: [youtube](https://youtu.be/U4TJ7ZyfWD8), with CPU [youtube](https://www.youtube.com/watch?v=1QUypn7GbXc)
 + Loop Fusion vs vins node on FlightGoggles: [youtube](https://youtu.be/cvhI_1XQQt4)
 + Real World VINS-Mono with pointgrey cam, myAHRS+ imu on Jetson Xavier: [youtube](https://youtu.be/4qJYoND9OYk), moved faster : [youtube](https://youtu.be/DN-Jao5aKRw)
@@ -492,4 +505,7 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 + VINS-Fusion (Stereo) based autonomous flight and 3D mapping using RGB-D camera: [youtube](https://youtu.be/5t-6g7UWA7o)
 + VINS-Fusion (Stereo) with Intel D435i and Pixhawk4 mini fused with T265 camera: [here](https://engcang.github.io/mavros_vision_pose/)
 + VINS-Fusion (stereo) with Intel D435i and Pixhawk4 mini on 1km long underground tunnel: [here](https://youtu.be/Gx0PSMCeR1g)
+
+</details>
+
 <br>
