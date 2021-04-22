@@ -66,8 +66,11 @@
 
 <br>
 
-# 3. Prerequisites
+# 2. Prerequisites
 ### ● Ceres solver and Eigen: Mandatory for VINS
+
+<details><summary>[click to see]</summary>
+    
 + Eigen latest Stable version below [new home](https://gitlab.com/libeigen/eigen) or [old home](http://eigen.tuxfamily.org/index.php?title=Main_Page)
 ~~~shell
 $ wget -O eigen.zip https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.zip #check version
@@ -99,9 +102,13 @@ $ make install
 
 ---
 
-<br><br><br>
+</details>
+
+<br><br>
 
 ### ● CUDA: Necessary for GPU version
+<details><summary>[click to see]</summary>
+    
 + Install **CUDA** and **Graphic Driver**: 
 ##### ● (If you will use TensorRT) The latest TensorRT(7.2.3) supports CUDA 10.2, 11.0 update 1, 11.1 update 1, ~~and 11.2 update 1.~~ [doc](https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt-723/release-notes/tensorrt-7.html#rel_7-2-3)
 + Ubuntu
@@ -157,10 +164,16 @@ $ sudo sh cuda_<version>_linux.run
     + turn off `Secure Boot` as below [reference](https://wiki.ubuntu.com/UEFI/SecureBoot/DKMS)
     + If you got this case, you should turn off `Secure Boot` and then turn off `X server` (as above) both.
 
+</details>
+
+---
+
 <br>
 
 
 ### ● (optional) cuDNN: strong library for Neural Network used with CUDA
+<details><summary>[click to see]</summary>
+    
 + Download [here](https://developer.nvidia.com/cudnn)
 + install as below: [reference in Korean](https://cafepurple.tistory.com/39)
 ~~~shell
@@ -170,11 +183,15 @@ $ sudo cp -P extracted_cuda/lib64/* <CUDA_PATH>/lib64/   #ex /usr/local/cuda-11.
 $ sudo chmod a+r <CUDA_PATH>/lib64/libcudnn*   #ex /usr/local/cuda-11.1/lib64/libcudnn*
 ~~~
 
+</details>
+
 ---
 
-<br> <br> <br>
+<br> <br>
 
 ### ● OpenCV with CUDA: Necessary for GPU version
+<details><summary>[click to see]</summary>
+    
 + Build OpenCV with CUDA - references: [link 1](https://webnautes.tistory.com/1030), [link 2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh)
     + for Xavier do as below or sh file from jetsonhacks [here](https://github.com/jetsonhacks/buildOpenCVXavier)
     + If want to use **C API (e.g. Darknet YOLO)** consider: 
@@ -237,9 +254,15 @@ compilation terminated. --> **for CUDA version 10**
     + $ sudo apt-get install nvidia-cuda-toolkit
     + or Edit *FindCUDA.cmake* and *OpenCVDetectCUDA.cmake*
     
+</details>
+
+---
+
 <br><br>
 
 ### ● (Optional) if also **contrib** for OpenCV should be built,
+<details><summary>[click to see]</summary>
+    
 + add **-D OPENCV_EXTRA_MODULES_PATH** option as below:
 
 ~~~shell
@@ -272,9 +295,13 @@ $ time make -j1 # important, use only one core to prevent compile error
 $ sudo make install
 ~~~
 
+</details>
+
 <br>
 
 ### ● (Optional) if also **cuDNN** for OpenCV with CUDA should be built,
+<details><summary>[click to see]</summary>
+    
 + add **-D OPENCV_DNN_CUDA=ON** and **-D WITH_CUDNN=ON** options as below:
 ~~~shell
 $ cd <opencv_source_directory>/build
@@ -305,12 +332,16 @@ $ time make -j1 #use less cores to prevent compile error
 $ sudo make install
 ~~~
 
+</details>
+
 ---
 
-<br><br><br>
+<br><br>
 
 ### ● CV_Bridge with built OpenCV: Necessary for whom built OpenCV manually from above
 #### ● CV_bridge with OpenCV 3.X version
+<details><summary>[click to see]</summary>
+    
 + For GPU version, if OpenCV with CUDA was built manually, build cv_bridge manually also
 ~~~shell
 $ cd ~/catkin_ws/src && git clone https://github.com/ros-perception/vision_opencv
@@ -335,9 +366,13 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake) #under catkin_python_setup()
 $ cd .. && catkin build cv_bridge
 ~~~
 
+</details>
+
 <br>
 
 #### ● CV_bridge with OpenCV 4.X version
+<details><summary>[click to see]</summary>
+    
 + Referred [here](https://github.com/ros-perception/vision_opencv/issues/272#issuecomment-471311300)
 ~~~shell
 $ cd ~/catkin_ws/src && git clone https://github.com/ros-perception/vision_opencv
@@ -380,11 +415,15 @@ if (OpenCV_VERSION_MAJOR VERSION_EQUAL 4)
 $ cd .. && catkin build cv_bridge
 ~~~
 
+</details>
+
 ---
 
-<br><br><br>
+<br><br>
 
 ### ● USB performance : Have to improve performance of sensors with USB
+<details><summary>[click to see]</summary>
+    
   + Link : [here](https://github.com/KumarRobotics/flea3#optimizing-usb-performance-under-linux) for x86_64 desktops
   + TX1/TX2 : [here](https://www.matrix-vision.com/manuals/mvBlueFOX3/mvBC_page_quickstart.html#mvBC_subsubsection_quickstart_linux_requirements_optimising_usb)
   + For Xavier : [here](https://devtalk.nvidia.com/default/topic/1049581/jetson-agx-xavier/change-usbcore-usbfs_memory_mb/)
@@ -392,11 +431,15 @@ $ cd .. && catkin build cv_bridge
   $ sudo ./flash.sh -k kernel -C "usbcore.usbfs_memory_mb=1000" -k kernel-dtb jetson-xavier mmcblk0p1
   ~~~
 
+</details>
+
 ---
 
-<br><br><br>
+<br><br>
 
 ### ● Calibration : Kalibr -> synchronization, time offset, extrinsic parameter
+<details><summary>[click to see]</summary>
+    
 + [Kalibr](https://github.com/ethz-asl/kalibr) -> synchronization, time offset <br>
 + For ZED cameras : [here](https://support.stereolabs.com/hc/en-us/articles/360012749113-How-can-I-use-Kalibr-with-the-ZED-Mini-camera-in-ROS-)
 + **When Calibrating Fisheye camera like T265**
@@ -425,11 +468,15 @@ from PIL import Image
  # comment from line 201 to 205
 ~~~
 
+</details>
+
 ---
 
-<br><br><br>
+<br><br>
 
 ### ● IMU-Camera rotational extrinsic example
+<details><summary>[click to see]</summary>
+    
 + Between ROS standard body(IMU) and camera
   <p align="center">
   <img src="https://github.com/engcang/vins-application/blob/master/extrinsic.png" width="600"/>
@@ -439,9 +486,11 @@ from PIL import Image
   <img src="https://github.com/engcang/vins-application/blob/master/pitching.png" width="600"/>
   </p>
 
+</details>
+
 ---
 
-<br><br><br>
+<br><br>
 
 # 3. Installation and Execution
 ### ● VINS-Fusion
@@ -480,12 +529,16 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 <br>
 
 ### ● Trouble shooting for VINS-Fusion
+<details><summary>[click to see]</summary>
+    
 + Aborted error when running **vins_node** : 
 ~~~shell
  $ echo "export MALLOC_CHECK_=0" >> ~/.bashrc
  $ source ~/.bashrc
 ~~~
 + **If want to try to deal with NaNs**, refer [here](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion/pull/110)
+
+</details>
 
 <br>
 
