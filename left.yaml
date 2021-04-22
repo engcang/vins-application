@@ -1,0 +1,18 @@
+%YAML:1.0
+---
+model_type: MEI
+camera_name: camera
+image_width: 848
+image_height: 800
+mirror_parameters:
+   xi: 0.9435421743992218
+distortion_parameters:
+   k1: -0.2572700733153039
+   k2: -0.03633589137983016
+   p1: 0.0010301519370796758
+   p2: -0.0004670121341190266
+projection_parameters:
+   gamma1: 556.298481510608
+   gamma2: 554.5690511397764
+   u0: 420.49786515023254
+   v0: 411.95039073349835
