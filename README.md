@@ -1,6 +1,6 @@
 # VINS-application
 ## Mainly focused on Build process and explanation
-### ● `VINS-Fusion`, `VINS-Fisheye`(pending, only for OpenCV 3.4.1), `OpenVINS`(pending)
+### ● `VINS-Fusion`, `VINS-Fisheye`, `OpenVINS`(pending)
 ## This repository contains many branches! as following: 
 + **Branch**: [intel T265](https://github.com/engcang/vins-application/tree/Intel-T265), [intel D435i](https://github.com/engcang/VINS-application/tree/Intel-D435i), [ZED-mini](https://github.com/engcang/VINS-application/tree/zed-mini), [Pointgrey_myAHRS](https://github.com/engcang/VINS-application/tree/Pointgrey_MyAHRS+), [FlightGoggles](https://github.com/engcang/vins-application/tree/flightgoggles)
     + Including **config.yaml** files and **Calibration data**
