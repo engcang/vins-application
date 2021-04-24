@@ -36,7 +36,7 @@
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter): Synchronization, time offset, extrinsic parameter
 #### ● [IMU-Camera rotational extrinsic](#-imu-camera-rotational-extrinsic-example): Rotational extrinsic between IMU and Cam
 ### 3. Installation and Execution
-+ [VINS-Fusion](#-vins-fusion-1)  /  [VINS-Fisheye](#-vins-fisheye)  /  OpenVINS
++ [VINS-Fusion](#-vins-fusion-1)  /  [VINS-Fisheye](#-vins-fisheye)  /  [OpenVINS](#-openvins)
 + `Trouble shooting` for [VINS-Fusion](#-trouble-shooting-for-vins-fusion)  /  VINS-Fisheye  /  OpenVINS
 ### 4. Comparison & Application results
 + [VINS-Fusion](#-vins-fusion-2)  /  VINS-Fisheye  /  OpenVINS
@@ -633,6 +633,6 @@ $ catkin build
 <details><summary>[click to see]</summary>
 
 + OpenVINS on [KAIST VIO dataset](https://github.com/zinuok/kaistviodataset): [youtube]()
-    + use this [launch file]() including parameters
+    + use this [launch file](https://github.com/engcang/vins-application/blob/master/openvins/kaist.launch) including parameters
     
 </details>
