@@ -1,6 +1,6 @@
 # VINS-application
 ## Mainly focused on Build process and explanation
-### ● `VINS-Fusion`, `VINS-Fisheye`, `OpenVINS`(pending)
+### ● `VINS-Fusion`, `VINS-Fisheye`, `OpenVINS`
 ## This repository contains many branches! as following: 
 + **Branch**: [intel T265](https://github.com/engcang/vins-application/tree/Intel-T265), [intel D435i](https://github.com/engcang/VINS-application/tree/Intel-D435i), [ZED-mini](https://github.com/engcang/VINS-application/tree/zed-mini), [Pointgrey_myAHRS](https://github.com/engcang/VINS-application/tree/Pointgrey_MyAHRS+), [FlightGoggles](https://github.com/engcang/vins-application/tree/flightgoggles)
     + Including **config.yaml** files and **Calibration data**
@@ -39,7 +39,7 @@
 + [VINS-Fusion](#-vins-fusion-1)  /  [VINS-Fisheye](#-vins-fisheye)  /  [OpenVINS](#-openvins)
 + `Trouble shooting` for [VINS-Fusion](#-trouble-shooting-for-vins-fusion)  /  VINS-Fisheye  /  OpenVINS
 ### 4. Comparison & Application results
-+ [VINS-Fusion](#-vins-fusion-2)  /  VINS-Fisheye  /  OpenVINS
++ [VINS-Fusion](#-vins-fusion-2)  /  VINS-Fisheye  /  [OpenVINS](#-openvins-1)
 
 <br><br><br>
 
@@ -592,7 +592,7 @@ $ catkin build
 
 <details><summary>[click to see]</summary>
 
-+ Get `OpenVINS` and install [doc](https://docs.openvins.com/gs-installing.html), [git](https://github.com/rpng/open_vins)
++ Get `OpenVINS` and install: refer [doc](https://docs.openvins.com/gs-installing.html), [git](https://github.com/rpng/open_vins)
 ~~~shell
 $ cd ~/catkin_ws/src
 $ git clone https://github.com/rpng/open_vins/
@@ -632,7 +632,7 @@ $ catkin build
 ### ● OpenVINS
 <details><summary>[click to see]</summary>
 
-+ OpenVINS on [KAIST VIO dataset](https://github.com/zinuok/kaistviodataset): [youtube]()
++ OpenVINS on [KAIST VIO dataset](https://github.com/zinuok/kaistviodataset): result [youtube](https://youtu.be/Ye8xcKH4otY)
     + use this [launch file](https://github.com/engcang/vins-application/blob/master/openvins/kaist.launch) including parameters
     
 </details>
