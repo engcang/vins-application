@@ -588,9 +588,25 @@ $ catkin build
 
 </details>
 
+### ● OpenVINS
+
+<details><summary>[click to see]</summary>
+
++ Get `OpenVINS` and install [doc](https://docs.openvins.com/gs-installing.html), [git](https://github.com/rpng/open_vins)
+~~~shell
+$ cd ~/catkin_ws/src
+$ git clone https://github.com/rpng/open_vins/
+$ cd ..
+$ catkin build
+~~~
+
+</details>
+
 <br>
 
 # 4. Comparison & Application
++ Conversion ROS topics into nav_msgs/Path to visualize in Rviz: use this [github](https://github.com/engcang/tf_to_trajectory)
++ Conversion compressed Images into raw Images: use this [code](https://github.com/engcang/utility_codes/blob/master/compressed_to_raw.py)
 ### ● VINS-Fusion
 <details><summary>[click to see]</summary>
     
@@ -611,4 +627,12 @@ $ catkin build
 
 ---
 
+</details>
+
+### ● OpenVINS
+<details><summary>[click to see]</summary>
+
++ OpenVINS on [KAIST VIO dataset](https://github.com/zinuok/kaistviodataset): [youtube]()
+    + use this [launch file]() including parameters
+    
 </details>
