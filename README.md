@@ -7,7 +7,7 @@
     + git clone -b <branch_name> --single-branch https://github.com/engcang/vins-application
 + Tested on: Jetson Xavier NX, Jetson Xavier AGX, Jetson TX2, Intel i9-10900k, i7-6700k, i7-8700k, i5-9600k
 ### Result clips: [here](#4-comparison--application)
-### VINS-Fusion for PX4 with Masking: [here](https://github.com/engcang/vins-application/tree/master/vins-fusion-px4)
+### `VINS-Fusion` for PX4 with Masking: [here](https://github.com/engcang/vins-application/tree/master/vins-fusion-px4)
 + frame changed from `world` to `map`
 
 <br>
@@ -37,6 +37,7 @@
 #### ● [IMU-Camera rotational extrinsic](#-imu-camera-rotational-extrinsic-example): Rotational extrinsic between IMU and Cam
 ### 3. Installation and Execution
 + [VINS-Fusion](#-vins-fusion-1)  /  [VINS-Fisheye](#-vins-fisheye)  /  [OpenVINS](#-openvins)
++ [VINS-Fusion with OpenCV4](#-vins-fusion-1)
 + `Trouble shooting` for [VINS-Fusion](#-trouble-shooting-for-vins-fusion)  /  VINS-Fisheye  /  OpenVINS
 ### 4. Comparison & Application results
 + [VINS-Fusion](#-vins-fusion-2)  /  VINS-Fisheye  /  [OpenVINS](#-openvins-1)
@@ -524,6 +525,21 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 ##For vins_estimator : line 20
 #find_package(OpenCV REQUIRED)
 include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
+~~~
+
+---
+
+</details>
+
+<details><summary>[with `OpenCV4`: click to see]</summary>
+
++ git clone and build, few `cv` codes are changed from original repo.
+~~~shell
+$ cd ~/catkin_ws/src
+$ git clone https://github.com/engcang/vins-application #Only CPU version yet
+$ rm -r vins-fusion-px4
+$ cd .. 
+$ catkin build
 ~~~
 
 ---
