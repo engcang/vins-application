@@ -498,7 +498,7 @@ from PIL import Image
 # 3. Installation and Execution
 ### ● VINS-Fusion
 
-<details><summary>[click to see]</summary>
+<details><summary>[with `OpenCV3`(original): click to see]</summary>
     
 + git clone and build from source
 ~~~shell
