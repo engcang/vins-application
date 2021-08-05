@@ -16,19 +16,7 @@
 ## Requirements - [SDK](https://github.com/IntelRealSense/librealsense)
 <details><summary>click to see</summary>
 
-### ● Necessary for ROS too.
-#### ● For Xavier
-+ **Old version**: [here](https://github.com/jetsonhacks/buildLibrealsense2Xavier) -> SDK version is **v2.17.1** and need **JetPack 4.1 for L4T 31.1** or have to be flashed again...
-  + video [link](https://youtu.be/Pp18JL6H2zc) or jetsonhacks [article](https://www.jetsonhacks.com/2019/01/21/intel-realsense-d435i-on-nvidia-jetson-agx-xavier/)
-#### ● For TX2
-+ **More recent version**: [here](https://github.com/jetsonhacks/installRealSenseSDK)
-  + **Kernel build is not needed anymore!!!**
-+ **Old version**: [here](https://github.com/jetsonhacks/buildLibrealsense2TX) -> SDK version is **v2.13.0** and need  **JetPack3.2.1 for L4T 28.2 / L4T 28.2.1** or have to be flashed again...
-  + video [link](https://youtu.be/mvDCOc-aoMU) or jetsonhacks [article](https://www.jetsonhacks.com/2018/07/10/librealsense-update-nvidia-jetson-tx-dev-kits/)
-
-#### ● Xavier NX, x86_64 -> do as follows:
-+ For Xavier NX, refer [here](https://github.com/zinuok/Xavier_NX) and [here](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md)
-+ For Xavier NX and x86_64 desktop/laptop, refer [here](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md)
+### ● Necessary for basic use / ROS version - referred [here](https://github.com/zinuok/Xavier_NX) and [here](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md)
 ~~~shell
   $ sudo apt-get install git libssl-dev libusb-1.0-0-dev pkg-config libgtk-3-dev
   $ sudo apt-get install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev
@@ -38,7 +26,13 @@
   $ sudo make uninstall && make clean
   $ time make -j8 && sudo make install
 ~~~
-  + Trouble shooting : 'Failed to set power state error' or 'UDEV-Rules are missing'
+
+### ● Trouble shooting
+  + **DS5 group_devices is empty** -> add CMake option
+  ~~~
+    $ cmake .. -DCMAKE_BUILD_TYPE=Release -DFORCE_RSUSB_BACKEND=ON
+  ~~~
+  + **Failed to set power state error** or **UDEV-Rules are missing**
   ~~~
     $ sudo cp [librealsense path]/config/99-realsense-libusb.rules /etc/udev/rules.d/99-realsense-libusb.rules && sudo udevadm control --reload-rules && udevadm trigger
     $ reboot
