@@ -15,6 +15,7 @@
 <details><summary>click to see</summary>
 
 ### ● Necessary for basic use / ROS version - referred [here](https://github.com/zinuok/Xavier_NX) and [here](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md)
+#### ● Jetson boards: add *-DFORCE_RSUSB_BACKEND=ON -DBUILD_WITH_CUDA=true*
 ~~~shell
   $ sudo apt-get install git libssl-dev libusb-1.0-0-dev pkg-config libgtk-3-dev
   $ sudo apt-get install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev
