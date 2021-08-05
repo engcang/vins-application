@@ -14,8 +14,7 @@
 ## Requirements - [SDK](https://github.com/IntelRealSense/librealsense)
 <details><summary>click to see</summary>
 
-### ● Necessary for ROS too.
-+ Refer [here](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md)
+### ● Necessary for basic use / ROS version - referred [here](https://github.com/zinuok/Xavier_NX) and [here](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md)
 ~~~shell
   $ sudo apt-get install git libssl-dev libusb-1.0-0-dev pkg-config libgtk-3-dev
   $ sudo apt-get install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev
@@ -25,7 +24,13 @@
   $ sudo make uninstall && make clean
   $ time make -j8 && sudo make install
 ~~~
-  + Trouble shooting : 'Failed to set power state error' or 'UDEV-Rules are missing'
+
+### ● Trouble shooting
+  + **DS5 group_devices is empty** -> add CMake option
+  ~~~
+    $ cmake .. -DCMAKE_BUILD_TYPE=Release -DFORCE_RSUSB_BACKEND=ON
+  ~~~
+  + **Failed to set power state error** or **UDEV-Rules are missing**
   ~~~
     $ sudo cp [librealsense path]/config/99-realsense-libusb.rules /etc/udev/rules.d/99-realsense-libusb.rules && sudo udevadm control --reload-rules && udevadm trigger
     $ reboot
