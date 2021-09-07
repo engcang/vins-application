@@ -57,6 +57,14 @@ $ source ./devel/setup.bash
 
 </details>
 
++ Disable `RS2_OPTION_ENABLE_RELOCALIZATION` and `RS2_OPTION_ENABLE_POSE_JUMPING` as [this reference](https://github.com/IntelRealSense/realsense-ros/issues/779#issuecomment-554738727), by simple insert below in the `.launch` file
+~~~xml
+  <rosparam>
+      /camera/tracking_module/enable_relocalization: false
+      /camera/tracking_module/enable_pose_jumping: false
+  </rosparam>
+~~~  
+  
 <br>
 
 ## Kalibr(calibration for cameras-IMU)
