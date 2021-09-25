@@ -2,7 +2,7 @@
 ## Mainly focused on Build process and explanation
 ### ● `VINS-Fusion`, `VINS-Fisheye`, `OpenVINS`
 ## This repository contains many branches! as following: 
-+ **Branch**: [intel T265](https://github.com/engcang/vins-application/tree/Intel-T265), [intel D435i](https://github.com/engcang/VINS-application/tree/Intel-D435i), [ZED-mini](https://github.com/engcang/VINS-application/tree/zed-mini), [Pointgrey_myAHRS](https://github.com/engcang/VINS-application/tree/Pointgrey_MyAHRS+), [FlightGoggles](https://github.com/engcang/vins-application/tree/flightgoggles)
++ **Branch**: [OAK-D](https://github.com/engcang/vins-application/tree/OAK-D), [intel T265](https://github.com/engcang/vins-application/tree/Intel-T265), [intel D435i](https://github.com/engcang/VINS-application/tree/Intel-D435i), [ZED-mini](https://github.com/engcang/VINS-application/tree/zed-mini), [Pointgrey_myAHRS](https://github.com/engcang/VINS-application/tree/Pointgrey_MyAHRS+), [FlightGoggles](https://github.com/engcang/vins-application/tree/flightgoggles)
     + Including **config.yaml** files and **Calibration data**
     + git clone -b <branch_name> --single-branch https://github.com/engcang/vins-application
 + Tested on: Jetson Xavier NX, Jetson Xavier AGX, Jetson TX2, Intel i9-10900k, i7-6700k, i7-8700k, i5-9600k
@@ -643,6 +643,7 @@ $ catkin build
 + Hand-held - VINS-Fusion (Stereo) with Intel D435i and Pixhawk4 mini fused with T265 camera: [here](https://engcang.github.io/mavros_vision_pose/)
 + Hand-held - VINS-Fusion (stereo) with Intel D435i and Pixhawk4 mini on 1km long underground tunnel: [here](https://youtu.be/Gx0PSMCeR1g)
 + Hand-held - VINS-Fusion GPU version test using T265: [here](https://youtu.be/8w86LeB6fns)
++ Hand-held - VINS-Fusion (stereo) test using OAK-D: [here](https://youtu.be/Hjcjg9L4j9o)
 + Real-Drone - VINS-Fusion with Intel D435i and Pixahwk4 mini on Real Hexarotor: [here](https://youtu.be/sfj1kxMVeMU)
 + Real-Drone - VINS-Fusion with Intel D435i and Pixahwk4 mini on Real Quadrotor: [here](https://youtu.be/S3XAOMek2mo)
 
