@@ -41,6 +41,7 @@
 + `Trouble shooting` for [VINS-Fusion](#-trouble-shooting-for-vins-fusion)  /  VINS-Fisheye  /  OpenVINS
 ### 4. Comparison & Application results
 + [VINS-Fusion](#-vins-fusion-2)  /  VINS-Fisheye  /  [OpenVINS](#-openvins-1)
+### 5. VINS on mini onboard PCs
 
 <br><br><br>
 
@@ -658,3 +659,6 @@ $ catkin build
     + use this [launch file](https://github.com/engcang/vins-application/blob/master/openvins/kaist.launch) including parameters
     
 </details>
+
+# 5. VINS on mini onboard PCs
++ `Qualcomm RB5` vs `Khadas VIM3 Pro`  - [Video](https://youtu.be/hIu1buGkHBA)
