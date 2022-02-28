@@ -53,9 +53,9 @@ $ kalibr_calibrate_cameras --bag Kalibr_data.bag --topics /oakd/stereo_ir/left/i
 ~~~shell
 $ kalibr_calibrate_imu_camera --bag Kalibr_data.bag --cam camchain-Kalibr_data.yaml --imu imu-params.yaml --target april_grid.yaml
 ~~~
-+ for IMU, I used Pixhawk 4 mini
++ for IMU, I tried `Pixhawk 4 mini`, and built-in IMU of `OAK-D-PRO`
 
 <br>
 
 ## Results
-+ VINS-Fusion Stereo version test with OAK-D: [here](https://youtu.be/Hjcjg9L4j9o)
++ VINS-Fusion Stereo version test with OAK-D+Pixhawk 4 mini: [here](https://youtu.be/Hjcjg9L4j9o)

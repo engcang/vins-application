@@ -9,6 +9,6 @@ imu0:
   gyroscope_noise_density: 0.00187
   gyroscope_random_walk: 0.000266
   model: calibrated
-  rostopic: /mavros/imu/data_raw
+  rostopic: /oakd/imu
   time_offset: 0.0
   update_rate: 100.0
