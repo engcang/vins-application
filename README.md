@@ -645,6 +645,7 @@ $ catkin build
 + Hand-held - VINS-Fusion (stereo) with Intel D435i and Pixhawk4 mini on 1km long underground tunnel: [here](https://youtu.be/Gx0PSMCeR1g)
 + Hand-held - VINS-Fusion GPU version test using T265: [here](https://youtu.be/8w86LeB6fns)
 + Hand-held - VINS-Fusion (stereo) test using OAK-D: [here](https://youtu.be/Hjcjg9L4j9o)
++ Hand-held - VINS-Fusion (stereo) test using OAK-D PRO: [here](https://youtu.be/Xw-HIPbn0wg)
 + Real-Drone - VINS-Fusion with Intel D435i and Pixahwk4 mini on Real Hexarotor: [here](https://youtu.be/sfj1kxMVeMU)
 + Real-Drone - VINS-Fusion with Intel D435i and Pixahwk4 mini on Real Quadrotor: [here](https://youtu.be/S3XAOMek2mo)
 
