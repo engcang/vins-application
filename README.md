@@ -59,3 +59,4 @@ $ kalibr_calibrate_imu_camera --bag Kalibr_data.bag --cam camchain-Kalibr_data.y
 
 ## Results
 + VINS-Fusion Stereo version test with OAK-D+Pixhawk 4 mini: [here](https://youtu.be/Hjcjg9L4j9o)
++ VINS-FUsion Stereo version test with OAK-D PRO version: [here](https://youtu.be/Xw-HIPbn0wg)
