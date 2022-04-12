@@ -45,7 +45,7 @@
 #### ● [Ceres solver and Eigen](#-ceres-solver-and-eigen-mandatory-for-vins): Mandatory for VINS (build Eigen first)
 #### ● [CUDA](#-cuda-necessary-for-gpu-version-1): Necessary for GPU version
 #### ● [cuDNN](#-cudnn-strong-library-for-neural-network-used-with-cuda): Necessary for GPU version
-#### ● [OpenCV with CUDA and cuDNN](#-opencv-with-cuda-necessary-for-gpu-version-1): Necessary for GPU version
+#### ● [OpenCV with CUDA and cuDNN](#-opencv-with-cuda-and-cudnn-necessary-for-gpu-version-1): Necessary for GPU version
 
 #### ● CV_Bridge with Built OpenCV: Necessary for GPU version, and general ROS usage
 + for [OpenCV 3.x ver](#-cv_bridge-with-opencv-3x-version)  /  for [OpenCV 4.x ver](#-cv_bridge-with-opencv-4x-version)
@@ -301,7 +301,98 @@ compilation terminated. --> **for CUDA version 10**
 
     
 ### ■ OpenCV for Ubuntu 20.04 - this repo mainly targets ROS2 for Ubuntu 20.04
+#### ● OpenCV with CUDA and cuDNN: Necessary for GPU version
 
+<details><summary>[click to see]</summary>
+    
++ Build OpenCV with CUDA - references: [link 1](https://webnautes.tistory.com/1479?category=704653)
++ **-D PYTHON3_PACKAGES_PATH=/usr/local/lib/python3.8/dist-packages** 
+    + This is needed to prevent `No module name cv2` when `import cv2` in `Python3`
+    
+~~~bash
+## optional, I just leave default OpenCV from ROS2, since I can set proper PATHS for desired OpenCV versions
+## If you cannot, just do below:
+$ sudo apt-get purge libopencv*
+## (But you will have to sudo apt install ros-foxy-desktop again, when you need other packages related to this)
+
+$ sudo apt-get purge python-opencv python3-opencv
+$ pip uninstall opencv-python
+$ sudo apt-get update
+$ sudo apt-get install -y build-essential pkg-config
+$ sudo apt-get install -y cmake libavcodec-dev libavformat-dev libavutil-dev \
+    libglew-dev libgtk2.0-dev libgtk-3-dev libjpeg-dev libpng-dev libpostproc-dev \
+    libswscale-dev libtbb-dev libtiff5-dev libv4l-dev libxvidcore-dev \
+    libx264-dev qt5-default zlib1g-dev libgl1 libglvnd-dev pkg-config \
+    libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev mesa-utils #libeigen3-dev # recommend to build from source : http://eigen.tuxfamily.org/index.php?title=Main_Page
+$ sudo apt-get install python3-dev python3-numpy
+$ mkdir <opencv_source_directory> && cd <opencv_source_directory>
+
+
+# check version
+$ wget -O opencv.zip https://github.com/opencv/opencv/archive/4.5.5.zip # check version
+$ unzip opencv.zip
+$ cd <opencv_source_directory>/opencv 
+
+$ wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/4.5.5.zip # check version
+$ unzip opencv_contrib.zip
+
+$ mkdir build && cd build
+    
+# check your CUDA_ARCH_BIN and CUDA_ARCH_PTX version : http://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
+# 8.6 for RTX3080 7.2 for Xavier, 5.2 for GTX TITAN X, 6.1 for GTX TITAN X(pascal), 6.2 for TX2
+# -D BUILD_opencv_cudacodec=OFF #for cuda10-opencv3.4
+    
+$ cmake -D CMAKE_BUILD_TYPE=RELEASE \
+      -D CMAKE_C_COMPILER=gcc-9 \
+      -D CMAKE_CXX_COMPILER=g++-9 \
+      -D CMAKE_INSTALL_PREFIX=/usr/local \
+      -D OPENCV_GENERATE_PKGCONFIG=YES \
+      -D PYTHON_EXECUTABLE=/usr/bin/python3.8 \
+      -D PYTHON2_EXECUTABLE="" \
+      -D BUILD_opencv_python3=ON \
+      -D BUILD_opencv_python2=OFF \
+      -D PYTHON3_PACKAGES_PATH=/usr/local/lib/python3.8/dist-packages \
+      -D BUILD_NEW_PYTHON_SUPPORT=ON \
+      -D OPENCV_SKIP_PYTHON_LOADER=ON \
+      -D WITH_CUDA=ON \
+      -D OPENCV_DNN_CUDA=ON \
+      -D WITH_CUDNN=ON \
+      -D CUDA_ARCH_BIN=8.6 \
+      -D CUDA_ARCH_PTX=8.6 \
+      -D ENABLE_FAST_MATH=ON \
+      -D CUDA_FAST_MATH=ON \
+      -D WITH_CUBLAS=ON \
+      -D WITH_LIBV4L=ON \
+      -D WITH_GSTREAMER=ON \
+      -D WITH_GSTREAMER_0_10=OFF \
+      -D WITH_CUFFT=ON \
+      -D WITH_NVCUVID=ON \
+      -D WITH_QT=ON \
+      -D WITH_OPENGL=ON \
+      -D WITH_IPP=OFF \
+      -D WITH_V4L=ON \
+      -D WITH_1394=OFF \
+      -D WITH_GTK=ON \
+      -D WITH_EIGEN=ON \
+      -D WITH_FFMPEG=ON \
+      -D WITH_TBB=ON \
+      -D BUILD_opencv_cudacodec=OFF \
+      -D CUDA_NVCC_FLAGS="--expt-relaxed-constexpr" \
+      -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib-4.5.5/modules \
+      ../
+$ time make -j20 # 20 : numbers of core
+$ sudo make install
+$ sudo rm -r <opencv_source_directory> #optional for saving disk, but leave this folder to uninstall later, if you need.
+~~~
+
+<br>
+
+### ● Trouble shooting for OpenCV build error:
++ No troubles found yet
+
+---
+
+</details>
     
 ---
     
@@ -463,7 +554,7 @@ from PIL import Image
 <br><br>
 
 # 3. Installation and Execution
-### ROS1 Algorithms:
+## ■ ROS1 Algorithms:
 ### ● VINS-Fusion
 
 <details><summary>[with `OpenCV3`(original): click to see]</summary>
@@ -514,7 +605,7 @@ $ catkin build
 
 </details>
 
-### ● Trouble shooting for VINS-Fusion
+#### ● Trouble shooting for VINS-Fusion
 <details><summary>[click to see]</summary>
     
 + Aborted error when running **vins_node** : 
@@ -527,6 +618,8 @@ $ catkin build
 ---
 
 </details>
+
+<br>
 
 ### ● VINS-Fisheye
 #### only for `OpenCV 3.4.1` and `Jetson TX2` (I guess yet, I failed on i9-10900k + RTX3080)
@@ -572,6 +665,8 @@ $ catkin build
 
 </details>
 
+<br>
+
 ### ● OpenVINS
 
 <details><summary>[click to see]</summary>
@@ -586,7 +681,8 @@ $ catkin build
 
 </details>
 
-### ROS2 Algorithms:
+## ■ ROS2 Algorithms:
+### ● NVIDIA Isaac Elbrus
     
 <br>
 
