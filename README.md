@@ -44,9 +44,9 @@
 ### 2. Prerequisites
 #### ● [Ceres solver and Eigen](#-ceres-solver-and-eigen-mandatory-for-vins): Mandatory for VINS (build Eigen first)
 #### ● [CUDA](#-cuda-necessary-for-gpu-version-1): Necessary for GPU version
-+ (Optional, but recommended) [cuDNN](#-cudnn-strong-library-for-neural-network-used-with-cuda) Strong when used with CUDA
-#### ● [OpenCV with CUDA](#-opencv-with-cuda-necessary-for-gpu-version-1): Necessary for GPU version
-+ (Optional, but recommended) [OpenCV with CUDA and cuDNN](#-optional-if-also-cudnn-for-opencv-with-cuda-should-be-built) also with Contrib
+#### ● [cuDNN](#-cudnn-strong-library-for-neural-network-used-with-cuda): Necessary for GPU version
+#### ● [OpenCV with CUDA and cuDNN](#-opencv-with-cuda-necessary-for-gpu-version-1): Necessary for GPU version
+
 #### ● CV_Bridge with Built OpenCV: Necessary for GPU version, and general ROS usage
 + for [OpenCV 3.x ver](#-cv_bridge-with-opencv-3x-version)  /  for [OpenCV 4.x ver](#-cv_bridge-with-opencv-4x-version)
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb): Have to improve performance of sensors with USB
@@ -210,7 +210,7 @@ $ sudo chmod a+r <CUDA_PATH>/lib64/libcudnn*   #ex /usr/local/cuda-11.1/lib64/li
 ---
 
 ### ■ OpenCV for Ubuntu 18.04 - this repo mainly targets ROS1 for Ubuntu 18.04
-#### ● OpenCV with CUDA: Necessary for GPU version
+#### ● OpenCV with CUDA and cuDNN: Necessary for GPU version
 <details><summary>[click to see]</summary>
     
 + Build OpenCV with CUDA - references: [link 1](https://webnautes.tistory.com/1030), [link 2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh)
@@ -253,6 +253,8 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D CMAKE_INSTALL_PREFIX=/usr/local \
       -D OPENCV_GENERATE_PKGCONFIG=YES \
       -D WITH_CUDA=ON \
+      -D OPENCV_DNN_CUDA=ON \
+      -D WITH_CUDNN=ON \
       -D CUDA_ARCH_BIN=8.6 \
       -D CUDA_ARCH_PTX=8.6 \
       -D ENABLE_FAST_MATH=ON \
@@ -293,52 +295,6 @@ compilation terminated. --> **for CUDA version 10**
     + $ sudo apt-get install nvidia-cuda-toolkit
     + or Edit *FindCUDA.cmake* and *OpenCVDetectCUDA.cmake* as [here](https://stackoverflow.com/questions/46584000/cmake-error-variables-are-set-to-notfound)
     
----
-
-</details>
-
-
-#### ● (Optional, but recommended) OpenCV with CUDA and cuDNN: faster, more APIs
-<details><summary>[click to see]</summary>
-    
-+ add **-D OPENCV_DNN_CUDA=ON** and **-D WITH_CUDNN=ON** options as below:
-~~~shell
-$ cd <opencv_source_directory>/build
-$ cmake -D CMAKE_BUILD_TYPE=RELEASE \
-      -D CMAKE_C_COMPILER=gcc-6 \
-      -D CMAKE_CXX_COMPILER=g++-6 \
-      -D CMAKE_INSTALL_PREFIX=/usr/local \
-      -D OPENCV_GENERATE_PKGCONFIG=YES \
-      -D WITH_CUDA=ON \
-      -D OPENCV_DNN_CUDA=ON \
-      -D WITH_CUDNN=ON \
-      -D CUDA_ARCH_BIN=8.6 \
-      -D CUDA_ARCH_PTX=8.6 \
-      -D ENABLE_FAST_MATH=ON \
-      -D CUDA_FAST_MATH=ON \
-      -D WITH_CUBLAS=ON \
-      -D WITH_LIBV4L=ON \
-      -D WITH_GSTREAMER=ON \
-      -D WITH_GSTREAMER_0_10=OFF \
-      -D WITH_CUFFT=ON \
-      -D WITH_NVCUVID=ON \
-      -D WITH_QT=ON \
-      -D WITH_OPENGL=ON \
-      -D WITH_IPP=OFF \
-      -D WITH_V4L=ON \
-      -D WITH_1394=OFF \
-      -D WITH_GTK=ON \
-      -D WITH_EIGEN=ON \
-      -D WITH_FFMPEG=ON \
-      -D WITH_TBB=ON \
-      -D BUILD_opencv_cudacodec=OFF \
-      -D CUDA_NVCC_FLAGS="--expt-relaxed-constexpr" \
-      -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib-3.4.1/modules \
-      ../
-$ time make -j1 #use less cores to prevent compile error
-$ sudo make install
-~~~
-
 ---
 
 </details>
