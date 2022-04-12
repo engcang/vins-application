@@ -692,7 +692,7 @@ $ catkin build
 + Conversion ROS topics into nav_msgs/Path to visualize in Rviz: use this [github](https://github.com/engcang/tf_to_trajectory)
 + Conversion compressed Images into raw Images: use this [code](https://github.com/engcang/utility_codes/blob/master/compressed_to_raw.py)
 
-**<details><summary>[click to see results]</summary>**
+<br>
 
 #### Simulation
 
@@ -719,7 +719,8 @@ $ catkin build
 + OpenVINS on [KAIST VIO dataset](https://github.com/zinuok/kaistviodataset): result [youtube](https://youtu.be/Ye8xcKH4otY)
     + use this [launch file](https://github.com/engcang/vins-application/blob/master/openvins/kaist.launch) including parameters
     
-</details>
+
+<br>
 
 # 5. VINS on mini onboard PCs
 + `Qualcomm RB5` vs `Khadas VIM3 Pro`  - [Video](https://youtu.be/hIu1buGkHBA)
