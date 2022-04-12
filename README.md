@@ -44,9 +44,9 @@
 ### 2. Prerequisites
 #### ● [Ceres solver and Eigen](#-ceres-solver-and-eigen-mandatory-for-vins): Mandatory for VINS (build Eigen first)
 #### ● [CUDA](#-cuda-necessary-for-gpu-version-1): Necessary for GPU version
-+ [optional, but recommended with CUDA: cuDNN](#-optional-cudnn-strong-library-for-neural-network-used-with-cuda) Optional but strong when used with CUDA
++ (Optional, but recommended) [cuDNN](#-cudnn-strong-library-for-neural-network-used-with-cuda) Strong when used with CUDA
 #### ● [OpenCV with CUDA](#-opencv-with-cuda-necessary-for-gpu-version-1): Necessary for GPU version
-+ [optional, but recommended with CUDA: with cuDNN](#-optional-if-also-cudnn-for-opencv-with-cuda-should-be-built) also with Contrib
++ (Optional, but recommended) [OpenCV with CUDA and cuDNN](#-optional-if-also-cudnn-for-opencv-with-cuda-should-be-built) also with Contrib
 #### ● CV_Bridge with Built OpenCV: Necessary for GPU version, and general ROS usage
 + for [OpenCV 3.x ver](#-cv_bridge-with-opencv-3x-version)  /  for [OpenCV 4.x ver](#-cv_bridge-with-opencv-4x-version)
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb): Have to improve performance of sensors with USB
@@ -210,7 +210,7 @@ $ sudo chmod a+r <CUDA_PATH>/lib64/libcudnn*   #ex /usr/local/cuda-11.1/lib64/li
 ---
 
 ### ■ OpenCV for Ubuntu 18.04 - this repo mainly targets ROS1 for Ubuntu 18.04
-### ● OpenCV with CUDA: Necessary for GPU version
+#### ● OpenCV with CUDA: Necessary for GPU version
 <details><summary>[click to see]</summary>
     
 + Build OpenCV with CUDA - references: [link 1](https://webnautes.tistory.com/1030), [link 2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh)
@@ -298,7 +298,7 @@ compilation terminated. --> **for CUDA version 10**
 </details>
 
 
-### ● (Optional) if also **cuDNN** for OpenCV with CUDA should be built,
+#### ● (Optional, but recommended) OpenCV with CUDA and cuDNN: faster, more APIs
 <details><summary>[click to see]</summary>
     
 + add **-D OPENCV_DNN_CUDA=ON** and **-D WITH_CUDNN=ON** options as below:
