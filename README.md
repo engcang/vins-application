@@ -60,8 +60,7 @@
 + `Trouble shooting` for [VINS-Fusion](#-trouble-shooting-for-vins-fusion)  /  VINS-Fisheye  /  OpenVINS
 #### ROS2 Algorithms:
 + NVIDIA Isaac Elbrus
-### 4. Comparison & Application results
-+ [VINS-Fusion](#-vins-fusion-2)  /  VINS-Fisheye  /  [OpenVINS](#-openvins-1)
+### [4. Comparison & Application results](#4-comparison--application)
 ### 5. VINS on mini onboard PCs
 
 <br><br><br>
@@ -648,8 +647,8 @@ $ catkin build
 # 4. Comparison & Application
 + Conversion ROS topics into nav_msgs/Path to visualize in Rviz: use this [github](https://github.com/engcang/tf_to_trajectory)
 + Conversion compressed Images into raw Images: use this [code](https://github.com/engcang/utility_codes/blob/master/compressed_to_raw.py)
-### ● VINS-Fusion
-<details><summary>[click to see]</summary>
+
+<details><summary>[click to see results]</summary>
 
 #### Simulation
 
@@ -672,13 +671,6 @@ $ catkin build
 + Hand-held - VINS-Fusion (stereo) test using OAK-D PRO: [here](https://youtu.be/Xw-HIPbn0wg)
 + Real-Drone - VINS-Fusion with Intel D435i and Pixahwk4 mini on Real Hexarotor: [here](https://youtu.be/sfj1kxMVeMU)
 + Real-Drone - VINS-Fusion with Intel D435i and Pixahwk4 mini on Real Quadrotor: [here](https://youtu.be/S3XAOMek2mo)
-
----
-
-</details>
-
-### ● OpenVINS
-<details><summary>[click to see]</summary>
 
 + OpenVINS on [KAIST VIO dataset](https://github.com/zinuok/kaistviodataset): result [youtube](https://youtu.be/Ye8xcKH4otY)
     + use this [launch file](https://github.com/engcang/vins-application/blob/master/openvins/kaist.launch) including parameters
