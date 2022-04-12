@@ -1,18 +1,18 @@
 # VINS-application
 ## Mainly focused on Build process and explanation
-### ROS1 algorithms:
+### ■ ROS1 algorithms:
 #### ● `VINS-Fusion`, `VINS-Fusion-GPU`, `VINS-Fisheye`, `OpenVINS`, `EnVIO`
-### ROS2 algorithms:
+### ■ ROS2 algorithms:
 #### ● `NVIDIA Isaac Elbrus`
 
 <br>
 
 ## This repository contains many branches! as following: 
-### ROS1 algorithms:
+### ■ ROS1 algorithms:
 + **Branch**: [OAK-D](https://github.com/engcang/vins-application/tree/OAK-D), [intel T265](https://github.com/engcang/vins-application/tree/Intel-T265), [intel D435i](https://github.com/engcang/VINS-application/tree/Intel-D435i), [ZED-mini](https://github.com/engcang/VINS-application/tree/zed-mini), [Pointgrey_myAHRS](https://github.com/engcang/VINS-application/tree/Pointgrey_MyAHRS+), [FlightGoggles](https://github.com/engcang/vins-application/tree/flightgoggles)
     + Including **config.yaml** files and **Calibration data**
     + git clone -b <branch_name> --single-branch https://github.com/engcang/vins-application
-### ROS2 algorithms:
+### ■ ROS2 algorithms:
 
 ---
 ---
@@ -27,14 +27,14 @@
 
 # Index
 ### 0. Algorithms:
-#### ROS1 Algorithms:
+#### ■ ROS1 Algorithms:
 + VINS-Fusion [CPU version](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion) / [GPU version](https://github.com/pjrambo/VINS-Fusion-gpu)
     + Mainly uses `Ceres-solver`, `OpenCV` and `Eigen` and **performance of VINS is strongly proportional to CPU performance and some parameters**
 + [VINS-Fisheye](https://github.com/xuhao1/VINS-Fisheye): VINS-Fusion's extension with more `camera_models` and `CUDA` acceleration
     + only for `OpenCV 3.4.1` and `Jetson TX2` (I guess, I failed on i9-10900k + RTX3080)
 + [OpenVINS](https://github.com/rpng/open_vins): MSCKF based VINS 
 + [EnVIO](https://github.com/lastflowers/envio): Iterated-EKF Ensemble VIO based on [ROVIO](https://github.com/ethz-asl/rovio)
-#### ROS2 Algorithms:
+#### ■ ROS2 Algorithms:
 + [NVIDIA Isaac Elbrus](https://docs.nvidia.com/isaac/isaac/packages/visual_slam/doc/elbrus_visual_slam.html): GPU-accelerated Stereo Visual SLAM
     + upper than Ubuntu 20.04, `CUDA` 11.4, `NVIDIA-graphic driver` 470.103.01
     + or `Jetpack` 4.6.1 on `Jetson Xavier AGX`, `Jetson Xavier NX`
@@ -54,11 +54,11 @@
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter): Synchronization, time offset, extrinsic parameter
 #### ● [IMU-Camera rotational extrinsic](#-imu-camera-rotational-extrinsic-example): Rotational extrinsic between IMU and Cam
 ### 3. Installation and Execution
-#### ROS1 Algorithms:
+#### ■ ROS1 Algorithms:
 + [VINS-Fusion](#-vins-fusion-1)  /  [VINS-Fisheye](#-vins-fisheye)  /  [OpenVINS](#-openvins)
 + [VINS-Fusion with OpenCV4](#-vins-fusion-1)
 + `Trouble shooting` for [VINS-Fusion](#-trouble-shooting-for-vins-fusion)  /  VINS-Fisheye  /  OpenVINS
-#### ROS2 Algorithms:
+#### ■ ROS2 Algorithms:
 + NVIDIA Isaac Elbrus
 ### [4. Comparison & Application results](#4-comparison--application)
 ### 5. VINS on mini onboard PCs
@@ -129,10 +129,10 @@ $ make install
 
 ### ● CUDA: Necessary for GPU version
 <details><summary>[click to see]</summary>
-    
+
+<br>
+
 + Install **CUDA** and **Graphic Driver**: 
-##### ● (If you will use TensorRT) The latest TensorRT(7.2.3) supports CUDA 10.2, 11.0 update 1, 11.1 update 1, ~~and 11.2 update 1.~~ [doc](https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt-723/release-notes/tensorrt-7.html#rel_7-2-3)
-+ Ubuntu
 ~~~shell
     $ sudo apt install gcc make
     get the right version of CUDA(with graphic driver) .deb file at https://developer.nvidia.com/cuda-downloads
@@ -189,10 +189,8 @@ $ sudo sh cuda_<version>_linux.run
 
 </details>
 
-<br>
 
-
-### ● (optional) cuDNN: strong library for Neural Network used with CUDA
+### ● cuDNN: strong library for Neural Network used with CUDA
 <details><summary>[click to see]</summary>
     
 + Download [here](https://developer.nvidia.com/cudnn)
@@ -210,6 +208,9 @@ $ sudo chmod a+r <CUDA_PATH>/lib64/libcudnn*   #ex /usr/local/cuda-11.1/lib64/li
 
 <br>
 
+---
+
+## OpenCV for Ubuntu 18.04 - targetting ROS1
 ### ● OpenCV with CUDA: Necessary for GPU version
 <details><summary>[click to see]</summary>
     
@@ -279,7 +280,6 @@ compilation terminated. --> **for CUDA version 10**
 
 </details>
 
-<br>
 
 ### ● (Optional) if also **contrib** for OpenCV should be built,
 <details><summary>[click to see]</summary>
@@ -320,7 +320,6 @@ $ sudo make install
 
 </details>
 
-<br>
 
 ### ● (Optional) if also **cuDNN** for OpenCV with CUDA should be built,
 <details><summary>[click to see]</summary>
@@ -359,8 +358,10 @@ $ sudo make install
 
 </details>
 
-<br>
+## OpenCV for Ubuntu 20.04 - targetting ROS2
 
+---
+    
 ### ● CV_Bridge with built OpenCV: Necessary for whom built OpenCV manually from above
 #### ● CV_bridge with OpenCV 3.X version
 <details><summary>[click to see]</summary>
@@ -648,7 +649,7 @@ $ catkin build
 + Conversion ROS topics into nav_msgs/Path to visualize in Rviz: use this [github](https://github.com/engcang/tf_to_trajectory)
 + Conversion compressed Images into raw Images: use this [code](https://github.com/engcang/utility_codes/blob/master/compressed_to_raw.py)
 
-<details><summary>[click to see results]</summary>
+**<details><summary>[click to see results]</summary>**
 
 #### Simulation
 
