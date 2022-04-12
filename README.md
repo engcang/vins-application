@@ -46,7 +46,6 @@
 #### ● [CUDA](#-cuda-necessary-for-gpu-version-1): Necessary for GPU version
 + [optional, but recommended with CUDA: cuDNN](#-optional-cudnn-strong-library-for-neural-network-used-with-cuda) Optional but strong when used with CUDA
 #### ● [OpenCV with CUDA](#-opencv-with-cuda-necessary-for-gpu-version-1): Necessary for GPU version
-+ [optional, but necessary for recent versions: with OpenCV Contrib](#-optional-if-also-contrib-for-opencv-should-be-built)
 + [optional, but recommended with CUDA: with cuDNN](#-optional-if-also-cudnn-for-opencv-with-cuda-should-be-built) also with Contrib
 #### ● CV_Bridge with Built OpenCV: Necessary for GPU version, and general ROS usage
 + for [OpenCV 3.x ver](#-cv_bridge-with-opencv-3x-version)  /  for [OpenCV 4.x ver](#-cv_bridge-with-opencv-4x-version)
@@ -210,17 +209,16 @@ $ sudo chmod a+r <CUDA_PATH>/lib64/libcudnn*   #ex /usr/local/cuda-11.1/lib64/li
 
 ---
 
-## OpenCV for Ubuntu 18.04 - targetting ROS1
+### ■ OpenCV for Ubuntu 18.04 - this repo mainly targets ROS1 for Ubuntu 18.04
 ### ● OpenCV with CUDA: Necessary for GPU version
 <details><summary>[click to see]</summary>
     
 + Build OpenCV with CUDA - references: [link 1](https://webnautes.tistory.com/1030), [link 2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh)
     + for Xavier do as below or sh file from jetsonhacks [here](https://github.com/jetsonhacks/buildOpenCVXavier)
-    + If want to use **C API (e.g. Darknet YOLO)** consider: 
-        + Use OpenCV version **3.4.0** because darknet has to use C API with OpenCV [refer](https://github.com/pjreddie/darknet/issues/551)
-        + **(Recommended)** or **Patch as [here](https://github.com/opencv/opencv/issues/10963)** to use other version **(3.4.1 is the best)**
+    + If want to use **C API (e.g. Darknet YOLO)** with `OpenCV3`, then: 
+        + **Patch as [here](https://github.com/opencv/opencv/issues/10963)** to use other version **(3.4.1 is the best)**
             + should **comment** the /usr/local/include/opencv2/highgui/highgui_c.h line 139 [as here](https://stackoverflow.com/questions/48611228/yolo-compilation-with-opencv-1-fails) after install
-+ **-D OPENCV_GENERATE_PKGCONFIG=YES** option is also needed for OpenCV 4.X
++ **-D OPENCV_GENERATE_PKGCONFIG=YES** option is also needed for `OpenCV 4.X`
   + and copy the generated `opencv4.pc` file to `/usr/local/lib/pkgconfig` or `/usr/lib/aarch64-linux-gnu/pkgconfig` for jetson boards
 ~~~shell
 $ sudo apt-get purge libopencv* python-opencv
@@ -233,12 +231,22 @@ $ sudo apt-get install -y cmake libavcodec-dev libavformat-dev libavutil-dev \
     libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev mesa-utils #libeigen3-dev # recommend to build from source : http://eigen.tuxfamily.org/index.php?title=Main_Page
 $ sudo apt-get install python2.7-dev python3-dev python-numpy python3-numpy
 $ mkdir <opencv_source_directory> && cd <opencv_source_directory>
+
+
+# check version
 $ wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.1.zip # check version
 $ unzip opencv.zip
-$ cd <opencv_source_directory>/opencv && mkdir build && cd build
+$ cd <opencv_source_directory>/opencv 
+
+$ wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/3.4.1.zip # check version
+$ unzip opencv_contrib.zip
+
+$ mkdir build && cd build
+    
 # check your BIN version : http://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
 # 8.6 for RTX3080 7.2 for Xavier, 5.2 for GTX TITAN X, 6.1 for GTX TITAN X(pascal), 6.2 for TX2
 # -D BUILD_opencv_cudacodec=OFF #for cuda10-opencv3.4
+    
 $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D CMAKE_C_COMPILER=gcc-6 \
       -D CMAKE_CXX_COMPILER=g++-6 \
@@ -246,22 +254,31 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D OPENCV_GENERATE_PKGCONFIG=YES \
       -D WITH_CUDA=ON \
       -D CUDA_ARCH_BIN=8.6 \
-      -D CUDA_ARCH_PTX="" \
+      -D CUDA_ARCH_PTX=8.6 \
       -D ENABLE_FAST_MATH=ON \
       -D CUDA_FAST_MATH=ON \
       -D WITH_CUBLAS=ON \
       -D WITH_LIBV4L=ON \
       -D WITH_GSTREAMER=ON \
       -D WITH_GSTREAMER_0_10=OFF \
+      -D WITH_CUFFT=ON \
+      -D WITH_NVCUVID=ON \
       -D WITH_QT=ON \
       -D WITH_OPENGL=ON \
+      -D WITH_IPP=OFF \
+      -D WITH_V4L=ON \
+      -D WITH_1394=OFF \
+      -D WITH_GTK=ON \
+      -D WITH_EIGEN=ON \
+      -D WITH_FFMPEG=ON \
+      -D WITH_TBB=ON \
       -D BUILD_opencv_cudacodec=OFF \
       -D CUDA_NVCC_FLAGS="--expt-relaxed-constexpr" \
-      -D WITH_TBB=ON \
+      -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib-3.4.1/modules \
       ../
 $ time make -j8 # 8 : numbers of core
 $ sudo make install
-$ sudo rm -r <opencv_source_directory> #optional
+$ sudo rm -r <opencv_source_directory> #optional for saving disk, but leave this folder to uninstall later, if you need.
 ~~~
 
 <br>
@@ -281,46 +298,6 @@ compilation terminated. --> **for CUDA version 10**
 </details>
 
 
-### ● (Optional) if also **contrib** for OpenCV should be built,
-<details><summary>[click to see]</summary>
-    
-+ add **-D OPENCV_EXTRA_MODULES_PATH** option as below:
-
-~~~shell
-$ cd <opencv_source_directory>
-$ wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/3.4.1.zip #check version
-$ unzip opencv_contrib.zip
-$ cd <opencv_source_directory>/build
-$ cmake -D CMAKE_BUILD_TYPE=RELEASE \
-      -D CMAKE_C_COMPILER=gcc-6 \
-      -D CMAKE_CXX_COMPILER=g++-6 \
-      -D CMAKE_INSTALL_PREFIX=/usr/local \
-      -D OPENCV_GENERATE_PKGCONFIG=YES \
-      -D WITH_CUDA=ON \
-      -D CUDA_ARCH_BIN=6.2 \
-      -D CUDA_ARCH_PTX="" \
-      -D ENABLE_FAST_MATH=ON \
-      -D CUDA_FAST_MATH=ON \
-      -D WITH_CUBLAS=ON \
-      -D WITH_LIBV4L=ON \
-      -D WITH_GSTREAMER=ON \
-      -D WITH_GSTREAMER_0_10=OFF \
-      -D WITH_QT=ON \
-      -D WITH_OPENGL=ON \
-      -D BUILD_opencv_cudacodec=OFF \
-      -D CUDA_NVCC_FLAGS="--expt-relaxed-constexpr" \
-      -D WITH_TBB=ON \
-      -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib-3.4.1/modules \
-      ../
-$ time make -j1 # important, use only one core to prevent compile error
-$ sudo make install
-~~~
-
----
-
-</details>
-
-
 ### ● (Optional) if also **cuDNN** for OpenCV with CUDA should be built,
 <details><summary>[click to see]</summary>
     
@@ -335,20 +312,28 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D WITH_CUDA=ON \
       -D OPENCV_DNN_CUDA=ON \
       -D WITH_CUDNN=ON \
-      -D CUDA_ARCH_BIN=6.2 \
-      -D CUDA_ARCH_PTX="" \
+      -D CUDA_ARCH_BIN=8.6 \
+      -D CUDA_ARCH_PTX=8.6 \
       -D ENABLE_FAST_MATH=ON \
       -D CUDA_FAST_MATH=ON \
       -D WITH_CUBLAS=ON \
       -D WITH_LIBV4L=ON \
       -D WITH_GSTREAMER=ON \
       -D WITH_GSTREAMER_0_10=OFF \
+      -D WITH_CUFFT=ON \
+      -D WITH_NVCUVID=ON \
       -D WITH_QT=ON \
       -D WITH_OPENGL=ON \
+      -D WITH_IPP=OFF \
+      -D WITH_V4L=ON \
+      -D WITH_1394=OFF \
+      -D WITH_GTK=ON \
+      -D WITH_EIGEN=ON \
+      -D WITH_FFMPEG=ON \
+      -D WITH_TBB=ON \
       -D BUILD_opencv_cudacodec=OFF \
       -D CUDA_NVCC_FLAGS="--expt-relaxed-constexpr" \
-      -D WITH_TBB=ON \
-      -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib-4.5.2/modules \
+      -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib-3.4.1/modules \
       ../
 $ time make -j1 #use less cores to prevent compile error
 $ sudo make install
@@ -358,8 +343,10 @@ $ sudo make install
 
 </details>
 
-## OpenCV for Ubuntu 20.04 - targetting ROS2
+    
+### ■ OpenCV for Ubuntu 20.04 - this repo mainly targets ROS2 for Ubuntu 20.04
 
+    
 ---
     
 ### ● CV_Bridge with built OpenCV: Necessary for whom built OpenCV manually from above
@@ -446,6 +433,8 @@ $ cd .. && catkin build cv_bridge
 
 <br>
 
+---
+
 ### ● USB performance : Have to improve performance of sensors with USB
 <details><summary>[click to see]</summary>
     
@@ -460,8 +449,10 @@ $ cd .. && catkin build cv_bridge
 
 </details>
 
-<br><br>
+<br>
 
+---
+    
 ### ● Calibration : Kalibr -> synchronization, time offset, extrinsic parameter
 <details><summary>[click to see]</summary>
     
@@ -496,8 +487,6 @@ from PIL import Image
 ---
 
 </details>
-
-<br>
 
 ### ● IMU-Camera rotational extrinsic example
 <details><summary>[click to see]</summary>
