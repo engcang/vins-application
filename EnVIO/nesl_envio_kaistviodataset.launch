@@ -1,0 +1,70 @@
+<launch>
+    <!--For the back-end -->
+    <arg name="calibration_file" default="$(find ensemble_vio)/config/camchain-imucam-kaistviodataset.yaml"/>
+
+    <node pkg="ensemble_vio" type="envio_node" name="envio_node">
+
+        <rosparam command="load" file="$(arg calibration_file)" />
+
+        <!-- Remapping : put your topics -->
+        <remap from="/imu" to="/mavros/imu/data"/>
+        <remap from="/left_image" to="/camera/infra1/image_rect_raw"/>
+        <remap from="/right_image" to="/camera/infra2/image_rect_raw"/>
+
+        <!-- Vision processing parameters -->
+        <param name="nx" value="25" type="int"/>
+        <param name="ny" value="15" type="int"/>
+<!--        <param name="min_depth" value="0.5" type="double"/>-->
+<!--        <param name="max_depth" value="20" type="double"/>-->
+        <param name="min_depth" value="0.3" type="double"/>
+        <param name="max_depth" value="5" type="double"/>
+        <param name="min_parallax" value="1" type="double"/>
+        <param name="ransac_thr" value="1" type="double"/>
+
+        <!-- Initial std_dev [rad, m, m/s, m/s^2, rad/s] -->
+        <param name="P0/attitude" value="0.0175" type="double"/>
+        <param name="P0/position" value="3e-2" type="double"/>
+        <param name="P0/velocity" value="1e-1" type="double"/>
+        <param name="P0/ba" value="0.1962" type="double"/>
+<!--        <param name="P0/bg" value="2e-3" type="double"/>-->
+        <param name="P0/bg" value="1.0e-3" type="double"/>
+        <param name="P0/depth" value="1.5" type="double"/>
+        <param name="P0/idepth" value="0.1" type="double"/>
+<!--        <param name="num_init_samples" value="600" type="int"/>-->
+        <param name="num_init_samples" value="500" type="int"/>
+
+        <!-- Process noises [rad/s^(1/2), m/s^(3/2), m/s^(5/2), rad/s^(3/2)]-->
+        <param name="Q/velocity" value="2.3e-2" type="double"/>
+        <param name="Q/attitude" value="1.0e-4" type="double"/>
+        <param name="Q/ba" value="2.5e-3" type="double"/>
+        <param name="Q/bg" value="7e-5" type="double"/>
+
+        <!-- Estimator parameters -->
+        <param name="inverse_depth" value="false" type="bool"/>
+<!--        <param name="R_std" value="12" type="double"/>-->
+        <param name="R_std" value="20" type="double"/>
+<!--        <param name="max_lifetime" value="200" type="int"/>-->
+        <param name="max_lifetime" value="300" type="int"/>
+        <param name="thr_stop" value="1e-3" type="double"/>
+<!--        <param name="max_diff" value="40" type="double"/>-->
+        <param name="max_diff" value="30" type="double"/>
+        <param name="N_en" value="100" type="int"/>
+        <param name="use_stochastic_gradient" value="true" type="bool"/>
+        <param name="thr_weak" value="3" type="double"/>
+
+        <!-- Sparse setting -->
+<!--        <param name="thr_num" value="200" type="int"/>-->
+<!--        <param name="uniform_dist" value="15" type="int"/>-->
+        <param name="thr_num" value="150" type="int"/>
+        <param name="uniform_dist" value="30" type="int"/>
+        <param name="max_iter" value="10" type="int"/>
+        <param name="max_itime" value="0.01" type="double"/>
+
+        <!-- Vehicle to IMU z-y-x euler sequence -->
+        <param name="roll_imu_vehicle" value="0.0" type="double"/>
+        <param name="pitch_imu_vehicle" value="0.0" type="double"/>
+        <param name="yaw_imu_vehicle" value="0.0" type="double"/>
+
+    </node>
+
+</launch>
