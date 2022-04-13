@@ -601,7 +601,7 @@ $ cd vins-application
 $ mv vins_estimator ..
 $ mv camera_models ..
 $ cd ..
-$ rm -r vins-application #not needed
+$ rm -r vins-application
 
 $ cd .. 
 $ catkin build
@@ -689,6 +689,33 @@ $ catkin build
 
 <br>
 
+### ● EnVIO
+<details><summary>[click to see]</summary>
+
++ Get `EnVIO` and install: refer [official git](https://github.com/lastflowers/envio/)
+~~~bash
+$ cd ~/catkin_ws/src
+$ git clone https://github.com/lastflowers/envio.git
+$ cd ..
+
+$ catkin_make
+
+or, if you want to use it with catkin build,
+then
+
+$ gedit src/envio/CMakeLists.txt
+comment two lines, line 4 and 5
+#set(CMAKE_CXX_COMPILER "/usr/bin/g++-5")
+#set(CMAKE_C_COMPILER "/usr/bin/gcc-5")
+
+$ catkin build    
+~~~
+
+</details>
+
+<br>
+
+    
 ## ■ ROS2 Algorithms:
 ### ● NVIDIA Isaac Elbrus
     
@@ -704,7 +731,7 @@ $ catkin build
 
 + `VINS-Mono` on `FlightGoggles`: [youtube](https://youtu.be/U4TJ7ZyfWD8), with CPU [youtube](https://www.youtube.com/watch?v=1QUypn7GbXc)
 + `VINS with Loop fusion` vs `VINS` on `FlightGoggles`: [youtube](https://youtu.be/cvhI_1XQQt4)
-+ `VINS-Mono` VS `ROVIO`: [youtube](https://youtu.be/n0N2qDcNcBQ)
++ `VINS-Mono` vs `ROVIO`: [youtube](https://youtu.be/n0N2qDcNcBQ)
 + `VINS-Mono` vs `ROVIO` vs `ORB-SLAM2`: [youtube](https://youtu.be/XMyiNlIbDXU)
 + `VINS-Fusion` (Stereo) vs `S-MSCKF` on `FlightGoggles`: [youtube](https://youtu.be/s_Ol-k8rhwY)
 + `VINS-Fusion` (Stereo) based autonomous flight and 3D mapping using RGB-D camera: [youtube](https://youtu.be/5t-6g7UWA7o)
