@@ -751,7 +751,8 @@ $ catkin build
 
 + `OpenVINS` on [KAIST VIO dataset](https://github.com/zinuok/kaistviodataset): result [youtube](https://youtu.be/Ye8xcKH4otY)
     + use this [launch file](https://github.com/engcang/vins-application/blob/master/openvins/kaist.launch) including parameters
-    
+
++ `EnVIO` vs `VINS-Fusion` on [KAIST VIO dataset](https://github.com/zinuok/kaistviodataset): result [youtube](https://youtu.be/G2ZZoegoX9M)
 
 <br>
 
