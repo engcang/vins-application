@@ -55,12 +55,12 @@
 ### 3. Installation and Execution
 #### ■ ROS1 Algorithms:
 + [VINS-Fusion](#-vins-fusion-1)  /  [VINS-Fisheye](#-vins-fisheye)  /  [OpenVINS](#-openvins)
-+ [VINS-Fusion with OpenCV4](#-vins-fusion-1)
++ [VINS-Fusion with OpenCV4](#-vins-fusion-1)  /  [EnVIO]()
 + `Trouble shooting` for [VINS-Fusion](#-trouble-shooting-for-vins-fusion)  /  VINS-Fisheye  /  OpenVINS
 #### ■ ROS2 Algorithms:
 + [NVIDIA Isaac Elbrus](#-nvidia-isaac-elbrus-1)
-### [4. Comparison & Application results](#4-comparison--application)
-### 5. VINS on mini onboard PCs
+### 4. [Comparison & Application results](#4-comparison--application)
+### 5. [VINS on mini onboard PCs](#5-vins-on-mini-onboard-pcs-1)
 
 <br><br><br>
 
@@ -596,7 +596,13 @@ include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 ~~~shell
 $ cd ~/catkin_ws/src
 $ git clone https://github.com/engcang/vins-application #Only CPU version yet
-$ rm -r vins-fusion-px4
+$ cd vins-application
+
+$ mv vins_estimator ..
+$ mv camera_models ..
+$ cd ..
+$ rm -r vins-application #not needed
+
 $ cd .. 
 $ catkin build
 ~~~
@@ -696,27 +702,27 @@ $ catkin build
 
 #### Simulation
 
-+ /tf vs VINS-Mono on FlightGoggles: [youtube](https://youtu.be/U4TJ7ZyfWD8), with CPU [youtube](https://www.youtube.com/watch?v=1QUypn7GbXc)
-+ Loop Fusion vs vins node on FlightGoggles: [youtube](https://youtu.be/cvhI_1XQQt4)
-+ VINS mono VS ROVIO: [youtube](https://youtu.be/n0N2qDcNcBQ)
-+ VINS-Mono vs ROVIO vs ORB-SLAM2: [youtube](https://youtu.be/XMyiNlIbDXU)
-+ VINS-Fusion (Stereo) vs S-MSCKF on FlightGoggles: [youtube](https://youtu.be/s_Ol-k8rhwY)
-+ VINS-Fusion (Stereo) based autonomous flight and 3D mapping using RGB-D camera: [youtube](https://youtu.be/5t-6g7UWA7o)
++ `VINS-Mono` on `FlightGoggles`: [youtube](https://youtu.be/U4TJ7ZyfWD8), with CPU [youtube](https://www.youtube.com/watch?v=1QUypn7GbXc)
++ `VINS with Loop fusion` vs `VINS` on `FlightGoggles`: [youtube](https://youtu.be/cvhI_1XQQt4)
++ `VINS-Mono` VS `ROVIO`: [youtube](https://youtu.be/n0N2qDcNcBQ)
++ `VINS-Mono` vs `ROVIO` vs `ORB-SLAM2`: [youtube](https://youtu.be/XMyiNlIbDXU)
++ `VINS-Fusion` (Stereo) vs `S-MSCKF` on `FlightGoggles`: [youtube](https://youtu.be/s_Ol-k8rhwY)
++ `VINS-Fusion` (Stereo) based autonomous flight and 3D mapping using RGB-D camera: [youtube](https://youtu.be/5t-6g7UWA7o)
     
 #### Real world
 
-+ Hand-held - VINS-Mono with pointgrey cam, myAHRS+ imu on Jetson Xavier: [youtube](https://youtu.be/4qJYoND9OYk), moved faster : [youtube](https://youtu.be/DN-Jao5aKRw)
-+ Hand-held - VINS(GPU+version) with pointgrey, myAHRS at Intel i7-8700k, TITAN RTX: [youtube](https://youtu.be/UEZMZMFFhYs) 
-+ Hand-held - VINS(GPU+version, Stereo) with Intel D435i, on Xavier, max CPU clocked: [youtube](https://youtu.be/b3l1TeNKyeU) and [youtube2](https://youtu.be/7yMDqiO2A2Q) : screen
-+ Hand-held - VINS-Fusion (Stereo) with Intel D435i and Pixhawk4 mini fused with T265 camera: [here](https://engcang.github.io/mavros_vision_pose/)
-+ Hand-held - VINS-Fusion (stereo) with Intel D435i and Pixhawk4 mini on 1km long underground tunnel: [here](https://youtu.be/Gx0PSMCeR1g)
-+ Hand-held - VINS-Fusion GPU version test using T265: [here](https://youtu.be/8w86LeB6fns)
-+ Hand-held - VINS-Fusion (stereo) test using OAK-D: [here](https://youtu.be/Hjcjg9L4j9o)
-+ Hand-held - VINS-Fusion (stereo) test using OAK-D PRO: [here](https://youtu.be/Xw-HIPbn0wg)
-+ Real-Drone - VINS-Fusion with Intel D435i and Pixahwk4 mini on Real Hexarotor: [here](https://youtu.be/sfj1kxMVeMU)
-+ Real-Drone - VINS-Fusion with Intel D435i and Pixahwk4 mini on Real Quadrotor: [here](https://youtu.be/S3XAOMek2mo)
++ Hand-held - `VINS-Mono` with pointgrey cam, myAHRS+ imu on Jetson Xavier: [youtube](https://youtu.be/4qJYoND9OYk), moved faster : [youtube](https://youtu.be/DN-Jao5aKRw)
++ Hand-held - `VINS(GPU version)` with pointgrey, myAHRS at Intel i7-8700k, TITAN RTX: [youtube](https://youtu.be/UEZMZMFFhYs) 
++ Hand-held - `VINS(GPU version, Stereo)` with Intel D435i, on Xavier, max CPU clocked: [youtube](https://youtu.be/b3l1TeNKyeU) and [youtube2](https://youtu.be/7yMDqiO2A2Q) : screen
++ Hand-held - `VINS-Fusion (Stereo)` with Intel D435i and Pixhawk4 mini fused with T265 camera: [here](https://engcang.github.io/mavros_vision_pose/)
++ Hand-held - `VINS-Fusion (stereo)` with Intel D435i and Pixhawk4 mini on 1km long underground tunnel: [here](https://youtu.be/Gx0PSMCeR1g)
++ Hand-held - `VINS-Fusion GPU version` test using T265: [here](https://youtu.be/8w86LeB6fns)
++ Hand-held - `VINS-Fusion (stereo)` test using OAK-D: [here](https://youtu.be/Hjcjg9L4j9o)
++ Hand-held - `VINS-Fusion (stereo)` test using OAK-D PRO: [here](https://youtu.be/Xw-HIPbn0wg)
++ Real-Drone - `VINS-Fusion` with Intel D435i and Pixahwk4 mini on Real Hexarotor: [here](https://youtu.be/sfj1kxMVeMU)
++ Real-Drone - `VINS-Fusion` with Intel D435i and Pixahwk4 mini on Real Quadrotor: [here](https://youtu.be/S3XAOMek2mo)
 
-+ OpenVINS on [KAIST VIO dataset](https://github.com/zinuok/kaistviodataset): result [youtube](https://youtu.be/Ye8xcKH4otY)
++ `OpenVINS` on [KAIST VIO dataset](https://github.com/zinuok/kaistviodataset): result [youtube](https://youtu.be/Ye8xcKH4otY)
     + use this [launch file](https://github.com/engcang/vins-application/blob/master/openvins/kaist.launch) including parameters
     
 
