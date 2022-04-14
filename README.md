@@ -45,10 +45,11 @@
 #### ● [Ceres solver and Eigen](#-ceres-solver-and-eigen-mandatory-for-vins): Mandatory for VINS (build Eigen first)
 #### ● [CUDA](#-cuda-necessary-for-gpu-version-1): Necessary for GPU version
 #### ● [cuDNN](#-cudnn-strong-library-for-neural-network-used-with-cuda): Necessary for GPU version
-#### ● [OpenCV with CUDA and cuDNN](#-opencv-with-cuda-and-cudnn-necessary-for-gpu-version-1): Necessary for GPU version
+#### ● [OpenCV with CUDA and cuDNN](#-opencv-with-cuda-and-cudnn): Necessary for GPU version
 
 #### ● CV_Bridge with Built OpenCV: Necessary for GPU version, and general ROS usage
-+ for [OpenCV 3.x ver](#-cv_bridge-with-opencv-3x-version)  /  for [OpenCV 4.x ver](#-cv_bridge-with-opencv-4x-version)
++ **ROS1** - [OpenCV 3.x ver  /  OpenCV 4.x ver](#-ros1-cv_bridge)
++ **ROS2** - [OpenCV 4.x ver](#-ros2-cv_bridge)
 #### ● [USB performance](#-usb-performance--have-to-improve-performance-of-sensors-with-usb): Have to improve performance of sensors with USB
 #### ● [IMU-Camera Calibration](#-calibration--kalibr---synchronization-time-offset-extrinsic-parameter): Synchronization, time offset, extrinsic parameter
 #### ● [IMU-Camera rotational extrinsic](#-imu-camera-rotational-extrinsic-example): Rotational extrinsic between IMU and Cam
@@ -209,9 +210,9 @@ $ sudo chmod a+r <CUDA_PATH>/lib64/libcudnn*   #ex /usr/local/cuda-11.1/lib64/li
 
 ---
 
-### ■ OpenCV for Ubuntu 18.04 - this repo mainly targets ROS1 for Ubuntu 18.04
-#### ● OpenCV with CUDA and cuDNN: Necessary for GPU version
-<details><summary>[click to see]</summary>
+### ● OpenCV with CUDA and cuDNN 
+#### ■ Ubuntu 18.04 - this repo mainly targets ROS1 for Ubuntu 18.04
+<details><summary>[Click to see]</summary>
     
 + Build OpenCV with CUDA - references: [link 1](https://webnautes.tistory.com/1030), [link 2](https://github.com/jetsonhacks/buildOpenCVXavier/blob/master/buildOpenCV.sh)
     + for Xavier do as below or sh file from jetsonhacks [here](https://github.com/jetsonhacks/buildOpenCVXavier)
@@ -300,10 +301,9 @@ compilation terminated. --> **for CUDA version 10**
 </details>
 
     
-### ■ OpenCV for Ubuntu 20.04 - this repo mainly targets ROS2 for Ubuntu 20.04
-#### ● OpenCV with CUDA and cuDNN: Necessary for GPU version
+#### ■ Ubuntu 20.04 - this repo mainly targets ROS2 for Ubuntu 20.04
 
-<details><summary>[click to see]</summary>
+<details><summary>[Click to see]</summary>
     
 + Build OpenCV with CUDA - references: [link 1](https://webnautes.tistory.com/1479?category=704653)
 + **-D PYTHON3_PACKAGES_PATH=/usr/local/lib/python3.8/dist-packages** 
@@ -397,10 +397,11 @@ $ sudo rm -r <opencv_source_directory> #optional for saving disk, but leave this
 ---
     
 ### ● CV_Bridge with built OpenCV: Necessary for whom built OpenCV manually from above
-#### ● CV_bridge with OpenCV 3.X version
-<details><summary>[click to see]</summary>
+### ■ ROS1-cv_bridge
+
+<details><summary>[Click: CV_bridge with OpenCV 3.X version]</summary>
     
-+ For GPU version, if OpenCV with CUDA was built manually, build cv_bridge manually also
++ If OpenCV with CUDA were built manually, build cv_bridge manually also
 ~~~shell
 $ cd ~/catkin_ws/src && git clone https://github.com/ros-perception/vision_opencv
 # since ROS Noetic is added, we have to checkout to melodic tree
@@ -429,8 +430,7 @@ $ cd .. && catkin build cv_bridge
 </details>
 
 
-#### ● CV_bridge with OpenCV 4.X version
-<details><summary>[click to see]</summary>
+<details><summary>[Click: CV_bridge with OpenCV 4.X version]</summary>
     
 + Referred [here](https://github.com/ros-perception/vision_opencv/issues/272#issuecomment-471311300)
 ~~~shell
@@ -478,6 +478,23 @@ $ cd .. && catkin build cv_bridge
 
 </details>
 
+### ■ ROS2-cv_bridge
+
+<details><summary>[Click: CV_bridge with OpenCV 4.X version]</summary>
+
++ If OpenCV with CUDA were built manually, build cv_bridge manually also
+~~~bash
+$ cd ~/colcon_ws/src && git clone https://github.com/ros-perception/vision_opencv
+$ cd vision_opencv
+$ git checkout origin/ros2
+
+$ cd ~/colcon_ws
+$ colcon build --symlink-install --packages-select cv_bridge image_geometry --allow-overriding cv_bridge image_geometry
+$ source install/setup.bash
+~~~
+
+</details>
+    
 <br>
 
 ---
