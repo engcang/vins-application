@@ -47,7 +47,7 @@
 <details><summary>click to see</summary>
   
 + Intel Realsense2 ROS [here](https://github.com/intel-ros/realsense)
-  + For Xavier : -> ROS Wrapper 2.0 version should be **v2.1.3** for SDK v2.17.1 [down link](https://github.com/intel-ros/realsense/archive/2.1.3.zip)
+
 ~~~shell
 $ cd ~/catkin_ws/src && wget https://github.com/intel-ros/realsense/archive/<$version>.zip
 $ unzip realsense-<$version>.zip
