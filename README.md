@@ -36,7 +36,7 @@
 + [EnVIO](https://github.com/lastflowers/envio): Iterated-EKF Ensemble VIO based on [ROVIO](https://github.com/ethz-asl/rovio)
 #### ■ ROS2 Algorithms:
 + [NVIDIA Isaac Elbrus](https://docs.nvidia.com/isaac/isaac/packages/visual_slam/doc/elbrus_visual_slam.html): GPU-accelerated Stereo Visual SLAM
-    + `Ubuntu 20.04`: `CUDA` 11.4~11.5 (not 11.6), `NVIDIA-graphic driver` 470.103.01~495
+    + `Ubuntu 20.04`: `CUDA` 11.4, 11.5 (not 11.6), `NVIDIA-graphic driver` from 470.103.01
     + `Jetpack`: 4.6.1 on `Jetson Xavier AGX`, `Jetson Xavier NX`
 
 ### 1. Parameters
