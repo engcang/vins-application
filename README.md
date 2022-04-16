@@ -821,6 +821,8 @@ from launch_ros.descriptions import ComposableNode
 
 + `EnVIO` vs `VINS-Fusion` on [KAIST VIO dataset](https://github.com/zinuok/kaistviodataset): result [youtube](https://youtu.be/G2ZZoegoX9M)
 
++ `NVIDIA Isaac Elbrus` on real-world environments: result [youtube](https://youtu.be/V24_xtkscjc)
+    
 <br>
 
 # 5. VINS on mini onboard PCs
