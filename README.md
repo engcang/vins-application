@@ -740,11 +740,11 @@ $ catkin build
 
 #### ● Requirements
 + PC option1 - Ubuntu 20.04
-    + CUDA: 11.4-11.5 **(11.6 cannot install VPI 1.1.11)**
-    + NVIDIA Graphic driver >= 470.103.01
-    + NVIDIA VPI 1.1.11 (Only) - install with [this files](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_common/tree/main/docker/vpi) after CUDA installation
+    + `CUDA`: 11.4-11.5 **(11.6 cannot install VPI 1.1.11)**
+    + `NVIDIA Graphic driver` >= 470.103.01
+    + **(Important)** `NVIDIA VPI` 1.1.11 (Only this version) - install with [this files](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_common/tree/main/docker/vpi) after CUDA installation
 + PC option2 - Jetpack 4.6.1 on Jetson Xavier AGX / NX
-+ Topics: **`Raw stereo image` + `camera info topics`** + **`/tf_static`** (including base_frame (e.g., camera_link) to left and right camera frame)
++ Topics: **`Raw stereo image` + `camera info topics`** + **(Important!) `/tf_static`** (including base_frame (e.g., camera_link) to left and right camera frame)
 
 #### ● Installation
 ~~~bash
@@ -781,8 +781,8 @@ from launch_ros.descriptions import ComposableNode
     
 ~~~
 
-+ If you want to run it with `bag` file, then use or refer [this launch file]()
-    + since **`/tf_static`** cannot be recorded in `bag` file, `static_transform_publisher` should be added in the launch file as [these lines]()
++ If you want to run it with `bag` file, then use or refer [this launch file](https://github.com/engcang/vins-application/blob/master/NVIDIA_Isaac_Elbrus/elbrus.launch.py)
+    + since **`/tf_static`** cannot be recorded in `bag` file, `static_transform_publisher` should be added in the launch file as [these lines](https://github.com/engcang/vins-application/blob/master/NVIDIA_Isaac_Elbrus/elbrus.launch.py#L57-L62)
 
 </details>
 
