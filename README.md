@@ -292,9 +292,22 @@ $ sudo rm -r <opencv_source_directory> #optional for saving disk, but leave this
 compilation terminated. --> **for CUDA version 10**
     + => reference [here](https://devtalk.nvidia.com/default/topic/1044773/cuda-setup-and-installation/error-in-installing-opencv-3-4-0-on-cuda-10/)
     + cmake ... -D BUILD_opencv_cudacodec=OFF ...
-+ CUDA_nppicom_LIBRARY not found => reference [here](https://stackoverflow.com/questions/46584000/cmake-error-variables-are-set-to-notfound)
++ CUDA_nppicom_LIBRARY not found
     + $ sudo apt-get install nvidia-cuda-toolkit
-    + or Edit *FindCUDA.cmake* and *OpenCVDetectCUDA.cmake* as [here](https://stackoverflow.com/questions/46584000/cmake-error-variables-are-set-to-notfound)
+    + or Edit *opencv/cmake/OpenCVDetectCUDA.cmake* as follows:
+    ```cmake
+        ...
+        ...
+        if(CUDA_FOUND)
+            set(HAVE_CUDA 1)
+            ocv_list_filterout(CUDA_nppi_LIBRARY "nppicom") #this line is added
+            ocv_list_filterout(CUDA_npp_LIBRARY "nppicom") #this line is added
+            if(WITH_CUFFT)
+                set(HAVE_CUFFT 1)
+            endif()
+        ...
+        ...
+    ```
     
 ---
 
