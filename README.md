@@ -754,7 +754,7 @@ $ catkin build
 
 #### ● Requirements
     
-+ `ROVIO` receives input image as `gray scale image` - convert the RGB image as [this file](https://github.com/engcang/vins-application/blob/master/ROVIO/flightgoggles-rovio/scripts/rgb2gray.py)
++ `ROVIO` receives input image as `gray scale image` - convert the RGB image as [this file](https://github.com/engcang/utility_codes/blob/master/rgb2gray.py)
 + Config files can be generated directly from `Kalibr` results:
     
 ```bash
