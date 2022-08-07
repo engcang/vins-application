@@ -33,6 +33,7 @@
 + [VINS-Fisheye](https://github.com/xuhao1/VINS-Fisheye): VINS-Fusion's extension with more `camera_models` and `CUDA` acceleration
     + only for `OpenCV 3.4.1` and `Jetson TX2` (I guess, I failed on i9-10900k + RTX3080)
 + [ROVIO](https://github.com/ethz-asl/rovio): Iterative EKF based VIO, direct method (using patch)
++ [ORB-SLAM2](https://github.com/appliedAI-Initiative/orb_slam_2_ros): Feature based VO, Local and Global bundle adjustment
 + [OpenVINS](https://github.com/rpng/open_vins): MSCKF based VINS 
 + [EnVIO](https://github.com/lastflowers/envio): Iterated-EKF Ensemble VIO based on [ROVIO](https://github.com/ethz-asl/rovio)
 #### ■ ROS2 Algorithms:
@@ -41,7 +42,7 @@
     + `Jetpack`: 4.6.1 on `Jetson Xavier AGX`, `Jetson Xavier NX`
 
 ### 1. Parameters
-+ [VINS-Fusion](#-vins-fusion)  /  VINS-Fisheye  /  OpenVINS  /  EnVIO  /  NVIDIA Isaac Elbrus
++ [VINS-Fusion](#-vins-fusion)
 ### 2. Prerequisites
 #### ● [Ceres solver and Eigen](#-ceres-solver-and-eigen-mandatory-for-vins): Mandatory for VINS (build Eigen first)
 #### ● [CUDA](#-cuda-necessary-for-gpu-version-1): Necessary for GPU version
@@ -57,8 +58,8 @@
 ### 3. Installation and Execution
 #### ■ ROS1 Algorithms:
 + [VINS-Fusion](#-vins-fusion-1)  /  [VINS-Fisheye](#-vins-fisheye)  /  [OpenVINS](#-openvins)
-+ [VINS-Fusion with OpenCV4](#-vins-fusion-1)  /  [EnVIO](#-envio)  /  [ROVIO](#-rovio)
-+ `Trouble shooting` for [VINS-Fusion](#-trouble-shooting-for-vins-fusion)  /  VINS-Fisheye  /  OpenVINS
++ [VINS-Fusion with OpenCV4](#-vins-fusion-1)  /  [EnVIO](#-envio)  /  [ROVIO](#-rovio)  /  [ORB-SLAM2](#-orb-slam2)
++ `Trouble shooting` for [VINS-Fusion](#-trouble-shooting-for-vins-fusion)
 #### ■ ROS2 Algorithms:
 + [NVIDIA Isaac Elbrus](#-nvidia-isaac-elbrus-1)
 ### 4. [Comparison & Application results](#4-comparison--application)
@@ -704,6 +705,7 @@ $ catkin build
 
 <br>
 
+
 ### ● OpenVINS
 
 <details><summary>[click to see]</summary>
@@ -790,6 +792,22 @@ $ catkin build rovio --cmake-args -DCMAKE_BUILD_TYPE=Release -DMAKE_SCENE=ON
 
 <br>
 
+### ● ORB-SLAM2
+
+<details><summary>[click to see]</summary>
+
+#### ● Installation
+```bash
+ $ cd ~/catkin_ws/src && git clone https://github.com/appliedAI-Initiative/orb_slam_2_ros
+ $ cd .. && rosdep install --from-paths src --ignore-src -r -y
+ $ catkin build
+```
+
++ highly recommend this pull request to speedup loading Vocabulary [here](https://github.com/raulmur/ORB_SLAM2/pull/21)
+
+</details>
+
+<br>
 
 ## ■ ROS2 Algorithms:
 ### ● NVIDIA Isaac Elbrus
