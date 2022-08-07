@@ -57,7 +57,7 @@
 ### 3. Installation and Execution
 #### ■ ROS1 Algorithms:
 + [VINS-Fusion](#-vins-fusion-1)  /  [VINS-Fisheye](#-vins-fisheye)  /  [OpenVINS](#-openvins)
-+ [VINS-Fusion with OpenCV4](#-vins-fusion-1)  /  [EnVIO](#-envio)  /  [ROVIO]()
++ [VINS-Fusion with OpenCV4](#-vins-fusion-1)  /  [EnVIO](#-envio)  /  [ROVIO](#-rovio)
 + `Trouble shooting` for [VINS-Fusion](#-trouble-shooting-for-vins-fusion)  /  VINS-Fisheye  /  OpenVINS
 #### ■ ROS2 Algorithms:
 + [NVIDIA Isaac Elbrus](#-nvidia-isaac-elbrus-1)
@@ -747,19 +747,24 @@ $ catkin build
 <br>
 
 ### ● ROVIO
-<details><summary><click to see]</summary>
+    
+<details><summary>[click to see]</summary>
 
 #### ● Requirements
+    
 + `ROVIO` receives input image as `gray scale image` - convert the RGB image as [this file](https://github.com/engcang/vins-application/blob/master/ROVIO/flightgoggles-rovio/scripts/rgb2gray.py)
 + Config files can be generated directly from `Kalibr` results:
+    
 ```bash
 $ rosrun kalibr kalibr_rovio_config --cam <cam-chain.yaml filename>
 ```
+    
 + After using kalibr to convert the calibration result files to rovio_config files,
     + Make sure to Edit `Camera1` and `Camera2` into `Camera0` and `Camera1` in `.info` file
     + Make sure to Add `Velocity Updates` block in `.info` file
 
 #### ● Installation
+    
 + Install [kindr](https://github.com/ANYbotics/kindr)
 
 ```bash
@@ -768,6 +773,7 @@ $ cd .. && catkin build -j8
 ```
 
 + Install `ROVIO`
+    
 ```bash
 $ cd ~/catkin_ws/src && git clone https://github.com/ethz-asl/rovio
 $ cd rovio && git submodule update --init --recursive
@@ -779,7 +785,6 @@ $ catkin build rovio --cmake-args -DCMAKE_BUILD_TYPE=Release
 $ sudo apt-get install freeglut3-dev libglew-dev
 $ catkin build rovio --cmake-args -DCMAKE_BUILD_TYPE=Release -DMAKE_SCENE=ON
 ```
-
 
 </details>
 
