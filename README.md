@@ -1,7 +1,7 @@
 # VINS-application
 ## Mainly focused on Build process and explanation
 ### ■ ROS1 algorithms:
-#### ● `VINS-Fusion`, `VINS-Fusion-GPU`, `VINS-Fisheye`, `OpenVINS`, `EnVIO`
+#### ● `VINS-Fusion`, `VINS-Fusion-GPU`, `VINS-Fisheye`, `OpenVINS`, `EnVIO`, `ROVIO`, `ORB-SLAM2`
 ### ■ ROS2 algorithms:
 #### ● `NVIDIA Isaac Elbrus`
 
@@ -32,6 +32,7 @@
     + Mainly uses `Ceres-solver`, `OpenCV` and `Eigen` and **performance of VINS is strongly proportional to CPU performance and some parameters**
 + [VINS-Fisheye](https://github.com/xuhao1/VINS-Fisheye): VINS-Fusion's extension with more `camera_models` and `CUDA` acceleration
     + only for `OpenCV 3.4.1` and `Jetson TX2` (I guess, I failed on i9-10900k + RTX3080)
++ [ROVIO](https://github.com/ethz-asl/rovio): Iterative EKF based VIO, direct method (using patch)
 + [OpenVINS](https://github.com/rpng/open_vins): MSCKF based VINS 
 + [EnVIO](https://github.com/lastflowers/envio): Iterated-EKF Ensemble VIO based on [ROVIO](https://github.com/ethz-asl/rovio)
 #### ■ ROS2 Algorithms:
@@ -56,7 +57,7 @@
 ### 3. Installation and Execution
 #### ■ ROS1 Algorithms:
 + [VINS-Fusion](#-vins-fusion-1)  /  [VINS-Fisheye](#-vins-fisheye)  /  [OpenVINS](#-openvins)
-+ [VINS-Fusion with OpenCV4](#-vins-fusion-1)  /  [EnVIO](#-envio)
++ [VINS-Fusion with OpenCV4](#-vins-fusion-1)  /  [EnVIO](#-envio)  /  [ROVIO]()
 + `Trouble shooting` for [VINS-Fusion](#-trouble-shooting-for-vins-fusion)  /  VINS-Fisheye  /  OpenVINS
 #### ■ ROS2 Algorithms:
 + [NVIDIA Isaac Elbrus](#-nvidia-isaac-elbrus-1)
@@ -745,7 +746,46 @@ $ catkin build
 
 <br>
 
-    
+### ● ROVIO
+<details><summary><click to see]</summary>
+
+#### ● Requirements
++ `ROVIO` receives input image as `gray scale image` - convert the RGB image as [this file](https://github.com/engcang/vins-application/blob/master/ROVIO/flightgoggles-rovio/scripts/rgb2gray.py)
++ Config files can be generated directly from `Kalibr` results:
+```bash
+$ rosrun kalibr kalibr_rovio_config --cam <cam-chain.yaml filename>
+```
++ After using kalibr to convert the calibration result files to rovio_config files,
+    + Make sure to Edit `Camera1` and `Camera2` into `Camera0` and `Camera1` in `.info` file
+    + Make sure to Add `Velocity Updates` block in `.info` file
+
+#### ● Installation
++ Install [kindr](https://github.com/ANYbotics/kindr)
+
+```bash
+$ cd ~/catkin_ws/src && git clone https://github.com/ANYbotics/kindr
+$ cd .. && catkin build -j8
+```
+
++ Install `ROVIO`
+```bash
+$ cd ~/catkin_ws/src && git clone https://github.com/ethz-asl/rovio
+$ cd rovio && git submodule update --init --recursive
+
+$ cd ..
+$ catkin build rovio --cmake-args -DCMAKE_BUILD_TYPE=Release
+
+# With with opengl scene (optional)
+$ sudo apt-get install freeglut3-dev libglew-dev
+$ catkin build rovio --cmake-args -DCMAKE_BUILD_TYPE=Release -DMAKE_SCENE=ON
+```
+
+
+</details>
+
+<br>
+
+
 ## ■ ROS2 Algorithms:
 ### ● NVIDIA Isaac Elbrus
 
@@ -819,10 +859,10 @@ from launch_ros.descriptions import ComposableNode
     
 #### Real world
 
-+ Hand-held - `VINS-Mono` with pointgrey cam, myAHRS+ imu on Jetson Xavier: [youtube](https://youtu.be/4qJYoND9OYk), moved faster : [youtube](https://youtu.be/DN-Jao5aKRw)
-+ Hand-held - `ROVIO` with Intel D435i on Jetson Xavier: [youtube](https://youtu.be/_o2KwT8jJN0)
++ Hand-held - `VINS-Mono` with pointgrey cam, myAHRS+ imu on Jetson Xavier AGX: [youtube](https://youtu.be/4qJYoND9OYk), moved faster : [youtube](https://youtu.be/DN-Jao5aKRw)
++ Hand-held - `ROVIO` with Intel D435i on Jetson Xavier AGX: [youtube](https://youtu.be/_o2KwT8jJN0)
 + Hand-held - `VINS(GPU version)` with pointgrey, myAHRS at Intel i7-8700k, TITAN RTX: [youtube](https://youtu.be/UEZMZMFFhYs) 
-+ Hand-held - `VINS(GPU version, Stereo)` with Intel D435i, on Xavier, max CPU clocked: [youtube](https://youtu.be/b3l1TeNKyeU) and [youtube2](https://youtu.be/7yMDqiO2A2Q) : screen
++ Hand-held - `VINS(GPU version, Stereo)` with Intel D435i, on Xavier AGX, max CPU clocked: [youtube](https://youtu.be/b3l1TeNKyeU) and [youtube2](https://youtu.be/7yMDqiO2A2Q) : screen
 + Hand-held - `VINS-Fusion (Stereo)` with Intel D435i and Pixhawk4 mini fused with T265 camera: [here](https://engcang.github.io/mavros_vision_pose/)
 + Hand-held - `VINS-Fusion (stereo)` with Intel D435i and Pixhawk4 mini on 1km long underground tunnel: [here](https://youtu.be/Gx0PSMCeR1g)
 + Hand-held - `VINS-Fusion GPU version` test using T265: [here](https://youtu.be/8w86LeB6fns)
