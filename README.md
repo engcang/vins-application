@@ -810,6 +810,7 @@ from launch_ros.descriptions import ComposableNode
 #### Simulation
 
 + `VINS-Mono` on `FlightGoggles`: [youtube](https://youtu.be/U4TJ7ZyfWD8), with CPU [youtube](https://www.youtube.com/watch?v=1QUypn7GbXc)
++ `ROVIO` on `FlightGoggles`: [youtube](https://youtu.be/3Xgwi7k6css)
 + `VINS with Loop fusion` vs `VINS` on `FlightGoggles`: [youtube](https://youtu.be/cvhI_1XQQt4)
 + `VINS-Mono` vs `ROVIO`: [youtube](https://youtu.be/n0N2qDcNcBQ)
 + `VINS-Mono` vs `ROVIO` vs `ORB-SLAM2`: [youtube](https://youtu.be/XMyiNlIbDXU)
@@ -819,6 +820,7 @@ from launch_ros.descriptions import ComposableNode
 #### Real world
 
 + Hand-held - `VINS-Mono` with pointgrey cam, myAHRS+ imu on Jetson Xavier: [youtube](https://youtu.be/4qJYoND9OYk), moved faster : [youtube](https://youtu.be/DN-Jao5aKRw)
++ Hand-held - `ROVIO` with Intel D435i on Jetson Xavier: [youtube](https://youtu.be/_o2KwT8jJN0)
 + Hand-held - `VINS(GPU version)` with pointgrey, myAHRS at Intel i7-8700k, TITAN RTX: [youtube](https://youtu.be/UEZMZMFFhYs) 
 + Hand-held - `VINS(GPU version, Stereo)` with Intel D435i, on Xavier, max CPU clocked: [youtube](https://youtu.be/b3l1TeNKyeU) and [youtube2](https://youtu.be/7yMDqiO2A2Q) : screen
 + Hand-held - `VINS-Fusion (Stereo)` with Intel D435i and Pixhawk4 mini fused with T265 camera: [here](https://engcang.github.io/mavros_vision_pose/)
