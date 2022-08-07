@@ -1,0 +1,13 @@
+image_width: 1288
+image_height: 964
+camera_name: cama
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [1470.04952381, 0.0, 673.513447492, 0.0, 1467.95252459, 483.078434589, 0.0, 0.0, 1.0]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [-0.1027464124, 0.210335325835, -0.00164239121263, 0.00183980066445, 0.0]
+

@@ -1,0 +1,15 @@
+cam0:
+  T_cam_imu:
+  - [0.0, 0.0, 1.0, 0.0]
+  - [-1.0, 0.0, 0.0, 0.0]
+  - [0.0, -1.0, 0.0, 0.0]
+  - [0.0, 0.0, 0.0, 1.0]
+  cam_overlaps: [0]
+  camera_model: pinhole
+  distortion_coeffs: [0.0, 0.0, 0.0,
+    0.0]
+  distortion_model: radtan
+  intrinsics: [385.5999755859375, 385.5999755859375, 360.0, 270.0]
+  resolution: [720, 540]
+  rostopic: /image_mono
+  timeshift_cam_imu: -0.0

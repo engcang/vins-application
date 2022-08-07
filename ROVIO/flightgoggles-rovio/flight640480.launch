@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<launch>
+  <node name="rovio_traj" pkg="hector_trajectory_server" type="rovio_h"/>
+  <node name="rgb2gray" pkg="rovio" type="rgb2gray.py"/>
+
+  <node pkg="rovio" type="rovio_node" name="rovio" output="screen">
+  <param name="filter_config" value="$(find rovio)/cfg/flight.info"/>
+  <param name="camera0_config" value="$(find rovio)/cfg/rovio_cam1.yaml"/>
+  <remap from="/cam0/image_raw" to="/image_mono"/>
+  <remap from="/imu0" to="/imu_data"/>
+  </node>
+</launch>
