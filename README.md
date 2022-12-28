@@ -852,6 +852,13 @@ $ cd ~/your_workspace/src
 $ git clone https://github.com/lukasvst/dm-vio-ros.git
 $ cd ~/your_workspace
 $ catkin build
+$ . devel/setup.bash
+$ sudo ldconfig
+```
+
++ Run on `KAIST-VIO-Dataset`, refer [this config files](https://github.com/engcang/vins-application/tree/master/DM-VIO)
+```bash
+$ rosrun dmvio_ros node calib=camera_kaistvio.txt imuCalib=camchain_kaistvio.yaml settingsFile=setting_kaistvio.yaml mode=3 nogui=0 preset=1 quiet=0
 ```
 
 </details>
