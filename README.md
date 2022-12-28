@@ -858,7 +858,7 @@ $ sudo ldconfig
 
 + Run on `KAIST-VIO-Dataset`, refer [this config files](https://github.com/engcang/vins-application/tree/master/DM-VIO)
 ```bash
-$ rosrun dmvio_ros node calib=camera_kaistvio.txt imuCalib=camchain_kaistvio.yaml settingsFile=setting_kaistvio.yaml mode=3 nogui=0 preset=1 quiet=0
+$ rosrun dmvio_ros node calib=camera_kaistvio.txt imuCalib=camchain_kaistvio.yaml settingsFile=setting_kaistvio.yaml mode=3 nogui=0 preset=1 quiet=1 useimu=1
 ```
 
 </details>
