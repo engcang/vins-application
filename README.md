@@ -1,7 +1,7 @@
 # VINS-application
 ## Mainly focused on Build process and explanation
 ### ■ ROS1 algorithms:
-#### ● `VINS-Fusion`, `VINS-Fusion-GPU`, `VINS-Fisheye`, `OpenVINS`, `EnVIO`, `ROVIO`, `ORB-SLAM2`
+#### ● `VINS-Fusion`, `VINS-Fusion-GPU`, `VINS-Fisheye`, `OpenVINS`, `EnVIO`, `ROVIO`, `ORB-SLAM2`, `DM-VIO`
 ### ■ ROS2 algorithms:
 #### ● `NVIDIA Isaac Elbrus`
 
@@ -36,6 +36,7 @@
 + [ORB-SLAM2](https://github.com/appliedAI-Initiative/orb_slam_2_ros): Feature based VO, Local and Global bundle adjustment
 + [OpenVINS](https://github.com/rpng/open_vins): MSCKF based VINS 
 + [EnVIO](https://github.com/lastflowers/envio): Iterated-EKF Ensemble VIO based on [ROVIO](https://github.com/ethz-asl/rovio)
++ [DM-VIO](https://github.com/lukasvst/dm-vio-ros): Monocular VIO with delayed marginalization and pose graph bundle adjustment based on [DSO](https://github.com/JakobEngel/dso_ros)
 #### ■ ROS2 Algorithms:
 + [NVIDIA Isaac Elbrus](https://docs.nvidia.com/isaac/isaac/packages/visual_slam/doc/elbrus_visual_slam.html): GPU-accelerated Stereo Visual SLAM
     + `Ubuntu 20.04`: `CUDA` 11.4, 11.5 (not 11.6), `NVIDIA-graphic driver` from 470.103.01
@@ -59,6 +60,7 @@
 #### ■ ROS1 Algorithms:
 + [VINS-Fusion](#-vins-fusion-1)  /  [VINS-Fisheye](#-vins-fisheye)  /  [OpenVINS](#-openvins)
 + [VINS-Fusion with OpenCV4](#-vins-fusion-1)  /  [EnVIO](#-envio)  /  [ROVIO](#-rovio)  /  [ORB-SLAM2](#-orb-slam2)
++ [DM-VIO](#-dm-vio)
 + `Trouble shooting` for [VINS-Fusion](#-trouble-shooting-for-vins-fusion)
 #### ■ ROS2 Algorithms:
 + [NVIDIA Isaac Elbrus](#-nvidia-isaac-elbrus-1)
@@ -808,6 +810,53 @@ $ catkin build rovio --cmake-args -DCMAKE_BUILD_TYPE=Release -DMAKE_SCENE=ON
 </details>
 
 <br>
+
+### ● DM-VIO
+
+<details><summary>[click to see]</summary>
+
++ Install dependencies
+```bash
+$ sudo apt-get install cmake libsuitesparse-dev libeigen3-dev libboost-all-dev libyaml-cpp-dev libtbb-dev libgl1-mesa-dev libglew-dev pkg-config libegl1-mesa-dev libwayland-dev libxkbcommon-dev wayland-protocols -y
+
+$ cd ~/your_workspace
+$ git clone https://github.com/borglab/gtsam.git
+$ cd gtsam
+$ git checkout 4.2a6          # not strictly necessary but this is the version tested with.
+$ mkdir build && cd build
+$ cmake -DGTSAM_POSE3_EXPMAP=ON -DGTSAM_ROT3_EXPMAP=ON -DGTSAM_USE_SYSTEM_EIGEN=ON -DGTSAM_BUILD_WITH_MARCH_NATIVE=OFF ..
+$ make -j
+$ sudo make install
+
+$ cd ~/your_workspace
+$ git clone https://github.com/stevenlovegrove/Pangolin.git
+$ cd Pangolin
+$ git checkout v0.6
+$ mkdir build && cd build
+$ cmake ..
+$ cmake --build .
+$ sudo make install
+```
+
++ Build `DM-VIO` and `DM-VIO-ROS`
+$ cd ~/your_workspace
+$ git clone https://github.com/lukasvst/dm-vio.git
+$ cd dm-vio
+$ mkdir build && cd build
+$ cmake ..
+$ make -j10
+$ echo "export DMVIO_BUILD=`pwd`" >> ~/.bashrc && . ~/.bashrc
+
+$ cd ~/your_workspace/src
+$ git clone https://github.com/lukasvst/dm-vio-ros.git
+$ cd ~/your_workspace
+$ catkin build
+```
+
+</details>
+
+<br>
+
 
 ## ■ ROS2 Algorithms:
 ### ● NVIDIA Isaac Elbrus
