@@ -3,7 +3,7 @@
 #common parameters
 #support: 1 imu 1 cam; 1 imu 2 cam: 2 cam; 
 imu: 1         
-num_of_cam: 2  
+num_of_cam: 1
 
 imu_topic: "/mavros/imu/data"
 image0_topic: "/camera/infra1/image_rect_raw"
