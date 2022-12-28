@@ -839,6 +839,7 @@ $ sudo make install
 ```
 
 + Build `DM-VIO` and `DM-VIO-ROS`
+```bash
 $ cd ~/your_workspace
 $ git clone https://github.com/lukasvst/dm-vio.git
 $ cd dm-vio
