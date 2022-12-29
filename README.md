@@ -957,8 +957,9 @@ from launch_ros.descriptions import ComposableNode
     + use this [launch file](https://github.com/engcang/vins-application/blob/master/openvins/kaist.launch) including parameters
 
 + `EnVIO` vs `VINS-Fusion` on [KAIST VIO dataset](https://github.com/zinuok/kaistviodataset): result [youtube](https://youtu.be/G2ZZoegoX9M)
++ `DM-VIO` vs `VINS-Mono` on [KAIST VIO dataset](https://github.com/zinuok/kaistviodataset): result [youtube](https://youtu.be/OJddYxLlSqo)
 
-+ `NVIDIA Isaac Elbrus` on real-world environments: result [youtube](https://youtu.be/V24_xtkscjc)
++ `NVIDIA Isaac Elbrus` in real-world: result [youtube](https://youtu.be/V24_xtkscjc)
     
 <br>
 
