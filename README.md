@@ -1,7 +1,7 @@
 # VINS-application
 ## Mainly focused on Build process and explanation
 ### ■ ROS1 algorithms:
-#### ● `VINS-Fusion`, `VINS-Fusion-GPU`, `VINS-Fisheye`, `OpenVINS`, `EnVIO`, `ROVIO`, `ORB-SLAM2`, `DM-VIO`
+#### ● `VINS-Fusion`, `VINS-Fusion-GPU`, `VINS-Fisheye`, `OpenVINS`, `EnVIO`, `ROVIO`, `S-MSCKF`, `ORB-SLAM2`, `DM-VIO`
 ### ■ ROS2 algorithms:
 #### ● `NVIDIA Isaac Elbrus`
 
@@ -33,6 +33,7 @@
 + [VINS-Fisheye](https://github.com/xuhao1/VINS-Fisheye): VINS-Fusion's extension with more `camera_models` and `CUDA` acceleration
     + only for `OpenCV 3.4.1` and `Jetson TX2` (I guess, I failed on i9-10900k + RTX3080)
 + [ROVIO](https://github.com/ethz-asl/rovio): Iterative EKF based VIO, direct method (using patch)
++ [S-MSCKF](https://github.com/KumarRobotics/msckf_vio): Stereo version of MSCKF VIO
 + [ORB-SLAM2](https://github.com/appliedAI-Initiative/orb_slam_2_ros): Feature based VO, Local and Global bundle adjustment
 + [OpenVINS](https://github.com/rpng/open_vins): MSCKF based VINS 
 + [EnVIO](https://github.com/lastflowers/envio): Iterated-EKF Ensemble VIO based on [ROVIO](https://github.com/ethz-asl/rovio)
@@ -59,8 +60,8 @@
 ### 3. Installation and Execution
 #### ■ ROS1 Algorithms:
 + [VINS-Fusion](#-vins-fusion-1)  /  [VINS-Fisheye](#-vins-fisheye)  /  [OpenVINS](#-openvins)
-+ [VINS-Fusion with OpenCV4](#-vins-fusion-1)  /  [EnVIO](#-envio)  /  [ROVIO](#-rovio)  /  [ORB-SLAM2](#-orb-slam2)
-+ [DM-VIO](#-dm-vio)
++ [VINS-Fusion with OpenCV4](#-vins-fusion-1)  /  [S-MSCKF](#-s-msckf)  /  [ROVIO](#-rovio)  /  [ORB-SLAM2](#-orb-slam2)
++ [EnVIO](#-envio)  /  [DM-VIO](#-dm-vio)
 + `Trouble shooting` for [VINS-Fusion](#-trouble-shooting-for-vins-fusion)
 #### ■ ROS2 Algorithms:
 + [NVIDIA Isaac Elbrus](#-nvidia-isaac-elbrus-1)
@@ -745,6 +746,21 @@ comment two lines, line 4 and 5
 
 $ catkin build    
 ~~~
+
+</details>
+
+<br>
+
+### ● S-MSCKF
+    
+<details><summary>[click to see]</summary>
+
+#### ● Installation
+```bash
+ $ sudo apt-get install libsuitesparse-dev
+ $ cd ~/catkin_ws/src && https://github.com/KumarRobotics/msckf_vio
+ $ cd ~/catkin_ws && catkin build msckf_vio -DCMAKE_BUILD_TYPE=Release
+```
 
 </details>
 
